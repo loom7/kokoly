@@ -1,0 +1,418 @@
+{
+ "sprache": "de",
+ "espeak": "1.52.0 (espeakng-loader 0.2.4, Referenz-DLL)",
+ "aufruf": "espeak_TextToPhonemes, text_mode=1, phonemes_mode=ord('_')<<8|0x02",
+ "erzeugt": "2026-08-24",
+ "saetze": [
+  {
+   "text": "Ich möchte nicht, dass mich vielleicht doch jemand richtig versteht.",
+   "segmente": [
+    {
+     "chunk": "Ich möchte nicht",
+     "roh": "_ɪ_ç m_ˈœ_ç_t_ə n_ˈɪ_ç_t"
+    },
+    {
+     "chunk": "dass mich vielleicht doch jemand richtig versteht",
+     "roh": "d_a_s m_ɪ_ç f_ɪ_l_ˈaɪ_ç_t d_ɔ_x j_ˈeː_m_a_n_t r_ˈɪ_ç_t_ɪ_ç f_ɛ_ɾ_ʃ_t_ˈeː_t"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ", ",
+     "position": "I"
+    },
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "endfassung": "ɪç mˈœçtə nˈɪçt, das mɪç fɪlˈaɪçt dɔx jˈeːmant rˈɪçtɪç fɛɾʃtˈeːt.",
+   "verworfen": []
+  },
+  {
+   "text": "Das Frauchen ruft, wir rauchen nicht.",
+   "segmente": [
+    {
+     "chunk": "Das Frauchen ruft",
+     "roh": "d_a_s f_r_ˈaʊ_x_ə_n r_ˈʊ_f_t"
+    },
+    {
+     "chunk": "wir rauchen nicht",
+     "roh": "v_iː_ɾ r_ˈaʊ_x_ə_n n_ˈɪ_ç_t"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ", ",
+     "position": "I"
+    },
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "endfassung": "das frˈaʊxən rˈʊft, viːɾ rˈaʊxən nˈɪçt.",
+   "verworfen": []
+  },
+  {
+   "text": "Fünf Mütter gingen über die Brücke in München, jede mit Glück.",
+   "segmente": [
+    {
+     "chunk": "Fünf Mütter gingen über die Brücke in München",
+     "roh": "f_ˈʏ_n_f m_ˈʏ_t_ɜ ɡ_ˈɪ_ŋ_ə_n__ _ˌyː_b_ɜ d_iː b_ɾ_ˈʏ_k_ə_ _ɪ_n m_ˈʏ_n_ç_ə_n"
+    },
+    {
+     "chunk": "jede mit Glück",
+     "roh": "j_ˈeː_d_ə m_ɪ_t ɡ_l_ˈʏ_k"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ", ",
+     "position": "I"
+    },
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "endfassung": "fˈynf mˈytɜ ɡˈɪŋən ˌyːbɜ diː bɾˈykə ɪn mˈynçən, jˈeːdə mɪt ɡlˈyk.",
+   "verworfen": []
+  },
+  {
+   "text": "Das Team schickt ein Update per E-Mail an den Server.",
+   "segmente": [
+    {
+     "chunk": "Das Team schickt ein Update per E-Mail an den Server",
+     "roh": "d_a_s (en)_t_ˈiː_m_(de) ʃ_ˈɪ_k_t _aɪ_n (en)_ˈʌ_p_d_eɪ_t_(de)_ p_ɛ_ɾ _ˈeː_(en)_m_ˈeɪ_l_(de)_ _a_n d_eː_n (en)_s_ˈɜː_v_ə_(de)"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "endfassung": "das tˈiːm ʃˈɪkt aɪn ˈʌpdeɪt pɛɾ ˈeːmˈeɪl an deːn sˈɜːvə.",
+   "verworfen": []
+  },
+  {
+   "text": "Ein Text (in Klammern) hier.",
+   "segmente": [
+    {
+     "chunk": "Ein Text",
+     "roh": "_aɪ_n t_ˈɛ_k_s_t"
+    },
+    {
+     "chunk": "in Klammern",
+     "roh": "_ɪ_n k_l_ˈa_m_ɜ_n"
+    },
+    {
+     "chunk": "hier",
+     "roh": "h_ˈiː_ɾ"
+    }
+   ],
+   "marks": [
+    {
+     "mark": " (",
+     "position": "I"
+    },
+    {
+     "mark": ") ",
+     "position": "I"
+    },
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "endfassung": "aɪn tˈɛkst (ɪn klˈamɜn) hˈiːɾ.",
+   "verworfen": []
+  },
+  {
+   "text": "Der Artikel (das) und der Artikel (der).",
+   "segmente": [
+    {
+     "chunk": "Der Artikel",
+     "roh": "d_ɛ_ɾ _a_ɾ_t_ˈiː_k_ə_l"
+    },
+    {
+     "chunk": "das",
+     "roh": "d_a_s"
+    },
+    {
+     "chunk": "und der Artikel",
+     "roh": "_ʊ_n_t d_ɛ_ɾ _a_ɾ_t_ˈiː_k_ə_l"
+    },
+    {
+     "chunk": "der",
+     "roh": "d_ɛ_ɾ"
+    }
+   ],
+   "marks": [
+    {
+     "mark": " (",
+     "position": "I"
+    },
+    {
+     "mark": ") ",
+     "position": "I"
+    },
+    {
+     "mark": " (",
+     "position": "I"
+    },
+    {
+     "mark": ").",
+     "position": "E"
+    }
+   ],
+   "endfassung": "dɛɾ aɾtˈiːkəl (das) ʊnt dɛɾ aɾtˈiːkəl (dɛɾ).",
+   "verworfen": []
+  },
+  {
+   "text": "Guten Tag, hier spricht Martin.",
+   "segmente": [
+    {
+     "chunk": "Guten Tag",
+     "roh": "ɡ_ˈuː_t_ə_n t_ˈɑː_k"
+    },
+    {
+     "chunk": "hier spricht Martin",
+     "roh": "h_ˈiː_ɾ ʃ_p_ɾ_ˈɪ_ç_t m_ˈa_ɾ_t_ɪ_n"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ", ",
+     "position": "I"
+    },
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "endfassung": "ɡˈuːtən tˈɑːk, hˈiːɾ ʃpɾˈɪçt mˈaɾtɪn.",
+   "verworfen": []
+  },
+  {
+   "text": "Der Termin ist am dritten August um halb zehn.",
+   "segmente": [
+    {
+     "chunk": "Der Termin ist am dritten August um halb zehn",
+     "roh": "d_ɛ_ɾ t_ɛ_ɾ_m_ˈiː_n _ɪ_s_t_ _a_m d_ɾ_ˈɪ_t_ə_n _ˈaʊ_ɡ_ʊ_s_t_ _ʊ_m h_ˈa_l_p ts_ˈeː_n"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "endfassung": "dɛɾ tɛɾmˈiːn ɪst am dɾˈɪtən ˈaʊɡʊst ʊm hˈalp tsˈeːn.",
+   "verworfen": []
+  },
+  {
+   "text": "Die Erbse ist grün und die Erbsen sind gekocht.",
+   "segmente": [
+    {
+     "chunk": "Die Erbse ist grün und die Erbsen sind gekocht",
+     "roh": "d_iː _ɛ_ɾ_b_z_ˈeː _ɪ_s_t ɡ_ɾ_ˈyː_n__ _ʊ_n_t d_iː _ˈɛ_ɾ_p_z_ə_n z_ɪ_n_t ɡ_ə_k_ˈɔ_x_t"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "endfassung": "diː ɛɾbzˈeː ɪst ɡɾˈyːn ʊnt diː ˈɛɾpzən zɪnt ɡəkˈɔxt.",
+   "verworfen": []
+  },
+  {
+   "text": "Ich lese das Journal in der Etage.",
+   "segmente": [
+    {
+     "chunk": "Ich lese das Journal in der Etage",
+     "roh": "_ɪ_ç l_ˈeː_z_ə d_a_s j_uː_ɾ_n_ˈɑː_l_ _ɪ_n d_ɛ_ɾ _ˈeː_t_ɑː_ɡ_ə"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "endfassung": "ɪç lˈeːzə das juːɾnˈɑːl ɪn dɛɾ ˈeːtɑːɡə.",
+   "verworfen": []
+  },
+  {
+   "text": "Das Büro liegt im Hotel in Osnabrück.",
+   "segmente": [
+    {
+     "chunk": "Das Büro liegt im Hotel in Osnabrück",
+     "roh": "d_a_s b_ˈyː_r_oː l_ˈiː_k_t_ _ɪ_m h_ˈoː_t_ə_l_ _ɪ_n _ˈɔ_s_n_a_b_ɾ_ˌʏ_k"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "endfassung": "das bˈyːroː lˈiːkt ɪm hˈoːtəl ɪn ˈɔsnabɾˌyk.",
+   "verworfen": []
+  },
+  {
+   "text": "Wir wollen nicht widersprechen oder missverstehen.",
+   "segmente": [
+    {
+     "chunk": "Wir wollen nicht widersprechen oder missverstehen",
+     "roh": "v_iː_ɾ v_ɔ_l_ə_n n_ˈɪ_ç_t v_ˈiː_d_ɜ_ʃ_p_ɾ_ˌɛ_ç_ə_n__ _ˌoː_d_ɜ m_ˈɪ_s_f_ɜ_ʃ_t_ˌeː_ə_n"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "endfassung": "viːɾ vɔlən nˈɪçt vˈiːdɜʃpɾˌɛçən ˌoːdɜ mˈɪsfɜʃtˌeːən.",
+   "verworfen": []
+  },
+  {
+   "text": "Die Lebensversicherung läuft im August aus.",
+   "segmente": [
+    {
+     "chunk": "Die Lebensversicherung läuft im August aus",
+     "roh": "d_iː l_ˌeː_b_ə_n_s_f_ɛ_ɾ_z_ˈɪ_ç_ə_r_ˌʊ_ŋ l_ˈɔø_f_t_ _ɪ_m _ˈaʊ_ɡ_ʊ_s_t _ˈaʊ_s"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "endfassung": "diː lˌeːbənsfɛɾzˈɪçərˌʊŋ lˈɔøft ɪm ˈaʊɡʊst ˈaʊs.",
+   "verworfen": []
+  },
+  {
+   "text": "Sankt Martin ritt durch Schnee und Wind.",
+   "segmente": [
+    {
+     "chunk": "Sankt Martin ritt durch Schnee und Wind",
+     "roh": "z_ˈa_ŋ_k_t m_ˈa_ɾ_t_ɪ_n r_ˈɪ_t__ d_ʊɐ_ç ʃ_n_ˈeː _ʊ_n_t v_ˈɪ_n_t"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "endfassung": "zˈaŋkt mˈaɾtɪn rˈɪt dʊɐç ʃnˈeː ʊnt vˈɪnt.",
+   "verworfen": []
+  },
+  {
+   "text": "Es sind 22 Grad und 0,1 Prozent.",
+   "segmente": [
+    {
+     "chunk": "Es sind 22 Grad und 0,1 Prozent",
+     "roh": "_ɛ_s z_ɪ_n_t ts_v_ˈaɪ _ʊ_n_t_ts_v_ˈa_n_ts_ɪ_ç ɡ_ɾ_ˈɑː_t__ _ʊ_n_t n_ˈʊ_l _k_ɔ_m_ɑː _ˈaɪ_n_s p_ɾ_oː_ts_ˈɛ_n_t"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "endfassung": "ɛs zɪnt tsvˈaɪ ʊnttsvˈantsɪç ɡɾˈɑːt ʊnt nˈʊl kɔmɑː ˈaɪns pɾoːtsˈɛnt.",
+   "verworfen": []
+  },
+  {
+   "text": "Kommst du morgen? Ja, natürlich!",
+   "segmente": [
+    {
+     "chunk": "Kommst du morgen",
+     "roh": "k_ˈɔ_m_s_t d_uː m_ˈɔ_ɾ_ɡ_ə_n"
+    },
+    {
+     "chunk": "Ja",
+     "roh": "j_ˈɑː"
+    },
+    {
+     "chunk": "natürlich",
+     "roh": "n_ɑː_t_ˈyː_ɾ_l_ɪ_ç"
+    }
+   ],
+   "marks": [
+    {
+     "mark": "? ",
+     "position": "I"
+    },
+    {
+     "mark": ", ",
+     "position": "I"
+    },
+    {
+     "mark": "!",
+     "position": "E"
+    }
+   ],
+   "endfassung": "kˈɔmst duː mˈɔɾɡən? jˈɑː, nɑːtˈyːɾlɪç!",
+   "verworfen": []
+  },
+  {
+   "text": "Der Mann, der dort am Fenster steht und wartet, ist mein Vater.",
+   "segmente": [
+    {
+     "chunk": "Der Mann",
+     "roh": "d_ɛ_ɾ m_ˈa_n"
+    },
+    {
+     "chunk": "der dort am Fenster steht und wartet",
+     "roh": "d_ɛ_ɾ d_ˈɔ_ɾ_t_ _a_m f_ˈɛ_n_s_t_ɜ ʃ_t_ˈeː_t__ _ʊ_n_t v_ˈa_ɾ_t_ə_t"
+    },
+    {
+     "chunk": "ist mein Vater",
+     "roh": "_ɪ_s_t m_aɪ_n f_ˈɑː_t_ɜ"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ", ",
+     "position": "I"
+    },
+    {
+     "mark": ", ",
+     "position": "I"
+    },
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "endfassung": "dɛɾ mˈan, dɛɾ dˈɔɾt am fˈɛnstɜ ʃtˈeːt ʊnt vˈaɾtət, ɪst maɪn fˈɑːtɜ.",
+   "verworfen": []
+  },
+  {
+   "text": "Das Handtuch liegt im Studentenwohnheim neben der Kaffeemaschine.",
+   "segmente": [
+    {
+     "chunk": "Das Handtuch liegt im Studentenwohnheim neben der Kaffeemaschine",
+     "roh": "d_a_s h_ˈa_n_t_t_ˌʊ_x l_ˈiː_k_t_ _ɪ_m ʃ_t_ˈuː_d_ə_n_t_ˌɛ_n_v_oː_n_h_ˌaɪ_m_ n_ˌeː_b_ə_n d_ɛ_ɾ k_ˌa_f_eː_m_a_ʃ_ˈiː_n_ə"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "endfassung": "das hˈanttˌʊx lˈiːkt ɪm ʃtˈuːdəntˌɛnvoːnhˌaɪm nˌeːbən dɛɾ kˌafeːmaʃˈiːnə.",
+   "verworfen": []
+  }
+ ]
+}

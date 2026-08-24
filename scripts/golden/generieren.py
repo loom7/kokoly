@@ -176,6 +176,11 @@ def main() -> int:
             })
 
         datei = ziel / f"{sprache}.json"
+        # Zweitschrift für den Gerätetest: androidTest liest Assets, die
+        # JVM-Tests lesen resources. EINE Quelle (dieser Generator), zwei
+        # geschriebene Artefakte — beide im Git, beide aus demselben Lauf.
+        ziel2 = REPO / "app/src/androidTest/assets/golden"
+        ziel2.mkdir(parents=True, exist_ok=True)
         io.open(datei, "w", encoding="utf-8", newline="\n").write(json.dumps({
             "sprache": sprache,
             "espeak": "1.52.0 (espeakng-loader 0.2.4, Referenz-DLL)",
@@ -183,6 +188,8 @@ def main() -> int:
             "erzeugt": str(date.today()),
             "saetze": eintraege,
         }, ensure_ascii=False, indent=1) + "\n")
+        import shutil
+        shutil.copyfile(datei, ziel2 / datei.name)
         print(f"{datei.name}: {len(eintraege)} Sätze")
 
     # Vokabular-Export für Laufzeit UND Tests (char → Token-Id).

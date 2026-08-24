@@ -1,0 +1,96 @@
+{
+ "sprache": "fr-fr",
+ "espeak": "1.52.0 (espeakng-loader 0.2.4, Referenz-DLL)",
+ "aufruf": "espeak_TextToPhonemes, text_mode=1, phonemes_mode=ord('_')<<8|0x02",
+ "erzeugt": "2026-08-24",
+ "saetze": [
+  {
+   "text": "Le rendez-vous est le trois août à huit heures.",
+   "segmente": [
+    {
+     "chunk": "Le rendez-vous est le trois août à huit heures",
+     "roh": "l_ə- ʁ_ɑ̃_d_ˈe_v_u_z ɛ l_ə- t_ʁ_w_ˈa_z ˈu_t a _y_ˈi_t ˈœ_ʁ"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "endfassung": "lə ʁɑ̃dˈevuz ɛ lə tʁwˈaz ˈut a yˈit ˈœʁ.",
+   "verworfen": [
+    "-"
+   ]
+  },
+  {
+   "text": "Portez ce vieux whisky au juge blond qui fume.",
+   "segmente": [
+    {
+     "chunk": "Portez ce vieux whisky au juge blond qui fume",
+     "roh": "p_ɔ_ʁ_t_ˈe s_ə- v_j_ˈø (en)_w_ˈɪ_s_k_i_(fr) o ʒ_ˈy_ʒ b_l_ˈɔ̃ k_i f_ˈy_m"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "endfassung": "pɔʁtˈe sə vjˈø wˈɪski o ʒˈyʒ blˈɔ̃ ki fˈym.",
+   "verworfen": [
+    "-"
+   ]
+  },
+  {
+   "text": "Aujourd'hui, c'est l'été.",
+   "segmente": [
+    {
+     "chunk": "Aujourd'hui",
+     "roh": "o_ʒ_u_ʁ_d_y_ˈi"
+    },
+    {
+     "chunk": "c'est l'été",
+     "roh": "s_ɛ l_e_t_ˈe"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ", ",
+     "position": "I"
+    },
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "endfassung": "oʒuʁdyˈi, sɛ letˈe.",
+   "verworfen": []
+  },
+  {
+   "text": "Où est l'hôtel, s'il vous plaît?",
+   "segmente": [
+    {
+     "chunk": "Où est l'hôtel",
+     "roh": "u ɛ l_o_t_ˈɛ_l"
+    },
+    {
+     "chunk": "s'il vous plaît",
+     "roh": "s_i_l v_u p_l_ˈɛ"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ", ",
+     "position": "I"
+    },
+    {
+     "mark": "?",
+     "position": "E"
+    }
+   ],
+   "endfassung": "u ɛ lotˈɛl, sil vu plˈɛ?",
+   "verworfen": []
+  }
+ ]
+}

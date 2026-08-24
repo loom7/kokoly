@@ -1,0 +1,100 @@
+{
+ "sprache": "en-gb",
+ "espeak": "1.52.0 (espeakng-loader 0.2.4, Referenz-DLL)",
+ "aufruf": "espeak_TextToPhonemes, text_mode=1, phonemes_mode=ord('_')<<8|0x02",
+ "erzeugt": "2026-08-24",
+ "saetze": [
+  {
+   "text": "The meeting is on the third of August at eight o'clock.",
+   "segmente": [
+    {
+     "chunk": "The meeting is on the third of August at eight o'clock",
+     "roh": "ð_ə m_ˈiː_t_ɪ_ŋ ɪ_z ɒ_n_ð_ə θ_ˈɜː_d ɒ_v ˈɔː_ɡ_ə_s_t a_t ˈeɪ_t ə_k_l_ˈɒ_k"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "endfassung": "ðə mˈiːtɪŋ ɪz ɒnðə θˈɜːd ɒv ˈɔːɡəst at ˈeɪt əklˈɒk.",
+   "verworfen": []
+  },
+  {
+   "text": "Water, butter, a little bottle.",
+   "segmente": [
+    {
+     "chunk": "Water",
+     "roh": "w_ˈɔː_t_ə"
+    },
+    {
+     "chunk": "butter",
+     "roh": "b_ˈʌ_t_ə"
+    },
+    {
+     "chunk": "a little bottle",
+     "roh": "ɐ l_ˈɪ_t_əl b_ˈɒ_t_əl"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ", ",
+     "position": "I"
+    },
+    {
+     "mark": ", ",
+     "position": "I"
+    },
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "endfassung": "wˈɔːtə, bˈʌtə, ɐ lˈɪtəl bˈɒtəl.",
+   "verworfen": []
+  },
+  {
+   "text": "Rather a bath in the castle.",
+   "segmente": [
+    {
+     "chunk": "Rather a bath in the castle",
+     "roh": "ɹ_ˈɑː_ð_ə_ɹ ɐ b_ˈa_θ ɪ_n_ð_ə k_ˈa_s_əl"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "endfassung": "ɹˈɑːðəɹ ɐ bˈaθ ɪnðə kˈasəl.",
+   "verworfen": []
+  },
+  {
+   "text": "I'd like a glass of water, please.",
+   "segmente": [
+    {
+     "chunk": "I'd like a glass of water",
+     "roh": "aɪ_d l_ˈaɪ_k ɐ ɡ_l_ˈa_s ɒ_v w_ˈɔː_t_ə"
+    },
+    {
+     "chunk": "please",
+     "roh": "p_l_ˈiː_z"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ", ",
+     "position": "I"
+    },
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "endfassung": "aɪd lˈaɪk ɐ ɡlˈas ɒv wˈɔːtə, plˈiːz.",
+   "verworfen": []
+  }
+ ]
+}

@@ -16,10 +16,26 @@ android {
         targetSdk = 37
         versionCode = 1
         versionName = "0.1.0-m0"
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
         ndk {
             // Nutzer-Entscheid F5: Geräte, die 300-MiB-Modelle tragen, sind arm64.
             abiFilters += "arm64-v8a"
+        }
+
+        externalNativeBuild {
+            cmake {
+                // Nur der JNI-Wrapper wird gebaut — espeak-ng haengt als
+                // statische Bibliothek daran (FetchContent, Tag 1.52.0).
+                targets += "kokoly_jni"
+            }
+        }
+    }
+
+    externalNativeBuild {
+        cmake {
+            path = file("src/main/cpp/CMakeLists.txt")
+            version = "3.31.6"
         }
     }
 
@@ -47,4 +63,7 @@ dependencies {
     implementation("com.microsoft.onnxruntime:onnxruntime-android:1.23.2")
 
     testImplementation("junit:junit:4.13.2")
+
+    androidTestImplementation("androidx.test:runner:1.6.2")
+    androidTestImplementation("androidx.test.ext:junit:1.2.1")
 }
