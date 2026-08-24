@@ -1,0 +1,133 @@
+{
+ "sprache": "en-us",
+ "espeak": "1.52.0 (espeakng-loader 0.2.4, Referenz-DLL)",
+ "aufruf": "espeak_TextToPhonemes, text_mode=1, phonemes_mode=ord('_')<<8|0x02",
+ "erzeugt": "2026-08-24",
+ "saetze": [
+  {
+   "text": "The meeting is on the third of August at eight o'clock.",
+   "segmente": [
+    {
+     "chunk": "The meeting is on the third of August at eight o'clock",
+     "roh": "ð_ə m_ˈiː_ɾ_ɪ_ŋ ɪ_z ɔ_n_ð_ə θ_ˈɜː_d ʌ_v ˈɔː_ɡ_ə_s_t æ_ɾ ˈeɪ_t ə_k_l_ˈɑː_k"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "endfassung": "ðə mˈiːɾɪŋ ɪz ɔnðə θˈɜːd ʌv ˈɔːɡəst æɾ ˈeɪt əklˈɑːk.",
+   "verworfen": []
+  },
+  {
+   "text": "Water, butter, a little bottle.",
+   "segmente": [
+    {
+     "chunk": "Water",
+     "roh": "w_ˈɔː_ɾ_ɚ"
+    },
+    {
+     "chunk": "butter",
+     "roh": "b_ˈʌ_ɾ_ɚ"
+    },
+    {
+     "chunk": "a little bottle",
+     "roh": "ɐ l_ˈɪ_ɾ_əl b_ˈɑː_ɾ_əl"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ", ",
+     "position": "I"
+    },
+    {
+     "mark": ", ",
+     "position": "I"
+    },
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "endfassung": "wˈɔːɾɚ, bˈʌɾɚ, ɐ lˈɪɾəl bˈɑːɾəl.",
+   "verworfen": []
+  },
+  {
+   "text": "Through rough thorough thought, though.",
+   "segmente": [
+    {
+     "chunk": "Through rough thorough thought",
+     "roh": "θ_ɹ_uː ɹ_ˈʌ_f θ_ˈʌ_ɹ_oʊ θ_ˈɔː_t"
+    },
+    {
+     "chunk": "though",
+     "roh": "ð_ˌoʊ"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ", ",
+     "position": "I"
+    },
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "endfassung": "θɹuː ɹˈʌf θˈʌɹoʊ θˈɔːt, ðˌoʊ.",
+   "verworfen": []
+  },
+  {
+   "text": "I'd like a glass of water, please.",
+   "segmente": [
+    {
+     "chunk": "I'd like a glass of water",
+     "roh": "aɪ_d l_ˈaɪ_k ɐ ɡ_l_ˈæ_s ʌ_v w_ˈɔː_ɾ_ɚ"
+    },
+    {
+     "chunk": "please",
+     "roh": "p_l_ˈiː_z"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ", ",
+     "position": "I"
+    },
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "endfassung": "aɪd lˈaɪk ɐ ɡlˈæs ʌv wˈɔːɾɚ, plˈiːz.",
+   "verworfen": []
+  },
+  {
+   "text": "Is that right? Absolutely!",
+   "segmente": [
+    {
+     "chunk": "Is that right",
+     "roh": "ɪ_z ð_æ_t ɹ_ˈaɪ_t"
+    },
+    {
+     "chunk": "Absolutely",
+     "roh": "ˌæ_b_s_ə_l_ˈuː_t_l_i"
+    }
+   ],
+   "marks": [
+    {
+     "mark": "? ",
+     "position": "I"
+    },
+    {
+     "mark": "!",
+     "position": "E"
+    }
+   ],
+   "endfassung": "ɪz ðæt ɹˈaɪt? ˌæbsəlˈuːtli!",
+   "verworfen": []
+  }
+ ]
+}

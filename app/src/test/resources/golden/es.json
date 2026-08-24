@@ -1,0 +1,91 @@
+{
+ "sprache": "es",
+ "espeak": "1.52.0 (espeakng-loader 0.2.4, Referenz-DLL)",
+ "aufruf": "espeak_TextToPhonemes, text_mode=1, phonemes_mode=ord('_')<<8|0x02",
+ "erzeugt": "2026-08-24",
+ "saetze": [
+  {
+   "text": "La reunión es el tres de agosto a las ocho.",
+   "segmente": [
+    {
+     "chunk": "La reunión es el tres de agosto a las ocho",
+     "roh": "l_a r_eʊ_n_j_ˈo_n ˈe_s e_l t_ɾ_ˈe_s ð_e a_ɣ_ˈo_s_t_o a l_a_s ˈo_tʃ_o"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "endfassung": "la reʊnjˈon ˈes el tɾˈes ðe aɣˈosto a las ˈotʃo.",
+   "verworfen": []
+  },
+  {
+   "text": "El veloz murciélago hindú comía feliz cardillo y kiwi.",
+   "segmente": [
+    {
+     "chunk": "El veloz murciélago hindú comía feliz cardillo y kiwi",
+     "roh": "e_l β_e_l_ˈo_θ m_u_ɾ_θ_j_ˈe_l_a_ɣ_o i_n_d_ˈu k_o_m_ˈi__a f_e_l_ˈi_θ k_a_ɾ_ð_ˈi_ʎ_o i k_ˈi_w_i"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "endfassung": "el βelˈoθ muɾθjˈelaɣo indˈu komˈia felˈiθ kaɾðˈiʎo i kˈiwi.",
+   "verworfen": []
+  },
+  {
+   "text": "¿Cómo estás? ¡Muy bien!",
+   "segmente": [
+    {
+     "chunk": "Cómo estás",
+     "roh": "k_ˈo_m_o e_s_t_ˈa_s"
+    },
+    {
+     "chunk": "Muy bien",
+     "roh": "m_ˈu_j β_j_ˈe_n"
+    }
+   ],
+   "marks": [
+    {
+     "mark": "¿",
+     "position": "B"
+    },
+    {
+     "mark": "? ¡",
+     "position": "I"
+    },
+    {
+     "mark": "!",
+     "position": "E"
+    }
+   ],
+   "endfassung": "kˈomo estˈas? mˈuj βjˈen!",
+   "verworfen": [
+    "¡",
+    "¿"
+   ]
+  },
+  {
+   "text": "Cinco perros grandes gruñían en la niebla.",
+   "segmente": [
+    {
+     "chunk": "Cinco perros grandes gruñían en la niebla",
+     "roh": "θ_ˈi_n_k_o p_ˈe_r_o_s ɣ_ɾ_ˈa_n_d_e_s ɣ_ɾ_u_ɲ_ˈi__a_n e_n l_a n_j_ˈe_β_l_a"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "endfassung": "θˈinko pˈeros ɣɾˈandes ɣɾuɲˈian en la njˈeβla.",
+   "verworfen": []
+  }
+ ]
+}

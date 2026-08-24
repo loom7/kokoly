@@ -1,0 +1,100 @@
+{
+ "sprache": "pt-br",
+ "espeak": "1.52.0 (espeakng-loader 0.2.4, Referenz-DLL)",
+ "aufruf": "espeak_TextToPhonemes, text_mode=1, phonemes_mode=ord('_')<<8|0x02",
+ "erzeugt": "2026-08-24",
+ "saetze": [
+  {
+   "text": "A reunião é no dia três de agosto às oito horas.",
+   "segmente": [
+    {
+     "chunk": "A reunião é no dia três de agosto às oito horas",
+     "roh": "a x_ˌe_u_n_i__ˈɐ̃ʊ̃ ɛ n_ʊ dʒ_ˈi__æ t_r_ˈe_z dʒ_j ˌa_ɡ_ˈo_s_t_w aː_z ˈoɪ_t_w ˈɔ_ɾ_æ_s"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "endfassung": "a xˌeuniˈɐ̃ʊ̃ ɛ nʊ dʒˈiæ trˈez dʒj ˌaɡˈostw aːz ˈoɪtw ˈɔɾæs.",
+   "verworfen": []
+  },
+  {
+   "text": "Não, então, coração, mãe e irmã.",
+   "segmente": [
+    {
+     "chunk": "Não",
+     "roh": "n_ˈɐ̃ʊ̃"
+    },
+    {
+     "chunk": "então",
+     "roh": "eɪ_ŋ_t_ˈɐ̃ʊ̃"
+    },
+    {
+     "chunk": "coração",
+     "roh": "k_ˌo_ɾ_a_s_ˈɐ̃ʊ̃"
+    },
+    {
+     "chunk": "mãe e irmã",
+     "roh": "m_ˈɐ̃_j i_ i_ɾ_ə_m_ˈɐ̃"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ", ",
+     "position": "I"
+    },
+    {
+     "mark": ", ",
+     "position": "I"
+    },
+    {
+     "mark": ", ",
+     "position": "I"
+    },
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "endfassung": "nˈɐ̃ʊ̃, eɪŋtˈɐ̃ʊ̃, kˌoɾasˈɐ̃ʊ̃, mˈɐ̃j i iɾəmˈɐ̃.",
+   "verworfen": []
+  },
+  {
+   "text": "Zebras caolhas de Java querem passar fax para moças gigantes.",
+   "segmente": [
+    {
+     "chunk": "Zebras caolhas de Java querem passar fax para moças gigantes",
+     "roh": "z_ˈe_b_r_æ_s k_ˌa_ˈo_l_j_æ_z dʒ_y ʒ_ˈa_v_æ k_ˈɛ_ɾ_eɪ_ŋ p_a_s_ˈa_r f_ˈa_k_s p_ˌa_ɾ_æ m_ˈo_s_æ_z ʒ_ˌi_ɡ_ˈɐ̃_ŋ_tʃ_y_s"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "endfassung": "zˈebræs kˌaˈoljæz dʒy ʒˈavæ kˈɛɾeɪŋ pasˈar fˈaks pˌaɾæ mˈosæz ʒˌiɡˈɐ̃ŋtʃys.",
+   "verworfen": []
+  },
+  {
+   "text": "A chuva molhou a palha do ninho.",
+   "segmente": [
+    {
+     "chunk": "A chuva molhou a palha do ninho",
+     "roh": "a ʃ_ˈu_v_æ m_o_l_j_ˈo_w a p_ˈa_l_j_æ d_ʊ n_ˈi_ɲ_ʊ"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "endfassung": "a ʃˈuvæ moljˈow a pˈaljæ dʊ nˈiɲʊ.",
+   "verworfen": []
+  }
+ ]
+}

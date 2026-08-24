@@ -1,0 +1,76 @@
+{
+ "sprache": "it",
+ "espeak": "1.52.0 (espeakng-loader 0.2.4, Referenz-DLL)",
+ "aufruf": "espeak_TextToPhonemes, text_mode=1, phonemes_mode=ord('_')<<8|0x02",
+ "erzeugt": "2026-08-24",
+ "saetze": [
+  {
+   "text": "L'incontro è il tre agosto alle otto.",
+   "segmente": [
+    {
+     "chunk": "L'incontro è il tre agosto alle otto",
+     "roh": "l_i_n_k_ˈo_n_t__r_o_ e_ i_l t__r_ˈe_ a_ɡ_ˈo_s_t_o_ ˌa_l_l_e_ ˈɔ_tː_o"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "endfassung": "linkˈontro e il trˈe aɡˈosto ˌalle ˈɔtːo.",
+   "verworfen": []
+  },
+  {
+   "text": "Gli gnocchi con la sciarpa e il ghiaccio.",
+   "segmente": [
+    {
+     "chunk": "Gli gnocchi con la sciarpa e il ghiaccio",
+     "roh": "ʎ_ɪ ɲ_ˈo_kː_ɪ k_o_n l_a ʃ_ˈa__r_p_a_ e_ i_l ɡ_j_ˈa_tʃː_o"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "endfassung": "ʎɪ ɲˈokːɪ kon la ʃˈarpa e il ɡjˈatʃːo.",
+   "verworfen": []
+  },
+  {
+   "text": "Perché già più così?",
+   "segmente": [
+    {
+     "chunk": "Perché già più così",
+     "roh": "p_e__r_k_ˌe dʒ_ˈa p_j_ʊ k_o_z_ˈi"
+    }
+   ],
+   "marks": [
+    {
+     "mark": "?",
+     "position": "E"
+    }
+   ],
+   "endfassung": "perkˌe dʒˈa pjʊ kozˈi?",
+   "verworfen": []
+  },
+  {
+   "text": "Cinque chiacchiere in piazza.",
+   "segmente": [
+    {
+     "chunk": "Cinque chiacchiere in piazza",
+     "roh": "tʃ_ˈi_n_k_w_e k_j_ˈa_kː_i__ˌe_r_e_ i_n p_j_ˈa_tsː_a"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "endfassung": "tʃˈinkwe kjˈakːiˌere in pjˈatsːa.",
+   "verworfen": []
+  }
+ ]
+}

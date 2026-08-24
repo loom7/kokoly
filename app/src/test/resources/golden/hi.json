@@ -1,0 +1,57 @@
+{
+ "sprache": "hi",
+ "espeak": "1.52.0 (espeakng-loader 0.2.4, Referenz-DLL)",
+ "aufruf": "espeak_TextToPhonemes, text_mode=1, phonemes_mode=ord('_')<<8|0x02",
+ "erzeugt": "2026-08-24",
+ "saetze": [
+  {
+   "text": "आज तीन अगस्त है। बैठक आठ बजे शुरू होगी।",
+   "segmente": [
+    {
+     "chunk": "आज तीन अगस्त है। बैठक आठ बजे शुरू होगी।",
+     "roh": "ˈaː_ɟ t_ˈiː_n ʌ_ɡ_ˈʌ_s_t h_ɛː b_ˈɛː_ʈʰ_ə_k ˈaː_ʈʰ b_ˈʌ_ɟ_eː ʃ_ˈʊ_ɾ_uː h_ˈoː_ɡ_i"
+    }
+   ],
+   "marks": [],
+   "endfassung": "ˈaːɟ tˈiːn ʌɡˈʌst hɛː bˈɛːʈʰək ˈaːʈʰ bˈʌɟeː ʃˈʊɾuː hˈoːɡi",
+   "verworfen": []
+  },
+  {
+   "text": "नमस्ते, आप कैसे हैं?",
+   "segmente": [
+    {
+     "chunk": "नमस्ते",
+     "roh": "n_ə_m_ˈʌ_s_t_eː"
+    },
+    {
+     "chunk": "आप कैसे हैं",
+     "roh": "ˌaː_p k_ˈɛː_s_eː h_ɛ̃"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ", ",
+     "position": "I"
+    },
+    {
+     "mark": "?",
+     "position": "E"
+    }
+   ],
+   "endfassung": "nəmˈʌsteː, ˌaːp kˈɛːseː hɛ̃?",
+   "verworfen": []
+  },
+  {
+   "text": "पानी बहुत ठंडा है।",
+   "segmente": [
+    {
+     "chunk": "पानी बहुत ठंडा है।",
+     "roh": "p_ˈaː_n_i b_ˈʌ_h_ʊ_t ʈʰ_ˈʌ_ɳ_ɖ_aː h_ɛː"
+    }
+   ],
+   "marks": [],
+   "endfassung": "pˈaːni bˈʌhʊt ʈʰˈʌɳɖaː hɛː",
+   "verworfen": []
+  }
+ ]
+}
