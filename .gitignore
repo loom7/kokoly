@@ -1,0 +1,33 @@
+# Android/Gradle (GitHub-Vorlage, gekuerzt)
+*.apk
+*.aab
+*.ap_
+*.dex
+bin/
+gen/
+out/
+build/
+.gradle/
+local.properties
+proguard/
+captures/
+.externalNativeBuild/
+.cxx/
+*.keystore
+*.jks
+
+# IDE
+.idea/
+*.iml
+
+# Gewichte kommen NIE ins Git — models.json ist das Manifest (Prüfsummen!)
+*.onnx
+*.ort
+*.bin
+*.npz
+models/
+
+# Python-Werkzeuge (scripts/)
+__pycache__/
+*.pyc
+.venv/
