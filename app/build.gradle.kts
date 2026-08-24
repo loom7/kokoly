@@ -58,9 +58,11 @@ android {
 }
 
 dependencies {
-    // ADR-0008: 1.23.2 gepinnt — erste 16-KB-Page-kompatible Version bei noch
-    // 19,3 MiB arm64; neuere Versionen sind deutlich gewachsen.
-    implementation("com.microsoft.onnxruntime:onnxruntime-android:1.23.2")
+    // 1.28.0: die auf GENAU diesem Zielgerät (SM-F971B/SM8850) im Nova-Projekt
+    // bewiesene Version. 1.23.2 (ADR-0008-Erstwahl) stürzt dort mit SIGILL in
+    // libonnxruntime ab — Instruktions-Dispatch-Falle des sehr neuen SoC.
+    // ADR-0008-Nachtrag: docs/adr/, Messbeleg in docs/erkenntnisse.md.
+    implementation("com.microsoft.onnxruntime:onnxruntime-android:1.28.0")
 
     testImplementation("junit:junit:4.13.2")
     // org.json ist auf dem Gerät Teil der Plattform; für JVM-Tests kommt es als Bibliothek.

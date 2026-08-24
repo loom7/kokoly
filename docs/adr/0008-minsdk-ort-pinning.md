@@ -1,6 +1,6 @@
 # ADR-0008: minSdk 26 · targetSdk aktuell · ORT 1.23.2 gepinnt
 
-**Status:** angenommen (24.08.2026)
+**Status:** angenommen (24.08.2026) — ORT-Teil ersetzt durch [ADR-0014](0014-ort-1280-statt-1232.md)
 **Kontext-Dokument:** [PROJEKTPLAN.md](../../PROJEKTPLAN.md), Abschnitt 3
 
 ## Entscheidung

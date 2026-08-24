@@ -39,3 +39,8 @@ der Synthese. Quelle: CodeTest/PROMPT-KOKORO20260803.md (03.08.2026).
 | Datum | Befund | Methode |
 |---|---|---|
 | 24.08.2026 | Windows-Referenz nutzt **espeak-ng 1.52.0** (Pin für NDK- und Host-Build, s. native/espeak-ng/PIN.md) | espeak_Info() der espeakng-loader-0.2.4-DLL |
+| 24.08.2026 | **arm64-espeak == Referenz-DLL, zeichengenau** (alle de-Stufe-A-Segmente inkl. Sprachwechsel- und Klammernfälle; Stimmwechsel stabil) | EspeakParityTest, SM-F971B, eigener 1.52.0-NDK-Build |
+| 24.08.2026 | **Kotlin-Frontend == Referenz-Endfassung, zeichengenau, 8 Sprachen** (46 Korpussätze; Stufe-A-Fixtures spielen espeak) | FrontendGoldenTest, JVM |
+| 24.08.2026 | **ORT 1.23.2 stürzt am SM8850 mit SIGILL in libonnxruntime** beim ersten Run (2× reproduziert) — 1.28.0 läuft fehlerfrei (ADR-0014) | GateWavTest, logcat crash-Puffer |
+| 24.08.2026 | Kokoro-fp32 über ORT 1.28.0 direkt, 4 Threads, SM-F971B: **RTF 0,711 / 0,812 / 0,540** (drei Gate-Sätze, Erstlauf), **Session-Laden 0,80–1,04 s** (Pfad-Route, ohne .ort) | GateWavTest, System.nanoTime |
+| 24.08.2026 | Ganze Kette Text→WAV am Gerät hörbar; A/B-Paare gegen Windows unter pruefstein/ | GateWavTest + Referenzlauf |
