@@ -63,6 +63,8 @@ dependencies {
     implementation("com.microsoft.onnxruntime:onnxruntime-android:1.23.2")
 
     testImplementation("junit:junit:4.13.2")
+    // org.json ist auf dem Gerät Teil der Plattform; für JVM-Tests kommt es als Bibliothek.
+    testImplementation("org.json:json:20240303")
 
     androidTestImplementation("androidx.test:runner:1.6.2")
     androidTestImplementation("androidx.test.ext:junit:1.2.1")

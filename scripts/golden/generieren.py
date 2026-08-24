@@ -197,7 +197,9 @@ def main() -> int:
     vok.parent.mkdir(parents=True, exist_ok=True)
     io.open(vok, "w", encoding="utf-8", newline="\n").write(
         json.dumps(VOKABULAR, ensure_ascii=False, indent=0) + "\n")
-    print(f"vokabular.json: {len(VOKABULAR)} Token")
+    import shutil as _sh
+    _sh.copyfile(vok, REPO / "app/src/test/resources/vokabular.json")
+    print(f"vokabular.json: {len(VOKABULAR)} Token (assets + Testressourcen)")
 
     if fehler:
         print(f"\n{fehler} ABWEICHUNGEN — Goldens sind trotzdem geschrieben, "
