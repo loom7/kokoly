@@ -35,3 +35,7 @@ der Synthese. Quelle: CodeTest/PROMPT-KOKORO20260803.md (03.08.2026).
 ## Android-Messungen (dieses Projekt)
 
 *(ab M0 — Format: Datum · Gerät · Methode · Zahl.)*
+
+| Datum | Befund | Methode |
+|---|---|---|
+| 24.08.2026 | Windows-Referenz nutzt **espeak-ng 1.52.0** (Pin für NDK- und Host-Build, s. native/espeak-ng/PIN.md) | espeak_Info() der espeakng-loader-0.2.4-DLL |
