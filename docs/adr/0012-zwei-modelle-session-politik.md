@@ -1,6 +1,10 @@
 # ADR-0012: Zwei Modelle: Session-Politik
 
-**Status:** angenommen (24.08.2026) — offene Nachträge siehe unten
+**Status:** angenommen (24.08.2026), **aufgelöst am 25.08.2026:** genau EINE
+residente Session; ein Sprachwechsel über Modellgruppen tauscht sie (gemessen
+0,8–1,0 s Ladezeit) — zwei residente Sessions kosteten ~700 MB Dauer-PSS.
+Umgesetzt in EnginePipeline; die Ein-Modell-Hypothese (Martin × v1.0-Stimmen)
+bleibt als Stufe-2-Experiment notiert
 **Kontext-Dokument:** [PROJEKTPLAN.md](../../PROJEKTPLAN.md), Abschnitt 3
 
 ## Entscheidung

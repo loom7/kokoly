@@ -56,6 +56,8 @@ der Synthese. Quelle: CodeTest/PROMPT-KOKORO20260803.md (03.08.2026).
 | 25.08.2026 | **HÖR-GATE Mischfassungen BESTANDEN (beide):** fp16dec UND fp16gen klingen gut (Nutzerurteil). Entscheidung fp32/fp16dec/fp16gen bewusst OFFEN bis zur M5-Energiemessung; Favorit des Nutzers nach RTF: fp16dec | Hörprobe Nutzer |
 | 25.08.2026 | **Threads über 4 bringen nichts:** fp16dec mit 6T (0,44–0,64) und 8T (0,41–0,94) schlechter/streuender als 4T (0,356) — passt zur Big-Core-Zahl des SoC. Messungen thermisch belastet (spät in langer Serie, Erstmessungsregel!), Richtung aber eindeutig und deckungsgleich mit den Vorprojekten | MessMatrixTest |
 | 25.08.2026 | fp16gen frisch nachgemessen: 0,65–0,83 auch in Einzellage (thermisch belastet) — die Nahtkosten der Präzisionsgrenze mitten im Decoder sind real, nicht nur Thermik | MessMatrixTest |
+| 25.08.2026 | **M2b + M4 am Gerät:** Framework-Klient sieht 42 Stimmen, wählt en-US-af_heart per setVoice, synthetisiert Deutsch UND Englisch (Gruppenwechsel martin→v1.0 inklusive) in einem Lauf — 24 s gesamt | TtsClientTest |
+| 25.08.2026 | Session-Politik entschieden (ADR-0012): EINE residente Session, Tausch beim Gruppenwechsel (0,8–1,0 s) statt ~700 MB Dauer-PSS für zwei | M2a-Zahlen + TtsClientTest |
 | 25.08.2026 | Ladezeiten: CPU-EP 0,80–1,17 s (Pfad-Route, ohne .ort); XNNPACK +0,2–1,0 s (Prepacking) | MessMatrixTest |
 | 25.08.2026 | Messfalle dokumentiert: String.format ohne Locale.ROOT schreibt auf deutschem Gerät Dezimal-KOMMAS ins JSON | erste Matrixserie |
 | 25.08.2026 | Regelstufe lebt hinter der System-Schnittstelle: „Martin 1× berichtigt", „Abkürzung → zum Beispiel", „Uhrzeit ausgeschrieben" im Dienstprozess-Log | TtsClientTest + logcat |

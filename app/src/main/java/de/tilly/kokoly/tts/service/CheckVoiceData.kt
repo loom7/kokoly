@@ -5,25 +5,19 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
-import de.tilly.kokoly.tts.pipeline.EnginePipeline
 
-/** Meldet dem Framework die verfügbaren Stimmdaten (M1: de-DE, wenn das Modell liegt). */
+/** Meldet dem Framework die Stimmdatenlage je Sprache (M4: alle sichtbaren). */
 class CheckVoiceData : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val verfuegbar = EnginePipeline.modellVorhanden(this)
+        val sichtbar = VoiceRegistry.sichtbareSprachen(this).map { it.iso3 }
+        val fehlend = Sprachen.ALLE.map { it.iso3 } - sichtbar.toSet()
         val ergebnis = Intent().apply {
-            putStringArrayListExtra(
-                TextToSpeech.Engine.EXTRA_AVAILABLE_VOICES,
-                if (verfuegbar) arrayListOf("deu-DEU") else arrayListOf(),
-            )
-            putStringArrayListExtra(
-                TextToSpeech.Engine.EXTRA_UNAVAILABLE_VOICES,
-                if (verfuegbar) arrayListOf() else arrayListOf("deu-DEU"),
-            )
+            putStringArrayListExtra(TextToSpeech.Engine.EXTRA_AVAILABLE_VOICES, ArrayList(sichtbar))
+            putStringArrayListExtra(TextToSpeech.Engine.EXTRA_UNAVAILABLE_VOICES, ArrayList(fehlend))
         }
         setResult(
-            if (verfuegbar) TextToSpeech.Engine.CHECK_VOICE_DATA_PASS
+            if (sichtbar.isNotEmpty()) TextToSpeech.Engine.CHECK_VOICE_DATA_PASS
             else TextToSpeech.Engine.CHECK_VOICE_DATA_FAIL,
             ergebnis,
         )

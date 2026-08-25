@@ -13,7 +13,7 @@ import de.tilly.kokoly.tts.pipeline.EspeakNative
 import de.tilly.kokoly.tts.pipeline.KokoroSynthesizer
 
 /**
- * Der TTS-Dienst — seit M1 echt.
+ * Der TTS-Dienst — seit M4 mehrsprachig.
  *
  * Vertragspunkte (docs/recherche/feld1-tts-api.md): onSynthesizeText läuft
  * blockierend auf genau EINEM Synthese-Thread; onStop kommt von einem anderen
@@ -21,8 +21,9 @@ import de.tilly.kokoly.tts.pipeline.KokoroSynthesizer
  * audioAvailable-Blöcke bleiben unter getMaxBufferSize(). Sprachcodes kommen
  * vom Framework als ISO-3 an („deu").
  *
- * M1-Umfang: Deutsch/martin. getPitch() wird ignoriert (Nutzer-Entscheid F2,
- * Stufe 2); getSpeechRate() wird als Tempo durchgereicht.
+ * Stimmwahl: setVoice() einer fremden App landet als request.voiceName; ohne
+ * Stimme entscheidet die Sprach-Vorgabestimme. getPitch() wird in Stufe 1
+ * ignoriert (Nutzer-Entscheid F2); getSpeechRate() wird Tempo.
  */
 class KokolyTtsService : TextToSpeechService() {
 
@@ -32,8 +33,8 @@ class KokolyTtsService : TextToSpeechService() {
 
     override fun onCreate() {
         super.onCreate()
-        // espeak + Vokabular sind leicht (wenige MB) und bleiben resident;
-        // die schwere ORT-Session lädt erst der erste Satz.
+        // espeak + Vokabular sind leicht und bleiben resident; die schwere
+        // ORT-Session lädt erst der erste Satz (und stirbt mit onDestroy).
         runCatching { EnginePipeline.starte(this) }
             .onFailure { Log.e(TAG, "Pipeline-Start fehlgeschlagen", it) }
     }
@@ -61,14 +62,13 @@ class KokolyTtsService : TextToSpeechService() {
         VoiceRegistry.stimmen(this).toMutableList()
 
     override fun onIsValidVoiceName(name: String?): Int =
-        if (name == VoiceRegistry.MARTIN && EnginePipeline.modellVorhanden(this))
-            TextToSpeech.SUCCESS else TextToSpeech.ERROR
+        if (VoiceRegistry.aufloesen(this, name) != null) TextToSpeech.SUCCESS
+        else TextToSpeech.ERROR
 
     override fun onLoadVoice(name: String?): Int = onIsValidVoiceName(name)
 
     override fun onGetDefaultVoiceNameFor(lang: String?, country: String?, variant: String?): String? =
-        if (onIsLanguageAvailable(lang, country, variant) != TextToSpeech.LANG_NOT_SUPPORTED)
-            VoiceRegistry.MARTIN else null
+        VoiceRegistry.vorgabeStimme(this, lang, country)
 
     override fun onStop() {
         gestoppt = true
@@ -78,8 +78,13 @@ class KokolyTtsService : TextToSpeechService() {
         gestoppt = false
         val text = request.charSequenceText?.toString().orEmpty()
         if (text.isBlank()) { callback.done(); return }
-        if (VoiceRegistry.sprachverfuegbarkeit(this, request.language, request.country)
-            == TextToSpeech.LANG_NOT_SUPPORTED) { callback.error(); return }
+
+        // Stimme der App, sonst Vorgabestimme der verlangten Sprache.
+        val aufgeloest = VoiceRegistry.aufloesen(this, request.voiceName)
+            ?: VoiceRegistry.vorgabeStimme(this, request.language, request.country)
+                ?.let { VoiceRegistry.aufloesen(this, it) }
+        if (aufgeloest == null) { callback.error(); return }
+        val (sprache, stimme) = aufgeloest
 
         // 100 = Normaltempo der API. getPitch() bleibt in Stufe 1 unbeachtet (F2).
         val tempo = (request.speechRate / 100f).coerceIn(0.5f, 2.0f)
@@ -88,7 +93,7 @@ class KokolyTtsService : TextToSpeechService() {
         val maxBlock = callback.maxBufferSize
 
         runCatching {
-            EnginePipeline.synthetisiere(this, text, "de", tempo) { audio ->
+            EnginePipeline.synthetisiere(this, text, sprache, stimme, tempo) { audio ->
                 liefereAlsPcm16(audio, maxBlock, callback)
             }
         }.onFailure {

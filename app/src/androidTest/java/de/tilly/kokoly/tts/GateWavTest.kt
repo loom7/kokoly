@@ -44,6 +44,11 @@ class GateWavTest {
         val stimme = File(extern, "martin-voice.f32")
         assumeTrue("Modell fehlt — adb push, siehe KDoc", modell.exists() && stimme.exists())
 
+        val vektor = stimme.readBytes().let { b ->
+            val fb = java.nio.ByteBuffer.wrap(b)
+                .order(java.nio.ByteOrder.LITTLE_ENDIAN).asFloatBuffer()
+            FloatArray(fb.remaining()).also { fb.get(it) }
+        }
         EspeakNative.init(EspeakData.ensure(ziel).absolutePath)
         val vokabular = Vokabular.lade(ziel)
         val frontend = PhonemeFrontend(vokabular.keys) { chunk, sprache ->
@@ -51,7 +56,7 @@ class GateWavTest {
         }
 
         var t0 = System.nanoTime()
-        val kokoro = KokoroSynthesizer(modell, stimme, threads = 4)
+        val kokoro = KokoroSynthesizer(modell, threads = 4)
         val ladezeit = (System.nanoTime() - t0) / 1e9
         Log.i("KokolyGate", "Session geladen in %.2f s".format(ladezeit))
 
@@ -60,7 +65,7 @@ class GateWavTest {
             assertTrue("Verlust bei $name: ${ergebnis.verworfen}",
                 ergebnis.verworfen.isEmpty())
             t0 = System.nanoTime()
-            val audio = kokoro.synthetisiere(ergebnis.phoneme, vokabular)
+            val audio = kokoro.synthetisiere(ergebnis.phoneme, vokabular, vektor)
             val rechenzeit = (System.nanoTime() - t0) / 1e9
             val dauer = audio.size.toDouble() / KokoroSynthesizer.ABTASTRATE
             Log.i("KokolyGate", "%s: Phoneme »%s« — %.2f s Audio in %.2f s (RTF %.3f)"

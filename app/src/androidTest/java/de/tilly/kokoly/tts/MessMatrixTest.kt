@@ -74,6 +74,11 @@ class MessMatrixTest {
         val sprache = if (martin) "de" else "en-us"
         val saetze = if (martin) saetzeDe else saetzeEn
 
+        val vektor = stimme.readBytes().let { b ->
+            val fb = java.nio.ByteBuffer.wrap(b)
+                .order(java.nio.ByteOrder.LITTLE_ENDIAN).asFloatBuffer()
+            FloatArray(fb.remaining()).also { fb.get(it) }
+        }
         EspeakNative.init(EspeakData.ensure(ziel).absolutePath)
         val vokabular = Vokabular.lade(ziel)
         val frontend = PhonemeFrontend(vokabular.keys) { chunk, spr ->
@@ -83,7 +88,7 @@ class MessMatrixTest {
 
         val pssVorher = pssKb()
         var t0 = System.nanoTime()
-        val kokoro = KokoroSynthesizer(modell, stimme, threads, xnnpack = ep == "xnnpack")
+        val kokoro = KokoroSynthesizer(modell, threads, xnnpack = ep == "xnnpack")
         val ladezeitS = (System.nanoTime() - t0) / 1e9
         val pssGeladen = pssKb()
 
@@ -91,7 +96,7 @@ class MessMatrixTest {
         var hoerprobe: FloatArray? = null
         for ((i, ph) in phoneme.withIndex()) {
             t0 = System.nanoTime()
-            val audio = kokoro.synthetisiere(ph, vokabular)
+            val audio = kokoro.synthetisiere(ph, vokabular, vektor)
             val rechenzeit = (System.nanoTime() - t0) / 1e9
             rtf.add(rechenzeit / (audio.size.toDouble() / KokoroSynthesizer.ABTASTRATE))
             if (i == 0) hoerprobe = audio

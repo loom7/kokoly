@@ -6,6 +6,7 @@ import android.speech.tts.UtteranceProgressListener
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import de.tilly.kokoly.tts.pipeline.EnginePipeline
+import de.tilly.kokoly.tts.service.Sprachen
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Assume.assumeTrue
@@ -30,7 +31,10 @@ class TtsClientTest {
     @Test
     fun frameworkKlientSynthetisiertDeutsch() {
         val kontext = InstrumentationRegistry.getInstrumentation().targetContext
-        assumeTrue("Modell fehlt (adb push)", EnginePipeline.modellVorhanden(kontext))
+        assumeTrue("Martin-Modell fehlt (adb push)",
+            EnginePipeline.gruppeVorhanden(kontext, Sprachen.MARTIN))
+        assumeTrue("v1.0-Modell fehlt (adb push)",
+            EnginePipeline.gruppeVorhanden(kontext, Sprachen.V10))
 
         val start = CountDownLatch(1)
         var initErgebnis = TextToSpeech.ERROR
@@ -69,6 +73,26 @@ class TtsClientTest {
         assertTrue("Synthese nicht fertig geworden", fertig.await(120, TimeUnit.SECONDS))
         assertEquals(null, fehler)
         assertTrue("WAV fehlt oder leer: ${ziel.length()} B", ziel.length() > 100_000)
+
+        // ------------------------------------------------ M4: Stimmwahl + Englisch
+        val stimmen = tts.voices.filter { it.name.contains("-") }
+        assertTrue("erwartet ≥ 42 Stimmen, sind ${stimmen.size}", stimmen.size >= 42)
+
+        val englisch = stimmen.first { it.name == "en-US-af_heart" }
+        assertEquals(TextToSpeech.SUCCESS, tts.setVoice(englisch))
+        val ziel2 = File(kontext.getExternalFilesDir(null), "m4-englisch.wav")
+        ziel2.delete()
+        val fertig2 = CountDownLatch(1)
+        tts.setOnUtteranceProgressListener(object : UtteranceProgressListener() {
+            override fun onStart(id: String?) = Unit
+            override fun onDone(id: String?) { fertig2.countDown() }
+            @Deprecated("Framework-Altpfad")
+            override fun onError(id: String?) { fertig2.countDown() }
+            override fun onError(id: String?, code: Int) { fertig2.countDown() }
+        })
+        tts.synthesizeToFile("Hello, this is the English voice speaking.", null, ziel2, "m4")
+        assertTrue("Englisch nicht fertig", fertig2.await(180, TimeUnit.SECONDS))
+        assertTrue("Englisch-WAV leer: ${ziel2.length()} B", ziel2.length() > 50_000)
 
         tts.shutdown()
     }

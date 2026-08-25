@@ -9,21 +9,20 @@ import java.nio.FloatBuffer
 import java.nio.LongBuffer
 
 /**
- * Die nackte Kokoro-Inferenz — M0-Fassung für den Prüfstein.
+ * Die Kokoro-Inferenz über ONNX Runtime.
  *
  * Eingabeaufbau exakt wie die Referenz (kokoro_onnx.Kokoro._infer):
  * Tokens [[0, …, 0]] int64, Stilzeile voice[min(n, 510) - 1] als [1, 256],
  * speed float32[1]. Ausgabe: float32-Audio, 24 kHz mono.
  *
- * Bewusst NICHT hier: Stückelung über 510 Token, Pausensteuerung, continuous
- * (alles M1+, nach den Mustern der Windows-Referenz). Der Prüfstein spricht
- * Einzelsätze.
+ * Seit M4 stimmenlos gebaut: der Stilvektor kommt je Aufruf herein
+ * (EnginePipeline hält den LRU-Zwischenspeicher) — eine Session bedient damit
+ * alle Stimmen ihrer Modellgruppe. Lädt .onnx wie .ort gleichermaßen.
  */
 class KokoroSynthesizer(
     modellDatei: File,
-    stimmDatei: File,
     threads: Int = 4,
-    /** XNNPACK-Execution-Provider statt CPU-EP — Messgröße der M2a-Matrix. */
+    /** XNNPACK-EP — nur noch für Messläufe; im Betrieb CPU-EP (ADR-0015). */
     xnnpack: Boolean = false,
 ) {
 
@@ -35,15 +34,13 @@ class KokoroSynthesizer(
 
     private val umgebung = OrtEnvironment.getEnvironment()
     private val sitzung: OrtSession
-    private val stimme: FloatArray
     private val tokensEingabe: String
 
     init {
         val optionen = OrtSession.SessionOptions().apply {
             if (xnnpack) {
-                // XNNPACK hat seinen eigenen Threadpool; die ORT-Threads bleiben
-                // dann auf 1, sonst drehen zwei Pools gegeneinander (Messfalle
-                // aus der Recherche, Kontrollpunkt in 6.4 des Plans).
+                // XNNPACK bringt den eigenen Threadpool mit; die ORT-Threads
+                // bleiben dann auf 1, sonst drehen zwei Pools gegeneinander.
                 addXnnpack(mapOf("intra_op_num_threads" to threads.toString()))
                 setIntraOpNumThreads(1)
             } else {
@@ -51,23 +48,23 @@ class KokoroSynthesizer(
             }
         }
         sitzung = umgebung.createSession(modellDatei.absolutePath, optionen)
-        stimme = stimmDatei.readBytes().let { bytes ->
-            check(bytes.size == FENSTER * STILBREITE * 4) {
-                "Stimmdatei hat ${bytes.size} Bytes, erwartet ${FENSTER * STILBREITE * 4}"
-            }
-            val puffer = java.nio.ByteBuffer.wrap(bytes)
-                .order(java.nio.ByteOrder.LITTLE_ENDIAN).asFloatBuffer()
-            FloatArray(puffer.remaining()).also { puffer.get(it) }
-        }
         // Der Tokens-Eingang heißt je nach Export "tokens" oder "input_ids" —
         // wie die Referenz wird er als der Nicht-style/speed-Eingang erkannt.
         tokensEingabe = sitzung.inputNames.first { it != "style" && it != "speed" }
     }
 
-    fun synthetisiere(phoneme: String, vokabular: Map<Char, Long>, tempo: Float = 1.0f): FloatArray {
+    fun synthetisiere(
+        phoneme: String,
+        vokabular: Map<Char, Long>,
+        stimme: FloatArray,
+        tempo: Float = 1.0f,
+    ): FloatArray {
         val tokens = phoneme.mapNotNull { vokabular[it] }
         require(tokens.isNotEmpty()) { "kein Phonem im Vokabular: $phoneme" }
-        require(tokens.size <= FENSTER - 2) { "${tokens.size} Token > Fenster — Stückelung ist M1" }
+        require(tokens.size <= FENSTER - 2) { "${tokens.size} Token > Modellfenster" }
+        require(stimme.size == FENSTER * STILBREITE) {
+            "Stilvektor hat ${stimme.size} Werte, erwartet ${FENSTER * STILBREITE}"
+        }
 
         val eingabe = LongArray(tokens.size + 2)
         tokens.forEachIndexed { i, t -> eingabe[i + 1] = t }

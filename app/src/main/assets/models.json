@@ -1,0 +1,72 @@
+{
+  "_kommentar": "Manifest der Modellgewichte. Gewichte liegen NIE im Git — Build und App beziehen sie von hier. Prüfsummen erhoben am 24.08.2026 an den lokal verifizierten Dateien.",
+  "modelle": {
+    "kokoro-v1.0": {
+      "rolle": "8 Sprachen (en-us, en-gb, es, fr, it, pt-br, hi; ja/zh in Stufe 2)",
+      "dateien": [
+        {
+          "name": "kokoro-v1.0.onnx",
+          "sha256": "beb0d1848dee9a49da392cc3df26958d46cfa35d321edf434f52949153f0df3a",
+          "bytes": 325505369,
+          "url": "https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.1/kokoro-v1.0.onnx",
+          "lizenz": "Apache-2.0"
+        },
+        {
+          "name": "voices-v1.0.bin",
+          "sha256": "bca610b8308e8d99f32e6fe4197e7ec01679264efed0cac9140fe9c29f1fbf7d",
+          "bytes": 28214398,
+          "url": "https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.1/voices-v1.0.bin",
+          "lizenz": "Apache-2.0"
+        }
+      ],
+      "varianten": [
+        {
+          "name": "kokoro-v1.0.fp16.onnx",
+          "sha256": "f3a290d384fbb27966d462905c71a46cef9e5fd00516b40df32a0b4afe77ac96",
+          "bytes": 163527961,
+          "url": "https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.1/kokoro-v1.0.fp16.onnx",
+          "lizenz": "Apache-2.0",
+          "befund": "M2a-Sieger: RTF wie fp32 bei halber Groesse und ~110 MB weniger PSS"
+        },
+        {
+          "name": "kokoro-v1.0.int8.onnx",
+          "sha256": "ae315a79b623f244700e4afb9246c46a26066782e049ba174bf3ba433970ee9c",
+          "bytes": 114119327,
+          "url": "https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.1/kokoro-v1.0.int8.onnx",
+          "lizenz": "Apache-2.0",
+          "befund": "M2a: RTF 1,9-7,1 am SM8850 — fuer Echtzeit unbrauchbar, nur als RAM-Notoption denkbar"
+        }
+      ]
+    },
+    "kokoro-martin": {
+      "rolle": "Deutsch (eigener Fine-Tune, eine Stimme)",
+      "vertrieb": "Selbst verteilen NACH Abschluss des Dossiers docs/lizenz/martin-kette.md (Nutzer-Entscheid F1); bis dahin Quelle Hugging Face",
+      "dateien": [
+        {
+          "name": "kokoro-martin.onnx",
+          "sha256": "c302f1d8bc7adf40a842cb550e18c39a5026bdb1afdd29dbb700b501cb49276b",
+          "bytes": 325512630,
+          "url": "https://huggingface.co/Godelaune/Kokoro-82M-ONNX-German-Martin/resolve/main/kokoro-martin.onnx",
+          "lizenz": "Apache-2.0 (Kette laut Dossier, in Pruefung)"
+        },
+        {
+          "name": "voices-martin.npz",
+          "sha256": "5b9c8553398d7abf67498ce500c186cefaa7b68fed3e3d415da5380670105acd",
+          "bytes": 522506,
+          "url": "https://huggingface.co/Godelaune/Kokoro-82M-ONNX-German-Martin/resolve/main/voices-martin.npz",
+          "lizenz": "Apache-2.0 (Kette laut Dossier, in Pruefung)"
+        }
+      ],
+      "varianten": [
+        {
+          "name": "kokoro-martin.fp16.onnx",
+          "sha256": "8dcc140477b52546fdf063ff680dce7050193cd9a8729d359f0e76b94d33ad6b",
+          "bytes": 163536769,
+          "url": "EIGENES-RELEASE (Draft bis Martin-Dossier, F1) — Rezept: scripts/fp16-wandlung.py",
+          "lizenz": "Apache-2.0 (Kette laut Dossier, in Pruefung)",
+          "befund": "RTF 0,350 / PSS 292 MB am SM-F971B — schneller UND kleiner als fp32; Hoer-Gate beim Nutzer"
+        }
+      ]
+    }
+  }
+}
