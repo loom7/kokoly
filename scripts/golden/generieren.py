@@ -49,7 +49,7 @@ sys.stdout.reconfigure(encoding="utf-8")
 HIER = Path(__file__).parent
 REPO = HIER.parent.parent
 sys.path.insert(0, str(HIER))
-from korpus import KORPUS, REGEL_KORPUS  # noqa: E402
+from korpus import KORPUS, NEUE_REGEL_ERWARTUNGEN, REGEL_KORPUS  # noqa: E402
 
 REFERENZ = REPO.parent / "TTS Test"
 sys.path.insert(0, str(REFERENZ))
@@ -215,6 +215,12 @@ def main() -> int:
                                                          normalisieren=False)
         mit_betonung, _m1 = betonung.berichtige(nach_text, phoneme)
         endfassung, _m2 = wortlaute.berichtige(nach_text, mit_betonung)
+        # ADR-0013: Regeln nach dem Einfrieren kennt die Referenz nicht — für
+        # diese Sätze gilt die hergeleitete Erwartung aus dem Korpus.
+        quelle = "windows-referenz"
+        if norm in NEUE_REGEL_ERWARTUNGEN:
+            endfassung = NEUE_REGEL_ERWARTUNGEN[norm]
+            quelle = "golden-writer (Herleitung im Korpus)"
 
         # Beweis der Spezifikation auch hier: Stufe B aus den Rohsegmenten.
         nach = [nachverarbeitung_segment(x) for x in segmente]
@@ -232,6 +238,7 @@ def main() -> int:
             "marks": [{"mark": m.mark, "position": m.position} for m in marks],
             "phoneme_ohne_regeln": phoneme,
             "endfassung": endfassung,
+            "endfassung_quelle": quelle,
             "verworfen": verworfen,
         })
 

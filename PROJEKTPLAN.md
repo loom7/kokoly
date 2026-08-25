@@ -46,7 +46,7 @@
 ### 1.2 Nicht-Ziele der Ausbaustufe 1 (ausdrücklich)
 
 - **Kein Japanisch, kein Chinesisch.** misaki ist reines Python; zh (jieba + pypinyin + pinyin_to_ipa, ~4–6 Tage, ~4 MB Daten) kommt früh in Stufe 2, ja (Kuromoji-Weg, ~5–8 Tage, ~13 MB) danach (ADR-0003). Die ja/zh-Stimmen werden in Stufe 1 **nicht angeboten und nicht mitgeliefert** — die voices-Datei wird auf die angebotenen Stimmen zugeschnitten (ADR-0005).
-- **Keine Tonhöhensteuerung.** `SynthesisRequest.getPitch()` ≠ 100 wird in Stufe 1 ignoriert (dokumentiert). Die Windows-PSOLA-Stufe (Praat, GPL-Werkzeug, nicht portierbar) wird in Stufe 2 durch eine **eigene TD-PSOLA-Implementierung** ersetzt (kein Praat-Code; Algorithmus patentfrei) — siehe F2. `getSpeechRate()` **wird** unterstützt (→ Kokoro-`speed`).
+- **Tonhöhensteuerung (F2 revidiert am 25.08.2026):** `SynthesisRequest.getPitch()` wirkt seit Stufe 1 über tempokompensiertes Umtasten (Modell um p langsamer, Lesen um p schneller — Dauer bleibt, Tonhöhe wandert; `Tonhoehe.kt`). Bekannte Grenze: Umtasten verschiebt die Formanten mit. Die formanterhaltende **eigene TD-PSOLA-Implementierung** (kein Praat-Code; Algorithmus patentfrei) bleibt Stufe-2-Qualitätsausbau. `getSpeechRate()` → Kokoro-`speed`.
 - **Kein Wort-Highlighting (`rangeStart`).** Kokoro liefert keine Wort-Audio-Alignments; eine Näherung wäre unehrlich. Vorbereitet durch minSdk 26, umgesetzt frühestens Stufe 3.
 - **Keine eigene Audio-Wiedergabe.** Das Framework spielt ab (`PlaybackSynthesisCallback` → AudioTrack); `SpeechOutput.kt` aus CodeTest wird nicht gebraucht.
 - **Kein Play-Store-Release in Stufe 1.** Vertrieb zunächst als GitHub-Release-APK (Sideload); F-Droid in Stufe 2 **nur nach Prüfung der Inclusion-Policy** (Abschnitt 4, Stufe 2), Play offen (F6). Kein On-Demand-Play-Asset-Delivery (Play-Core-Bibliothek ist GPL-unverträglich, `docs/recherche/feld4`).
@@ -484,7 +484,7 @@ models/                # Dev-Ablage der heruntergeladenen Modelle
 | Frage | Entscheidung des Nutzers | Folge |
 |---|---|---|
 | **F1** Martin verteilen? | **Selbst verteilen** | Beleg-Dossier `docs/lizenz/martin-kette.md` ist Pflicht vor M2b; bis dahin Release-Draft |
-| **F2** Tonhöhe Stufe 1? | **Plan folgen** → Stufe 2 | `getPitch()` wird in 1.0 ignoriert (dokumentiert) |
+| **F2** Tonhöhe Stufe 1? | **Plan folgen** → Stufe 2; **revidiert 25.08.2026**: Nutzer meldet toten Systemregler → Stufe 1 | `getPitch()` wirkt über tempokompensiertes Umtasten (Tonhoehe.kt); TD-PSOLA bleibt Stufe 2 |
 | **F3** Paketname | **`de.tilly.kokoly.tts`** | App-Name „Kokoly"; applicationId ab 0.1 fest |
 | **F4** zh in Stufe 1? | **Plan folgen** → Stufe 2 | voices-Zuschnitt ohne ja/zh-Stimmen |
 | **F5** Nur arm64? | **Ja** | abiFilters arm64-v8a ab 0.1 |

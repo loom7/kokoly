@@ -50,9 +50,17 @@ Ein Issue mit drei Angaben genügt:
    (Treffer UND, wenn sinnvoll, Gegenprobe), dann
    `"../TTS Test/.venv/Scripts/python.exe" scripts/golden/generieren.py`.
    Der Generator schlägt fehl, wenn die Frontend-Spezifikation bricht.
+   **Regel jünger als das Referenz-Einfrieren (ADR-0013)?** Dann kennt die
+   Windows-Seite die richtige Endfassung nicht — die erwartete Endfassung
+   kommt in `NEUE_REGEL_ERWARTUNGEN` (korpus.py), mit Herleitung im
+   Kommentar; das Golden trägt dafür `endfassung_quelle: golden-writer`.
 6. **Tests laufen lassen:** `./gradlew :app:testDebugUnitTest` — die neue Regel
    ist erst fertig, wenn ihr Golden-Satz grün ist.
-7. **CHANGELOG-Eintrag.** Ein Aussprachefix erreicht Nutzer mit dem nächsten
+7. **Hörprobe am Gerät** — über den ECHTEN Dienstweg (samt Regelstufe):
+   `am instrument -w -e class de.tilly.kokoly.tts.HoerprobeTest -e text "…"
+   -e datei hoer-regel de.tilly.kokoly.tts.test/androidx.test.runner.AndroidJUnitRunner`,
+   dann `adb pull`. Bei Betonungsregeln ersetzt das die Messung nicht (Punkt 3).
+8. **CHANGELOG-Eintrag.** Ein Aussprachefix erreicht Nutzer mit dem nächsten
    Release.
 
 ## Grenzen (ehrlich)

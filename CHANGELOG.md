@@ -7,6 +7,14 @@ Stimmnamen, unterstützte Locales, Verhalten der TTS-Schnittstelle).
 ## [Unreleased]
 
 ### Hinzugefügt
+- Tonhöhensteuerung: `getPitch()` wirkt über tempokompensiertes Umtasten
+  (F2 revidiert, Nutzer-Entscheid 25.08.2026); ±-Verstellung am Gerät per
+  F0-Messung belegt. Formanterhaltendes TD-PSOLA bleibt Stufe-2-Verbesserung.
+- Hörproben-Werkzeug für neue Regeln (HoerprobeTest: Satz über den echten
+  Dienstweg in eine WAV, Text per Instrumentation-Argument).
+- Golden-Writer-Weg für Regeln nach dem Referenz-Einfrieren (ADR-0013):
+  `NEUE_REGEL_ERWARTUNGEN` mit begründeter Herleitung, `endfassung_quelle`
+  kennzeichnet jede Erwartung im Golden.
 - Projektplanung (PROJEKTPLAN.md), 13 ADRs, Rechercheablage, Repo-Gerüst.
 - M0-Prüfstein vollständig: espeak-ng 1.52.0 arm64 (Geräteparität zeichengenau),
   Kotlin-Frontend (8 Sprachen golden-geprüft), nackte Kokoro-Inferenz über ORT,
@@ -30,3 +38,11 @@ Stimmnamen, unterstützte Locales, Verhalten der TTS-Schnittstelle).
 
 ### Geändert
 - ONNX Runtime 1.23.2 → 1.28.0 (SIGILL am SM8850, ADR-0014).
+
+### Behoben
+- „Synthese"/„Photosynthese" falsch betont und mit Schwa gesprochen
+  („ZÜN-te-se") — Wortlautregeln, ΔK +0,20 (Nutzerfund 25.08.2026).
+- Einstellungen folgen jetzt der System-Tag/Nacht-Einstellung (Theme.Kokoly
+  mit values-night); vorher im Dark Mode helle Blendfläche.
+- Tonhöhenregler der System-TTS-Einstellungen war wirkungslos (getPitch()
+  wurde ignoriert) — siehe Tonhöhensteuerung unter „Hinzugefügt".

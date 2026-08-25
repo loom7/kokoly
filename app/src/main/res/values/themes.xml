@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SPDX-License-Identifier: GPL-3.0-or-later -->
+<resources>
+    <!-- Tag/Nacht folgt der Systemeinstellung: hell hier, dunkel in
+         values-night. DeviceDefault, damit die Einstellungen aussehen wie die
+         Systemeinstellungen, in denen sie geöffnet werden. -->
+    <style name="Theme.Kokoly" parent="@android:style/Theme.DeviceDefault.Light.NoActionBar" />
+</resources>

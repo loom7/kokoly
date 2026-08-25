@@ -59,7 +59,31 @@ REGEL_KORPUS = [
     "Die Martina ruft den Martin.",
     "Sankt Martin ritt durch Schnee und Wind.",
     "Nach dem 3. August wird es kühler.",
+    # Nutzerfund 25.08.2026: „ZÜN-te-se" — Schwa, s statt z, Betonung vorn.
+    "Die Synthese läuft auf diesem Gerät.",
+    "Die Photosynthese braucht Licht.",
+    "Die Photosynthese ist auch eine Synthese.",
 ]
+
+#: Golden-Writer für Regeln NACH dem Einfrieren der Windows-Referenz
+#: (ADR-0013): Die Referenz kennt neue Regeln nicht — ihre Endfassung wäre für
+#: diese Sätze falsch. Hier steht die HERGELEITETE Erwartung samt Begründung;
+#: der Generator übernimmt sie statt der Referenz-Endfassung und kennzeichnet
+#: den Eintrag. Herleitung ist immer: Referenz-Phonemkette ohne Regeln, darauf
+#: die neue Ersetzung angewandt — deterministisch, im PR nachvollziehbar.
+NEUE_REGEL_ERWARTUNGEN = {
+    # Synthese-Regel (Nutzerfund 25.08.2026): zˈyntəsə → zyntˈeːzə.
+    # Begründung: espeaks eigenes „synthetisch" = zyntˈeːtɪʃ belegt zynt+ˈeː;
+    # ΔK +0,20 gemessen (scripts/messung/k_pruefung.py, Rahmensatz, 25.08.2026).
+    "Die Synthese läuft auf diesem Gerät.":
+        "diː zyntˈeːzə lˈɔøft aʊf dˌiːzəm ɡərˈɛːt.",
+    "Die Photosynthese braucht Licht.":
+        "diː fˌoːtoːzyntˈeːzə bɾˈaʊxt lˈɪçt.",
+    # Beide Wörter im selben Satz: Photosynthese-Regel zuerst (Teilstück-Falle),
+    # danach trifft die Synthese-Regel eindeutig das zweite Vorkommen.
+    "Die Photosynthese ist auch eine Synthese.":
+        "diː fˌoːtoːzyntˈeːzə ɪst ˌaʊx ˌaɪnə zyntˈeːzə.",
+}
 
 KORPUS = {
     "de": [

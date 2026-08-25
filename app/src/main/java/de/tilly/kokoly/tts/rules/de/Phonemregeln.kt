@@ -81,6 +81,14 @@ object Phonemregeln {
      * Anfangsstück von `mˈaɾtɪns` ist und die Zählprobe sonst zu Recht aussteigt.
      */
     val WORTLAUTE: List<Regel> = listOf(
+        // Photosynthese VOR Synthese: das Synthese-Muster ist ein Teilstück
+        // des Photosynthese-Musters — in dieser Reihenfolge heilen beide auch
+        // im selben Satz (die Zählprobe sähe sonst zwei Phonemtreffer bei
+        // einem Worttreffer und stiege zu Recht aus).
+        wort("Photosynthese", "fˌoːtoːzˈyntəsə", "fˌoːtoːzyntˈeːzə",
+            "Schwa statt eː, Betonung auf der Vorsilbe; ΔK-Methode wie Synthese"),
+        wort("Synthese", "zˈyntəsə", "zyntˈeːzə",
+            "„ZÜN-te-se“: Schwa statt eː, s statt z, Betonung vorn — ΔK +0,20 (Nutzerfund 25.08.2026)"),
         wort("Erbse", "ɛɾbzˈeː", "ˈɛɾpsə", "espeak erfindet „erb-ZEH“"),
         wort("Erbsen", "ˈɛɾpzən", "ˈɛɾpsən", "stimmhaftes z nach p ist unmöglich"),
         wort("Sauce", "zˈaʊkə", "zˈoːsə", "espeak liest buchstabengetreu"),

@@ -11,6 +11,7 @@ import android.util.Log
 import de.tilly.kokoly.tts.pipeline.EnginePipeline
 import de.tilly.kokoly.tts.pipeline.EspeakNative
 import de.tilly.kokoly.tts.pipeline.KokoroSynthesizer
+import de.tilly.kokoly.tts.pipeline.Tonhoehe
 
 /**
  * Der TTS-Dienst — seit M4 mehrsprachig.
@@ -22,8 +23,9 @@ import de.tilly.kokoly.tts.pipeline.KokoroSynthesizer
  * vom Framework als ISO-3 an („deu").
  *
  * Stimmwahl: setVoice() einer fremden App landet als request.voiceName; ohne
- * Stimme entscheidet die Sprach-Vorgabestimme. getPitch() wird in Stufe 1
- * ignoriert (Nutzer-Entscheid F2); getSpeechRate() wird Tempo.
+ * Stimme entscheidet die Sprach-Vorgabestimme. getSpeechRate() wird Tempo,
+ * getPitch() wirkt seit dem 25.08.2026 (F2 revidiert) über tempokompensiertes
+ * Umtasten — Verfahren und Grenze in Tonhoehe.kt.
  */
 class KokolyTtsService : TextToSpeechService() {
 
@@ -86,15 +88,21 @@ class KokolyTtsService : TextToSpeechService() {
         if (aufgeloest == null) { callback.error(); return }
         val (sprache, stimme) = aufgeloest
 
-        // 100 = Normaltempo der API. getPitch() bleibt in Stufe 1 unbeachtet (F2).
+        // 100 = Normalwert der API für Tempo UND Tonhöhe. Tonhöhe seit dem
+        // Nutzer-Entscheid vom 25.08.2026 (revidiert F2): tempokompensiertes
+        // Umtasten — das Modell synthetisiert um p langsamer, gelesen wird um
+        // p schneller (Tonhoehe.kt, Formant-Vorbehalt dort).
         val tempo = (request.speechRate / 100f).coerceIn(0.5f, 2.0f)
+        val tonFaktor = (request.pitch / 100f)
+            .coerceIn(Tonhoehe.MIN_FAKTOR, Tonhoehe.MAX_FAKTOR)
+        val modellTempo = (tempo / tonFaktor).coerceIn(0.5f, 2.0f)
 
         callback.start(KokoroSynthesizer.ABTASTRATE, AudioFormat.ENCODING_PCM_16BIT, 1)
         val maxBlock = callback.maxBufferSize
 
         runCatching {
-            EnginePipeline.synthetisiere(this, text, sprache, stimme, tempo) { audio ->
-                liefereAlsPcm16(audio, maxBlock, callback)
+            EnginePipeline.synthetisiere(this, text, sprache, stimme, modellTempo) { audio ->
+                liefereAlsPcm16(Tonhoehe.umtasten(audio, tonFaktor), maxBlock, callback)
             }
         }.onFailure {
             Log.e(TAG, "Synthese fehlgeschlagen", it)
