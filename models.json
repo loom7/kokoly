@@ -56,6 +56,16 @@
           "url": "https://huggingface.co/Godelaune/Kokoro-82M-ONNX-German-Martin/resolve/main/voices-martin.npz",
           "lizenz": "Apache-2.0 (Kette laut Dossier, in Pruefung)"
         }
+      ],
+      "varianten": [
+        {
+          "name": "kokoro-martin.fp16.onnx",
+          "sha256": "8dcc140477b52546fdf063ff680dce7050193cd9a8729d359f0e76b94d33ad6b",
+          "bytes": 163536769,
+          "url": "EIGENES-RELEASE (Draft bis Martin-Dossier, F1) — Rezept: scripts/fp16-wandlung.py",
+          "lizenz": "Apache-2.0 (Kette laut Dossier, in Pruefung)",
+          "befund": "RTF 0,350 / PSS 292 MB am SM-F971B — schneller UND kleiner als fp32; Hoer-Gate beim Nutzer"
+        }
       ]
     }
   }

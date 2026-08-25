@@ -25,9 +25,10 @@ Nova-Befund in verschärfter Form.
 
 ## Offen
 
-- **Hör-Gate fp16 für Deutsch:** kokoro-martin existiert nur als fp32; die
-  fp16-Konvertierung (Werkzeug: onnxconverter-common) und die deutsche
-  Hörprobe stehen aus. Bis dahin läuft Deutsch als fp32.
+- **Hör-Gate fp16 für Deutsch:** die Wandlung ist erledigt (ORT-Rezept,
+  scripts/fp16-wandlung.py; onnxconverter-common scheitert an der Graphfamilie)
+  und gemessen: RTF 0,350, PSS 292 MB — schneller und kleiner als fp32. Es
+  fehlt nur noch die Hörprobe des Nutzers. Bis dahin läuft Deutsch als fp32.
 - Threads 2/4 per mAh je 1000 Zeichen (M5). 2T: RTF 0,58–0,60, tragfähig.
 
 ## Verworfene Alternativen
