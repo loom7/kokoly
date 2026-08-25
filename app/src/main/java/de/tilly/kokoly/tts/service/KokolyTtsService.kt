@@ -9,7 +9,6 @@ import android.speech.tts.TextToSpeechService
 import android.speech.tts.Voice
 import android.util.Log
 import de.tilly.kokoly.tts.pipeline.EnginePipeline
-import de.tilly.kokoly.tts.pipeline.EspeakNative
 import de.tilly.kokoly.tts.pipeline.KokoroSynthesizer
 import de.tilly.kokoly.tts.pipeline.Tonhoehe
 
@@ -35,6 +34,7 @@ class KokolyTtsService : TextToSpeechService() {
 
     override fun onCreate() {
         super.onCreate()
+        Log.i(TAG, "onCreate (pid ${android.os.Process.myPid()})")
         // espeak + Vokabular sind leicht und bleiben resident; die schwere
         // ORT-Session lädt erst der erste Satz (und stirbt mit onDestroy).
         runCatching { EnginePipeline.starte(this) }
@@ -42,8 +42,13 @@ class KokolyTtsService : TextToSpeechService() {
     }
 
     override fun onDestroy() {
+        Log.i(TAG, "onDestroy (pid ${android.os.Process.myPid()})")
+        // Nur die schwere ORT-Session fällt. espeak bleibt bis zum Prozessende
+        // resident: onDestroy heißt NICHT Prozessende — ein Engine-Wechsel in
+        // den Systemeinstellungen zerstört den Dienst und bindet ihn im selben
+        // Prozess neu an; ein espeak_Terminate hier machte die Engine danach
+        // stumm (Nutzerfund + DienstNeustartTest, 25.08.2026).
         EnginePipeline.entladeModell()
-        EspeakNative.terminate()
         super.onDestroy()
     }
 
@@ -74,6 +79,10 @@ class KokolyTtsService : TextToSpeechService() {
 
     override fun onStop() {
         gestoppt = true
+        // Der teure Posten ist der Modell-Run, nicht der PCM-Block: das Flag
+        // wirkt erst ZWISCHEN Blöcken, setTerminate bricht den Run selbst ab
+        // (Stop-Pfad-Festlegung, Aufgabe 1.2).
+        EnginePipeline.brichAb()
     }
 
     override fun onSynthesizeText(request: SynthesisRequest, callback: SynthesisCallback) {
@@ -96,18 +105,27 @@ class KokolyTtsService : TextToSpeechService() {
         val tonFaktor = (request.pitch / 100f)
             .coerceIn(Tonhoehe.MIN_FAKTOR, Tonhoehe.MAX_FAKTOR)
         val modellTempo = (tempo / tonFaktor).coerceIn(0.5f, 2.0f)
+        // Tempo hat Vorrang vor Tonhöhe: klemmt das Modellfenster (z. B.
+        // Tempo 1,64 × Tonhöhe 0,75 → 2,19), trägt der Lesefaktor den Rest —
+        // die verlangte DAUER stimmt dann exakt, die Tonhöhenverschiebung
+        // weicht entsprechend zurück (Vorlesen lebt von Tempotreue).
+        val leseFaktor = tempo / modellTempo
 
         callback.start(KokoroSynthesizer.ABTASTRATE, AudioFormat.ENCODING_PCM_16BIT, 1)
         val maxBlock = callback.maxBufferSize
 
         runCatching {
             EnginePipeline.synthetisiere(this, text, sprache, stimme, modellTempo) { audio ->
-                liefereAlsPcm16(Tonhoehe.umtasten(audio, tonFaktor), maxBlock, callback)
+                liefereAlsPcm16(Tonhoehe.umtasten(audio, leseFaktor), maxBlock, callback)
             }
         }.onFailure {
-            Log.e(TAG, "Synthese fehlgeschlagen", it)
-            callback.error()
-            return
+            // Nach Stop ist die OrtException des terminierten Runs der
+            // ERFOLGSFALL des Stop-Pfads, kein Fehler.
+            if (!gestoppt) {
+                Log.e(TAG, "Synthese fehlgeschlagen", it)
+                callback.error()
+                return
+            }
         }
         // Auch nach Stop schließt done() den Vorgang ordentlich ab — das
         // Framework hat den Abbruch selbst angestoßen und wartet nur noch.

@@ -7,9 +7,12 @@ package de.tilly.kokoly.tts.pipeline
  * espeak ist nicht threadsicher — jeder Zugriff läuft über [sperre]. Der
  * native Wrapper hält bewusst keine eigenen Locks (eine Wahrheit, ein Ort).
  *
- * Lebenszyklus (Querschnittsfestlegung in docs/architektur.md): einmal je
- * Prozess initialisieren, resident halten; [terminate] ruft nur der
- * Dienst-onDestroy. Der Leerlauf-Timer entlädt NIE espeak.
+ * Lebenszyklus (Querschnittsfestlegung in docs/architektur.md, berichtigt
+ * 25.08.2026): einmal je Prozess initialisieren, resident bis zum Prozessende.
+ * Der Dienst ruft [terminate] NIE — Dienst-onDestroy ist nicht Prozessende
+ * (Engine-Wechsel zerstört und rebindet im selben Prozess; ein terminate
+ * machte die Engine danach stumm). [terminate] bleibt für Testaufräumen;
+ * [init] ist idempotent und heilt eine beendete Bindung.
  */
 object EspeakNative {
 

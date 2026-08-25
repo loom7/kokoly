@@ -38,6 +38,10 @@ class PitchTest {
         tts = TextToSpeech(kontext, { start.countDown() }, "de.tilly.kokoly.tts")
         assertTrue(start.await(30, TimeUnit.SECONDS))
         tts.setLanguage(Locale.GERMANY)
+        // Fest 1,0 statt Systemvorgabe: der Nutzer-Tempo-Regler (z. B. 164 %)
+        // drückte modellTempo sonst in die Klemmung und der Test hinge vom
+        // Gerätezustand ab.
+        tts.setSpeechRate(1.0f)
 
         val satz = "Die Tonhöhe dieser Stimme lässt sich jetzt verstellen."
         val laengen = mutableMapOf<String, Long>()

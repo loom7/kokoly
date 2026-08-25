@@ -62,8 +62,11 @@ object EnginePipeline {
 
     fun starte(context: Context) {
         synchronized(sperre) {
-            if (vokabular != null) return
+            // espeak-init VOR der Vokabular-Abkürzung: nach einem terminate
+            // (z. B. Testaufräumen) heilt der nächste Start die Bindung —
+            // init selbst ist idempotent und im Normalfall ein Flag-Test.
             EspeakNative.init(EspeakData.ensure(context).absolutePath)
+            if (vokabular != null) return
             val v = Vokabular.lade(context)
             vokabular = v
             frontend = PhonemeFrontend(v.keys) { chunk, sprache ->
@@ -125,6 +128,11 @@ object EnginePipeline {
         }
     }
 
+    /** Reicht onStop an den laufenden Modell-Run durch (setTerminate). */
+    fun brichAb() {
+        synchronized(sperre) { session?.brichAb() }
+    }
+
     // ---------------------------------------------------------------- Synthese
 
     /**
@@ -143,6 +151,7 @@ object EnginePipeline {
         val front = frontend!!
         val vokab = vokabular!!
         val k = sessionFuer(context, sprache.gruppe)
+        k.loescheAbbruch() // Stop des VORIGEN Auftrags gilt nicht mehr
         val vektor = stimmVektor(context, sprache.gruppe, stimme)
 
         val saetze = text.split(SATZENDE).filter { it.isNotBlank() }

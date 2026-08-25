@@ -109,7 +109,7 @@ flowchart TB
 
 Die Textregel-Schicht ist sprachabhängig (Stufe 1: nur de vollständig; andere Sprachen laufen roh durch espeak — wie heute auf Windows). Für Nicht-de-Sprachen entfallen TXT/PR, NORM/PHON/VOC/KOK gelten immer.
 
-**Querschnittsfestlegung espeak-Lebenszyklus (neu):** espeak wird **einmal je Prozess** initialisiert und bleibt resident; `setVoice` nur bei tatsächlichem Sprachwechsel; `espeak_Terminate` ausschließlich in `onDestroy`. Der Leerlauf-Timer (M5) entlädt **nur** ORT-Sessions, nie espeak. Der residente RAM-Anteil wird in M2a einmal gemessen und steht als eigene Zeile im Korridor 6.2.
+**Querschnittsfestlegung espeak-Lebenszyklus (berichtigt 25.08.2026):** espeak wird **einmal je Prozess** initialisiert und bleibt resident **bis zum Prozessende**; `setVoice` nur bei tatsächlichem Sprachwechsel; `espeak_Terminate` wird im Dienstbetrieb **nie** gerufen (Dienst-onDestroy ist nicht Prozessende — Engine-Wechsel zerstört und rebindet im selben Prozess; Beleg: DienstNeustartTest). Der Leerlauf-Timer (M5) entlädt **nur** ORT-Sessions, nie espeak. Der residente RAM-Anteil wird in M2a einmal gemessen und steht als eigene Zeile im Korridor 6.2.
 
 **Pflegeregel Diagramme:** Gepflegt wird ausschließlich `docs/architektur.md`, bei jeder Architekturänderung **im selben Commit** (Definition of Done, Punkt 4). Ein einmaliges Komponentendiagramm des Pipeline-Kerns entsteht in M3 und wird nur bei Pipeline-Umbauten angefasst. Mermaid-`flowchart`-Syntax, nicht die experimentelle C4-Syntax; > 15 Knoten → aufteilen.
 
@@ -216,7 +216,7 @@ Aufwände in Personentagen (T), Spannen = ehrliche Unsicherheit. Ein-Personen-Pr
 | 0.2 | **espeak-Referenz-Commit ermitteln** (Stand hinter espeakng-loader 0.2.4, aus Paketquelle/Build-Metadaten) und als Pin festschreiben; Rückfallebene dokumentieren (Windows-Goldens mit gewähltem Commit neu erzeugen — phonemizer akzeptiert eigenen Bibliothekspfad) | — | 0,5 |
 | 0.3 | Golden-File-Generator in der Windows-Pipeline **zweistufig**: je Satz Roh-espeak-Ausgabe (vor Lautersatz/Filter) UND Endphonemkette; Korpus mit ich-Laut-, Sprachwechsel-, **Klammer-plus-Sprachwechsel-** und Betonungs-Prüfsätzen; Generator wandert nach `scripts/golden/` (ADR-0013) | 0.2 | 0,5–1 |
 | 0.4 | espeak-ng-NDK-Build (CMake, sherpa-Schalterbelegung, arm64, **Commit aus 0.2**); zusätzlich Host-Build desselben Commits als Windows-DLL für JVM-Tests | 0.1, 0.2 | 2–3 |
-| 0.5 | JNI-Wrapper (~150 Zeilen: init(dataPath)/setVoice/textToPhonemes-Schleife/terminate; globaler Mutex; Lebenszyklus resident, terminate nur onDestroy) | 0.4 | 1 |
+| 0.5 | JNI-Wrapper (~150 Zeilen: init(dataPath)/setVoice/textToPhonemes-Schleife/terminate; globaler Mutex; Lebenszyklus resident bis Prozessende, kein terminate im Dienstbetrieb — berichtigt 25.08.2026) | 0.4 | 1 |
 | 0.6 | espeak-Daten **nur de** (Kern + de_dict); Assets→filesDir-Kopie (CodeTest-Muster `EspeakData.ensure()`) — der 7-Sprachen-Vollausbau gehört zu 4.5 | 0.4 | 0,5 |
 | 0.7 | Kotlin-Phonemizer-Frontend: Interpunktion abtrennen/wiedereinfügen, **danach** Sprachwechselmarken nach Sprachcode-Muster `\(([a-z]{2,3})(-[a-z0-9-]+)?\)` entfernen (Reihenfolge dokumentiert — echte Klammern im Text bleiben unversehrt), ʏ→y, NFC+Leerraum, Separatorlogik — der subtilste Teil | 0.5 | 1–2 |
 | 0.8 | **Zweistufige Golden-Tests:** Stufe A Roh-espeak (JVM via Host-DLL aus 0.4; plus kleine Instrumented-Stichprobe arm64==Host am Gerät); Stufe B Frontend (Roh-String → Endkette, rein JVM); Verlustbericht des 114er-Filters + Test | 0.3, 0.7 | 1–1,5 |

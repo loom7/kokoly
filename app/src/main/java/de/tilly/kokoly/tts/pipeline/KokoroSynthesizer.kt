@@ -7,6 +7,9 @@ import ai.onnxruntime.OrtSession
 import java.io.File
 import java.nio.FloatBuffer
 import java.nio.LongBuffer
+import java.util.concurrent.locks.ReentrantReadWriteLock
+import kotlin.concurrent.read
+import kotlin.concurrent.write
 
 /**
  * Die Kokoro-Inferenz über ONNX Runtime.
@@ -35,6 +38,16 @@ class KokoroSynthesizer(
     private val umgebung = OrtEnvironment.getEnvironment()
     private val sitzung: OrtSession
     private val tokensEingabe: String
+
+    // Lauf/Schließen-Synchronisation: OrtSession.close() hat KEINE eigene
+    // Absicherung gegen einen laufenden run() (1.28.0 geprüft) — ein close
+    // vom Main-Thread (onDestroy bei Engine-Wechsel, künftig Leerlauf-Timer)
+    // mitten im nativen Run wäre Use-after-free. Läufe halten den Lesepart,
+    // schliesse() den Schreibpart (fair, damit der Schließer nicht verhungert);
+    // setTerminate lässt den laufenden Run in Millisekunden aussteigen.
+    private val laufSperre = ReentrantReadWriteLock(true)
+    private val laufOptionen = OrtSession.RunOptions()
+    @Volatile private var geschlossen = false
 
     init {
         val optionen = OrtSession.SessionOptions().apply {
@@ -73,25 +86,46 @@ class KokoroSynthesizer(
         val zeile = minOf(tokens.size, FENSTER) - 1
         System.arraycopy(stimme, zeile * STILBREITE, stilzeile, 0, STILBREITE)
 
-        OnnxTensor.createTensor(umgebung, LongBuffer.wrap(eingabe),
-            longArrayOf(1, eingabe.size.toLong())).use { tTokens ->
-        OnnxTensor.createTensor(umgebung, FloatBuffer.wrap(stilzeile),
-            longArrayOf(1, STILBREITE.toLong())).use { tStil ->
-        OnnxTensor.createTensor(umgebung, FloatBuffer.wrap(floatArrayOf(tempo)),
-            longArrayOf(1)).use { tTempo ->
-            sitzung.run(mapOf(
-                tokensEingabe to tTokens, "style" to tStil, "speed" to tTempo,
-            )).use { ergebnis ->
-                @Suppress("UNCHECKED_CAST")
-                val audio = ergebnis[0].value
-                return when (audio) {
-                    is Array<*> -> (audio as Array<FloatArray>)[0]
-                    is FloatArray -> audio
-                    else -> error("Unerwarteter Ausgabetyp: ${audio!!::class}")
+        laufSperre.read {
+            check(!geschlossen) { "Session bereits geschlossen" }
+            OnnxTensor.createTensor(umgebung, LongBuffer.wrap(eingabe),
+                longArrayOf(1, eingabe.size.toLong())).use { tTokens ->
+            OnnxTensor.createTensor(umgebung, FloatBuffer.wrap(stilzeile),
+                longArrayOf(1, STILBREITE.toLong())).use { tStil ->
+            OnnxTensor.createTensor(umgebung, FloatBuffer.wrap(floatArrayOf(tempo)),
+                longArrayOf(1)).use { tTempo ->
+                sitzung.run(mapOf(
+                    tokensEingabe to tTokens, "style" to tStil, "speed" to tTempo,
+                ), laufOptionen).use { ergebnis ->
+                    @Suppress("UNCHECKED_CAST")
+                    val audio = ergebnis[0].value
+                    return when (audio) {
+                        is Array<*> -> (audio as Array<FloatArray>)[0]
+                        is FloatArray -> audio
+                        else -> error("Unerwarteter Ausgabetyp: ${audio!!::class}")
+                    }
                 }
-            }
-        }}}
+            }}}
+        }
     }
 
-    fun schliesse() = sitzung.close()
+    /** Bricht den laufenden Modell-Run ab (onStop; Aufgabe 1.2 des Plans). */
+    fun brichAb() {
+        runCatching { laufOptionen.setTerminate(true) }
+    }
+
+    /** Hebt einen früheren Abbruch auf — einmal je Sprechauftrag. */
+    fun loescheAbbruch() {
+        runCatching { laufOptionen.setTerminate(false) }
+    }
+
+    fun schliesse() {
+        brichAb() // ein laufender Run steigt in Millisekunden aus
+        laufSperre.write {
+            if (geschlossen) return
+            geschlossen = true
+            laufOptionen.close()
+            sitzung.close()
+        }
+    }
 }

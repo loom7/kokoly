@@ -40,6 +40,23 @@ Stimmnamen, unterstützte Locales, Verhalten der TTS-Schnittstelle).
 - ONNX Runtime 1.23.2 → 1.28.0 (SIGILL am SM8850, ADR-0014).
 
 ### Behoben
+- Absturzfenster geschlossen: OrtSession.close() konnte in einen laufenden
+  Modell-Run fallen (Engine-Wechsel oder künftiger Leerlauf-Timer während
+  langer Synthese) — Lauf/Schließen jetzt über faires RW-Lock synchronisiert.
+- Stop wirkt jetzt IM Modell-Run (RunOptions.setTerminate, Aufgabe 1.2 des
+  Plans) statt erst am nächsten Audio-Block.
+- Einstellungen: Edge-to-Edge-Insets (Inhalt lag unter Status- und
+  Navigationsleiste); Phonempuffer im JNI-Wrapper meldet Überlauf statt still
+  zu kürzen (64 KiB statt 16 KiB).
+- Engine wurde stumm, nachdem in den Systemeinstellungen die TTS-Engine
+  gewechselt und zurückgewechselt wurde: espeak_Terminate in onDestroy tötete
+  die Bindung im weiterlebenden Prozess. espeak bleibt jetzt bis zum
+  Prozessende resident; der Pipeline-Start heilt sich selbst
+  (Regressionstest DienstNeustartTest).
+- Haken der Sprach-Auswahl im Dunkelmodus unsichtbar — Haken-Farben hängen
+  jetzt explizit an den Textfarben des Themas.
+- Tonhöhe×Tempo am Modellfenster: die Klemmung ging zulasten der Dauer,
+  jetzt hat Tempotreue Vorrang (Tonhöhe weicht am Rand sanft zurück).
 - „Synthese"/„Photosynthese" falsch betont und mit Schwa gesprochen
   („ZÜN-te-se") — Wortlautregeln, ΔK +0,20 (Nutzerfund 25.08.2026).
 - Einstellungen folgen jetzt der System-Tag/Nacht-Einstellung (Theme.Kokoly
