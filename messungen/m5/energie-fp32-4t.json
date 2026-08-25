@@ -1,0 +1,1 @@
+{"name":"fp32-4t","modell":"kokoro-martin.onnx","threads":4,"zeichen":8037,"audioSekunden":586.8,"rechenSekunden":274.9,"rtf":0.469,"ccStartMikroAh":1814400,"ccEndeMikroAh":1738800,"mAh":75.6,"mAhJe1000Zeichen":9.41,"tempStartZehntelC":280,"tempEndeZehntelC":318}

@@ -1,0 +1,1 @@
+{"name":"fp32-2t","modell":"kokoro-martin.onnx","threads":2,"zeichen":8037,"audioSekunden":586.8,"rechenSekunden":395.3,"rtf":0.674,"ccStartMikroAh":2293200,"ccEndeMikroAh":2217600,"mAh":75.6,"mAhJe1000Zeichen":9.41,"tempStartZehntelC":293,"tempEndeZehntelC":338}

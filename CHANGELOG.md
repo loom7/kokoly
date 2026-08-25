@@ -7,6 +7,11 @@ Stimmnamen, unterstützte Locales, Verhalten der TTS-Schnittstelle).
 ## [Unreleased]
 
 ### Hinzugefügt
+- M5-Energiemessung: mAh je 1000 Zeichen für fp32/fp16dec × 2/4 Threads,
+  Leerlauf-Basislinie und 30-Minuten-Vorlese-Dauerlauf (EnergieMessTest,
+  Echtzeit-Taktung; Auswertung scripts/messung/energie_auswertung.py).
+  Befund: fp32 schlägt fp16dec in Tempo UND Energie; Temperatur im
+  Dauerlauf stabil.
 - Tonhöhensteuerung: `getPitch()` wirkt über tempokompensiertes Umtasten
   (F2 revidiert, Nutzer-Entscheid 25.08.2026); ±-Verstellung am Gerät per
   F0-Messung belegt. Formanterhaltendes TD-PSOLA bleibt Stufe-2-Verbesserung.

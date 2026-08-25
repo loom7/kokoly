@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SPDX-License-Identifier: GPL-3.0-or-later -->
+<!-- Nur im Debug-Build: der M5-Energie-Prüfstand (EnergieMessTest) hält
+     während der Messung einen partiellen Wakelock. Das RELEASE bleibt
+     wakelock-frei — die Engine selbst hält nie einen (Ziel Z6). -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+</manifest>

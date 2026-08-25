@@ -1,0 +1,1 @@
+{"name":"fp16dec-4t","modell":"kokoro-martin.fp16dec.onnx","threads":4,"zeichen":8037,"audioSekunden":586.8,"rechenSekunden":319.4,"rtf":0.544,"ccStartMikroAh":1709400,"ccEndeMikroAh":1612800,"mAh":96.6,"mAhJe1000Zeichen":12.02,"tempStartZehntelC":288,"tempEndeZehntelC":345}
