@@ -3,6 +3,8 @@ package de.tilly.kokoly.tts.pipeline
 
 import android.content.Context
 import android.util.Log
+import de.tilly.kokoly.tts.rules.de.Phonemregeln
+import de.tilly.kokoly.tts.rules.de.Textregeln
 import java.io.File
 
 /**
@@ -85,7 +87,18 @@ object EnginePipeline {
 
         val saetze = text.split(SATZENDE).filter { it.isNotBlank() }
         for (satz in saetze) {
-            val ergebnis = front.verarbeite(satz, sprache)
+            // Deutsche Regelstufe (M3): Textregeln VOR dem Phonemisierer,
+            // Betonung + Wortlaute danach — Reihenfolge der Referenz. Für
+            // andere Sprachen läuft nur die Phonemisierung (die Regelwerke
+            // sind deutsch; „z.B." auszuschreiben wäre im Englischen falsch).
+            val deutsch = sprache == "de"
+            val (satzText, textMeldungen) =
+                if (deutsch) Textregeln.berichtige(PhonemeFrontend.normalisiere(satz))
+                    .let { it.text to it.meldungen }
+                else satz to emptyList()
+            textMeldungen.forEach { Log.i(TAG, it) }
+
+            val ergebnis = front.verarbeite(satzText, sprache)
             if (ergebnis.verworfen.isNotEmpty()) {
                 // Nie still: die Sichtbarkeitsregel aus der Windows-Referenz.
                 Log.w(TAG, "Nicht im Vokabular, verworfen: ${ergebnis.verworfen} bei »$satz«")
@@ -94,7 +107,12 @@ object EnginePipeline {
             // M1-Grenze, ehrlich: ein EINZELsatz über dem Modellfenster wird
             // hart geteilt, ohne Pausenfeinsteuerung. Die volle Stückelung
             // (Pausen 0,22/0,35, continuous-Verhalten) ist M3-Arbeit.
-            for (fenster in ergebnis.phoneme.chunked(KokoroSynthesizer.FENSTER - 2)) {
+            val phoneme =
+                if (deutsch) Phonemregeln.berichtige(satzText, ergebnis.phoneme)
+                    .also { r -> r.meldungen.forEach { Log.i(TAG, it) } }.phoneme
+                else ergebnis.phoneme
+
+            for (fenster in phoneme.chunked(KokoroSynthesizer.FENSTER - 2)) {
                 val audio = k.synthetisiere(fenster, vokab, tempo)
                 if (!liefere(audio)) return false
             }

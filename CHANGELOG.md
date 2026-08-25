@@ -12,6 +12,9 @@ Stimmnamen, unterstützte Locales, Verhalten der TTS-Schnittstelle).
   Kotlin-Frontend (8 Sprachen golden-geprüft), nackte Kokoro-Inferenz über ORT,
   Gate-WAVs für die ich-Laut-Hörprobe.
 
+- M3 Regelwerk: deutsche Text-, Betonungs- und Wortlautregeln als Kotlin-Tabellen
+  (Golden-Stufe C, 42 Sätze samt Gegenproben), in die Dienst-Pipeline verdrahtet;
+  docs/regelwerk.md mit dem vollen Einpflege-Weg.
 - M1 Service-Skelett: KokolyTtsService echt (Streaming über SynthesisCallback,
   ISO-3-Sprachaushandlung, Voice de-DE-martin, Stop-Flag je Block), CheckVoiceData,
   satzweise Pipeline; Framework-Klient-Abnahmetest grün.

@@ -1,0 +1,850 @@
+{
+ "sprache": "de",
+ "stufe": "C (Textregeln + Betonung + Wortlaute)",
+ "espeak": "1.52.0 (Referenz-DLL)",
+ "erzeugt": "2026-08-25",
+ "saetze": [
+  {
+   "text": "Der Termin ist am 3. August um 8:09 Uhr.",
+   "nach_textregeln": "Der Termin ist am dritten August um 8 Uhr 9.",
+   "segmente": [
+    {
+     "chunk": "Der Termin ist am dritten August um 8 Uhr 9",
+     "roh": "d_ɛ_ɾ t_ɛ_ɾ_m_ˈiː_n _ɪ_s_t_ _a_m d_ɾ_ˈɪ_t_ə_n _ˈaʊ_ɡ_ʊ_s_t_ _ʊ_m _ˈa_x_t _ˈuː_ɾ n_ˈɔø_n"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "phoneme_ohne_regeln": "dɛɾ tɛɾmˈiːn ɪst am dɾˈɪtən ˈaʊɡʊst ʊm ˈaxt ˈuːɾ nˈɔøn.",
+   "endfassung": "dɛɾ tɛɾmˈiːn ɪst am dɾˈɪtən aʊɡˈʊst ʊm ˈaxt ˈuːɾ nˈɔøn.",
+   "verworfen": []
+  },
+  {
+   "text": "Er kommt am Fr. den 3. Mai.",
+   "nach_textregeln": "Er kommt am Freitag den dritten Mai.",
+   "segmente": [
+    {
+     "chunk": "Er kommt am Freitag den dritten Mai",
+     "roh": "_ɛ_ɾ k_ˈɔ_m_t_ _a_m f_r_ˈaɪ_t_ɑː_k d_eː_n d_ɾ_ˈɪ_t_ə_n m_ˈaɪ"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "phoneme_ohne_regeln": "ɛɾ kˈɔmt am frˈaɪtɑːk deːn dɾˈɪtən mˈaɪ.",
+   "endfassung": "ɛɾ kˈɔmt am frˈaɪtɑːk deːn dɾˈɪtən mˈaɪ.",
+   "verworfen": []
+  },
+  {
+   "text": "Ich meine den 1. Juli.",
+   "nach_textregeln": "Ich meine den ersten Juli.",
+   "segmente": [
+    {
+     "chunk": "Ich meine den ersten Juli",
+     "roh": "_ɪ_ç m_ˌaɪ_n_ə d_eː_n _ˈeː_ɾ_s_t_ə_n j_ˈuː_l_iː"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "phoneme_ohne_regeln": "ɪç mˌaɪnə deːn ˈeːɾstən jˈuːliː.",
+   "endfassung": "ɪç mˌaɪnə deːn ˈeːɾstən jˈuːliː.",
+   "verworfen": []
+  },
+  {
+   "text": "Wir schreiben den 24. Dezember.",
+   "nach_textregeln": "Wir schreiben den vierundzwanzigsten Dezember.",
+   "segmente": [
+    {
+     "chunk": "Wir schreiben den vierundzwanzigsten Dezember",
+     "roh": "v_iː_ɾ ʃ_r_ˈaɪ_b_ə_n d_eː_n f_ˈiː_r_ʊ_n_t_ts_v_ˌa_n_ts_ɪ_ç_s_t_ə_n d_eː_ts_ˈɛ_m_b_ɜ"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "phoneme_ohne_regeln": "viːɾ ʃrˈaɪbən deːn fˈiːrʊnttsvˌantsɪçstən deːtsˈɛmbɜ.",
+   "endfassung": "viːɾ ʃrˈaɪbən deːn fˈiːrʊnttsvˌantsɪçstən deːtsˈɛmbɜ.",
+   "verworfen": []
+  },
+  {
+   "text": "Der 1. Mai ist frei.",
+   "nach_textregeln": "Der erste Mai ist frei.",
+   "segmente": [
+    {
+     "chunk": "Der erste Mai ist frei",
+     "roh": "d_ɛ_ɾ _ˈeː_ɾ_s_t_ə m_ˈaɪ _ɪ_s_t f_r_ˈaɪ"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "phoneme_ohne_regeln": "dɛɾ ˈeːɾstə mˈaɪ ɪst frˈaɪ.",
+   "endfassung": "dɛɾ ˈeːɾstə mˈaɪ ɪst frˈaɪ.",
+   "verworfen": []
+  },
+  {
+   "text": "Bis Ende Nov. gesperrt.",
+   "nach_textregeln": "Bis Ende November gesperrt.",
+   "segmente": [
+    {
+     "chunk": "Bis Ende November gesperrt",
+     "roh": "b_ɪ_s _ˈɛ_n_d_ə n_oː_v_ˈɛ_m_b_ɜ ɡ_ə_ʃ_p_ˈɛ_ɾ_t"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "phoneme_ohne_regeln": "bɪs ˈɛndə noːvˈɛmbɜ ɡəʃpˈɛɾt.",
+   "endfassung": "bɪs ˈɛndə noːvˈɛmbɜ ɡəʃpˈɛɾt.",
+   "verworfen": []
+  },
+  {
+   "text": "Das war im Dez.",
+   "nach_textregeln": "Das war im Dezember.",
+   "segmente": [
+    {
+     "chunk": "Das war im Dezember",
+     "roh": "d_a_s v_ɑː_ɾ_ _ɪ_m d_eː_ts_ˈɛ_m_b_ɜ"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "phoneme_ohne_regeln": "das vɑːɾ ɪm deːtsˈɛmbɜ.",
+   "endfassung": "das vɑːɾ ɪm deːtsˈɛmbɜ.",
+   "verworfen": []
+  },
+  {
+   "text": "Das ist z.B. gut, d.h. besser, bzw. am besten.",
+   "nach_textregeln": "Das ist zum Beispiel gut, das heißt besser, beziehungsweise am besten.",
+   "segmente": [
+    {
+     "chunk": "Das ist zum Beispiel gut",
+     "roh": "d_a_s _ɪ_s_t__ ts_ʊ_m b_ˈaɪ_ʃ_p_iː_l ɡ_ˈuː_t"
+    },
+    {
+     "chunk": "das heißt besser",
+     "roh": "d_a_s h_ˈaɪ_s_t b_ˈɛ_s_ɜ"
+    },
+    {
+     "chunk": "beziehungsweise am besten",
+     "roh": "b_ə_ts_ˈiː_ʊ_ŋ_s_v_ˌaɪ_z_ə_ _a_m b_ˈɛ_s_t_ə_n"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ", ",
+     "position": "I"
+    },
+    {
+     "mark": ", ",
+     "position": "I"
+    },
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "phoneme_ohne_regeln": "das ɪst tsʊm bˈaɪʃpiːl ɡˈuːt, das hˈaɪst bˈɛsɜ, bətsˈiːʊŋsvˌaɪzə am bˈɛstən.",
+   "endfassung": "das ɪst tsʊm bˈaɪʃpiːl ɡˈuːt, das hˈaɪst bˈɛsɜ, bətsˈiːʊŋsvˌaɪzə am bˈɛstən.",
+   "verworfen": []
+  },
+  {
+   "text": "Dr. Meier wohnt in der Hauptstr. 5.",
+   "nach_textregeln": "Doktor Meier wohnt in der Hauptstraße 5.",
+   "segmente": [
+    {
+     "chunk": "Doktor Meier wohnt in der Hauptstraße 5",
+     "roh": "d_ˈɔ_k_t_oː_ɾ m_ˈaɪ_ɜ v_ˈoː_n_t_ _ɪ_n d_ɛ_ɾ h_ˈaʊ_p_t_s_t_ɾ_ˌɑː_s_ə f_ˈʏ_n_f"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "phoneme_ohne_regeln": "dˈɔktoːɾ mˈaɪɜ vˈoːnt ɪn dɛɾ hˈaʊptstɾˌɑːsə fˈynf.",
+   "endfassung": "dˈɔktoːɾ mˈaɪɜ vˈoːnt ɪn dɛɾ hˈaʊptstɾˌɑːsə fˈynf.",
+   "verworfen": []
+  },
+  {
+   "text": "Prof. Schmidt hat am 3. August Geburtstag.",
+   "nach_textregeln": "Professor Schmidt hat am dritten August Geburtstag.",
+   "segmente": [
+    {
+     "chunk": "Professor Schmidt hat am dritten August Geburtstag",
+     "roh": "p_ɾ_oː_f_ˈɛ_s_oː_ɾ ʃ_m_ˈɪ_t h_a_t_ _a_m d_ɾ_ˈɪ_t_ə_n _ˈaʊ_ɡ_ʊ_s_t ɡ_ə_b_ˈʊɐ_t_s_t_ɑː_k"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "phoneme_ohne_regeln": "pɾoːfˈɛsoːɾ ʃmˈɪt hat am dɾˈɪtən ˈaʊɡʊst ɡəbˈʊɐtstɑːk.",
+   "endfassung": "pɾoːfˈɛsoːɾ ʃmˈɪt hat am dɾˈɪtən aʊɡˈʊst ɡəbˈʊɐtstɑːk.",
+   "verworfen": []
+  },
+  {
+   "text": "Es wiegt 1,5 kg und kostet zwanzig Euro.",
+   "nach_textregeln": "Es wiegt 1,5 Kilogramm und kostet zwanzig Euro.",
+   "segmente": [
+    {
+     "chunk": "Es wiegt 1,5 Kilogramm und kostet zwanzig Euro",
+     "roh": "_ɛ_s v_ˈiː_k_t _ˈaɪ_n_s _k_ɔ_m_ɑː f_ˈʏ_n_f k_ˌiː_l_ɔ_ɡ_ɾ_ˈa_m__ _ʊ_n_t k_ˈɔ_s_t_ə_t ts_v_ˈa_n_ts_ɪ_ç _ˈɔø_r_oː"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "phoneme_ohne_regeln": "ɛs vˈiːkt ˈaɪns kɔmɑː fˈynf kˌiːlɔɡɾˈam ʊnt kˈɔstət tsvˈantsɪç ˈɔøroː.",
+   "endfassung": "ɛs vˈiːkt ˈaɪns kɔmɑː fˈynf kˌiːlɔɡɾˈam ʊnt kˈɔstət tsvˈantsɪç ˈɔøroː.",
+   "verworfen": []
+  },
+  {
+   "text": "Noch 2,5 km bis zum Ziel.",
+   "nach_textregeln": "Noch 2,5 Kilometer bis zum Ziel.",
+   "segmente": [
+    {
+     "chunk": "Noch 2,5 Kilometer bis zum Ziel",
+     "roh": "n_ɔ_x ts_v_ˈaɪ _k_ɔ_m_ɑː f_ˈʏ_n_f k_ˌiː_l_oː_m_ˈeː_t_ɜ__ b_ɪ_s ts_ʊ_m ts_ˈiː_l"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "phoneme_ohne_regeln": "nɔx tsvˈaɪ kɔmɑː fˈynf kˌiːloːmˈeːtɜ bɪs tsʊm tsˈiːl.",
+   "endfassung": "nɔx tsvˈaɪ kɔmɑː fˈynf kˌiːloːmˈeːtɜ bɪs tsʊm tsˈiːl.",
+   "verworfen": []
+  },
+  {
+   "text": "Er ist 1,85 m groß.",
+   "nach_textregeln": "Er ist 1,85 Meter groß.",
+   "segmente": [
+    {
+     "chunk": "Er ist 1,85 Meter groß",
+     "roh": "_ɛ_ɾ _ɪ_s_t _ˈaɪ_n_s _k_ɔ_m_ɑː _ˈa_x_t f_ˈʏ_n_f m_ˈeː_t_ɜ ɡ_ɾ_ˈoː_s"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "phoneme_ohne_regeln": "ɛɾ ɪst ˈaɪns kɔmɑː ˈaxt fˈynf mˈeːtɜ ɡɾˈoːs.",
+   "endfassung": "ɛɾ ɪst ˈaɪns kɔmɑː ˈaxt fˈynf mˈeːtɜ ɡɾˈoːs.",
+   "verworfen": []
+  },
+  {
+   "text": "Es sind 5 kg Mehl und 1.000 Stück.",
+   "nach_textregeln": "Es sind 5 Kilogramm Mehl und 1000 Stück.",
+   "segmente": [
+    {
+     "chunk": "Es sind 5 Kilogramm Mehl und 1000 Stück",
+     "roh": "_ɛ_s z_ɪ_n_t f_ˈʏ_n_f k_ˌiː_l_ɔ_ɡ_ɾ_ˈa_m m_ˈeː_l__ _ʊ_n_t _ˈaɪ_n t_ˈaʊ_z_ə_n_t ʃ_t_ˈʏ_k"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "phoneme_ohne_regeln": "ɛs zɪnt fˈynf kˌiːlɔɡɾˈam mˈeːl ʊnt ˈaɪn tˈaʊzənt ʃtˈyk.",
+   "endfassung": "ɛs zɪnt fˈynf kˌiːlɔɡɾˈam mˈeːl ʊnt ˈaɪn tˈaʊzənt ʃtˈyk.",
+   "verworfen": []
+  },
+  {
+   "text": "Um 17:45 Uhr geht es los.",
+   "nach_textregeln": "Um 17 Uhr 45 geht es los.",
+   "segmente": [
+    {
+     "chunk": "Um 17 Uhr 45 geht es los",
+     "roh": "_ʊ_m z_ˈiː_p_ts_eː_n _ˈuː_ɾ f_ˈʏ_n_f _ʊ_n_t_f_ˈɪ_ɾ_ts_ɪ_ç ɡ_ˈeː_t _ɛ_s l_ˈoː_s"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "phoneme_ohne_regeln": "ʊm zˈiːptseːn ˈuːɾ fˈynf ʊntfˈɪɾtsɪç ɡˈeːt ɛs lˈoːs.",
+   "endfassung": "ʊm zˈiːptseːn ˈuːɾ fˈynf ʊntfˈɪɾtsɪç ɡˈeːt ɛs lˈoːs.",
+   "verworfen": []
+  },
+  {
+   "text": "Es ist 12:00 Uhr.",
+   "nach_textregeln": "Es ist 12 Uhr.",
+   "segmente": [
+    {
+     "chunk": "Es ist 12 Uhr",
+     "roh": "_ɛ_s_ɪ_s_t ts_v_ˈœ_l_f _ˈuː_ɾ"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "phoneme_ohne_regeln": "ɛsɪst tsvˈœlf ˈuːɾ.",
+   "endfassung": "ɛsɪst tsvˈœlf ˈuːɾ.",
+   "verworfen": []
+  },
+  {
+   "text": "Das Ergebnis war 2:1.",
+   "nach_textregeln": "Das Ergebnis war 2:1.",
+   "segmente": [
+    {
+     "chunk": "Das Ergebnis war 2",
+     "roh": "d_a_s _ɛ_ɾ_ɡ_ˈeː_b_n_ɪ_s v_ɑː_ɾ ts_v_ˈaɪ"
+    },
+    {
+     "chunk": "1",
+     "roh": "_ˈaɪ_n_s"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ":",
+     "position": "I"
+    },
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "phoneme_ohne_regeln": "das ɛɾɡˈeːbnɪs vɑːɾ tsvˈaɪ:ˈaɪns.",
+   "endfassung": "das ɛɾɡˈeːbnɪs vɑːɾ tsvˈaɪ:ˈaɪns.",
+   "verworfen": []
+  },
+  {
+   "text": "Version 2.1.4 ist da.",
+   "nach_textregeln": "Version 2.1.4 ist da.",
+   "segmente": [
+    {
+     "chunk": "Version 2",
+     "roh": "v_ɛ_ɾ_z_j_ˈoː_n ts_v_ˈaɪ"
+    },
+    {
+     "chunk": "1.4 ist da.",
+     "roh": "_ˈaɪ_n_s p_ʊ_ŋ_k_t f_ˈiː_ɾ _ɪ_s_t d_ˈɑː"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "phoneme_ohne_regeln": "vɛɾzjˈoːn tsvˈaɪ. ˈaɪns pʊŋkt fˈiːɾ ɪst dˈɑː",
+   "endfassung": "vɛɾzjˈoːn tsvˈaɪ. ˈaɪns pʊŋkt fˈiːɾ ɪst dˈɑː",
+   "verworfen": []
+  },
+  {
+   "text": "Seit 1200 Jahren.",
+   "nach_textregeln": "Seit 1200 Jahren.",
+   "segmente": [
+    {
+     "chunk": "Seit 1200 Jahren",
+     "roh": "z_aɪ_t _ˈaɪ_n t_ˈaʊ_z_ə_n_t ts_v_ˈaɪ_h_ˈʊ_n_d_ɜ_t j_ˈɑː_r_ə_n"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "phoneme_ohne_regeln": "zaɪt ˈaɪn tˈaʊzənt tsvˈaɪhˈʊndɜt jˈɑːrən.",
+   "endfassung": "zaɪt ˈaɪn tˈaʊzənt tsvˈaɪhˈʊndɜt jˈɑːrən.",
+   "verworfen": []
+  },
+  {
+   "text": "Zimmer 12 bitte.",
+   "nach_textregeln": "Zimmer 12 bitte.",
+   "segmente": [
+    {
+     "chunk": "Zimmer 12 bitte",
+     "roh": "ts_ˈɪ_m_ɜ ts_v_ˈœ_l_f b_ˈɪ_t_ə"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "phoneme_ohne_regeln": "tsˈɪmɜ tsvˈœlf bˈɪtə.",
+   "endfassung": "tsˈɪmɜ tsvˈœlf bˈɪtə.",
+   "verworfen": []
+  },
+  {
+   "text": "Wir fahren im August nach Rom.",
+   "nach_textregeln": "Wir fahren im August nach Rom.",
+   "segmente": [
+    {
+     "chunk": "Wir fahren im August nach Rom",
+     "roh": "v_iː_ɾ f_ˈɑː_r_ə_n_ _ɪ_m _ˈaʊ_ɡ_ʊ_s_t_ n_ɑː_x r_ˈoː_m"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "phoneme_ohne_regeln": "viːɾ fˈɑːrən ɪm ˈaʊɡʊst nɑːx rˈoːm.",
+   "endfassung": "viːɾ fˈɑːrən ɪm aʊɡˈʊst nɑːx rˈoːm.",
+   "verworfen": []
+  },
+  {
+   "text": "August Meier kommt morgen.",
+   "nach_textregeln": "August Meier kommt morgen.",
+   "segmente": [
+    {
+     "chunk": "August Meier kommt morgen",
+     "roh": "_ˈaʊ_ɡ_ʊ_s_t m_ˈaɪ_ɜ k_ˈɔ_m_t m_ˈɔ_ɾ_ɡ_ə_n"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "phoneme_ohne_regeln": "ˈaʊɡʊst mˈaɪɜ kˈɔmt mˈɔɾɡən.",
+   "endfassung": "ˈaʊɡʊst mˈaɪɜ kˈɔmt mˈɔɾɡən.",
+   "verworfen": []
+  },
+  {
+   "text": "Prinz August von Preußen.",
+   "nach_textregeln": "Prinz August von Preußen.",
+   "segmente": [
+    {
+     "chunk": "Prinz August von Preußen",
+     "roh": "p_ɾ_ˈɪ_n_ts _ˈaʊ_ɡ_ʊ_s_t_ f_ɔ_n p_ɾ_ˈɔø_s_ə_n"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "phoneme_ohne_regeln": "pɾˈɪnts ˈaʊɡʊst fɔn pɾˈɔøsən.",
+   "endfassung": "pɾˈɪnts ˈaʊɡʊst fɔn pɾˈɔøsən.",
+   "verworfen": []
+  },
+  {
+   "text": "Im August besuchte August Meier uns.",
+   "nach_textregeln": "Im August besuchte August Meier uns.",
+   "segmente": [
+    {
+     "chunk": "Im August besuchte August Meier uns",
+     "roh": "_ɪ_m _ˈaʊ_ɡ_ʊ_s_t b_ə_z_ˈuː_x_t_ə _ˈaʊ_ɡ_ʊ_s_t m_ˈaɪ_ɜ _ˈʊ_n_s"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "phoneme_ohne_regeln": "ɪm ˈaʊɡʊst bəzˈuːxtə ˈaʊɡʊst mˈaɪɜ ˈʊns.",
+   "endfassung": "ɪm aʊɡˈʊst bəzˈuːxtə ˈaʊɡʊst mˈaɪɜ ˈʊns.",
+   "verworfen": []
+  },
+  {
+   "text": "Die Lebensversicherung läuft im August aus.",
+   "nach_textregeln": "Die Lebensversicherung läuft im August aus.",
+   "segmente": [
+    {
+     "chunk": "Die Lebensversicherung läuft im August aus",
+     "roh": "d_iː l_ˌeː_b_ə_n_s_f_ɛ_ɾ_z_ˈɪ_ç_ə_r_ˌʊ_ŋ l_ˈɔø_f_t_ _ɪ_m _ˈaʊ_ɡ_ʊ_s_t _ˈaʊ_s"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "phoneme_ohne_regeln": "diː lˌeːbənsfɛɾzˈɪçərˌʊŋ lˈɔøft ɪm ˈaʊɡʊst ˈaʊs.",
+   "endfassung": "diː lˈeːbənsfɛɾzɪçərʊŋ lˈɔøft ɪm aʊɡˈʊst ˈaʊs.",
+   "verworfen": []
+  },
+  {
+   "text": "Das Büro liegt im Hotel.",
+   "nach_textregeln": "Das Büro liegt im Hotel.",
+   "segmente": [
+    {
+     "chunk": "Das Büro liegt im Hotel",
+     "roh": "d_a_s b_ˈyː_r_oː l_ˈiː_k_t_ _ɪ_m h_ˈoː_t_ə_l"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "phoneme_ohne_regeln": "das bˈyːroː lˈiːkt ɪm hˈoːtəl.",
+   "endfassung": "das byːrˈoː lˈiːkt ɪm hoːtˈəl.",
+   "verworfen": []
+  },
+  {
+   "text": "Ein Jahrzehnt mit neuen Motoren.",
+   "nach_textregeln": "Ein Jahrzehnt mit neuen Motoren.",
+   "segmente": [
+    {
+     "chunk": "Ein Jahrzehnt mit neuen Motoren",
+     "roh": "_aɪ_n j_ˈɑː_ɾ_ts_eː_n_t__ m_ɪ_t n_ˈɔø_ə_n m_ˈoː_t_oː_r_ə_n"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "phoneme_ohne_regeln": "aɪn jˈɑːɾtseːnt mɪt nˈɔøən mˈoːtoːrən.",
+   "endfassung": "aɪn jɑːɾtsˈeːnt mɪt nˈɔøən moːtˈoːrən.",
+   "verworfen": []
+  },
+  {
+   "text": "Die Kaffeemaschine im Studentenwohnheim.",
+   "nach_textregeln": "Die Kaffeemaschine im Studentenwohnheim.",
+   "segmente": [
+    {
+     "chunk": "Die Kaffeemaschine im Studentenwohnheim",
+     "roh": "d_iː k_ˌa_f_eː_m_a_ʃ_ˈiː_n_ə_ _ɪ_m ʃ_t_ˈuː_d_ə_n_t_ˌɛ_n_v_oː_n_h_ˌaɪ_m"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "phoneme_ohne_regeln": "diː kˌafeːmaʃˈiːnə ɪm ʃtˈuːdəntˌɛnvoːnhˌaɪm.",
+   "endfassung": "diː kˈafeːmaʃˌiːnə ɪm ʃtuːdˈəntɛnvoːnhaɪm.",
+   "verworfen": []
+  },
+  {
+   "text": "Wir wollen nicht widersprechen oder missverstehen.",
+   "nach_textregeln": "Wir wollen nicht widersprechen oder missverstehen.",
+   "segmente": [
+    {
+     "chunk": "Wir wollen nicht widersprechen oder missverstehen",
+     "roh": "v_iː_ɾ v_ɔ_l_ə_n n_ˈɪ_ç_t v_ˈiː_d_ɜ_ʃ_p_ɾ_ˌɛ_ç_ə_n__ _ˌoː_d_ɜ m_ˈɪ_s_f_ɜ_ʃ_t_ˌeː_ə_n"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "phoneme_ohne_regeln": "viːɾ vɔlən nˈɪçt vˈiːdɜʃpɾˌɛçən ˌoːdɜ mˈɪsfɜʃtˌeːən.",
+   "endfassung": "viːɾ vɔlən nˈɪçt viːdɜʃpɾˈɛçən ˌoːdɜ mɪsfɜʃtˈeːən.",
+   "verworfen": []
+  },
+  {
+   "text": "Das Büro in Osnabrück.",
+   "nach_textregeln": "Das Büro in Osnabrück.",
+   "segmente": [
+    {
+     "chunk": "Das Büro in Osnabrück",
+     "roh": "d_a_s b_ˈyː_r_oː_ _ɪ_n _ˈɔ_s_n_a_b_ɾ_ˌʏ_k"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "phoneme_ohne_regeln": "das bˈyːroː ɪn ˈɔsnabɾˌyk.",
+   "endfassung": "das byːrˈoː ɪn ɔsnabɾˈyk.",
+   "verworfen": []
+  },
+  {
+   "text": "Die Erbse ist grün und die Erbsen sind gekocht.",
+   "nach_textregeln": "Die Erbse ist grün und die Erbsen sind gekocht.",
+   "segmente": [
+    {
+     "chunk": "Die Erbse ist grün und die Erbsen sind gekocht",
+     "roh": "d_iː _ɛ_ɾ_b_z_ˈeː _ɪ_s_t ɡ_ɾ_ˈyː_n__ _ʊ_n_t d_iː _ˈɛ_ɾ_p_z_ə_n z_ɪ_n_t ɡ_ə_k_ˈɔ_x_t"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "phoneme_ohne_regeln": "diː ɛɾbzˈeː ɪst ɡɾˈyːn ʊnt diː ˈɛɾpzən zɪnt ɡəkˈɔxt.",
+   "endfassung": "diː ˈɛɾpsə ɪst ɡɾˈyːn ʊnt diː ˈɛɾpsən zɪnt ɡəkˈɔxt.",
+   "verworfen": []
+  },
+  {
+   "text": "Ich lese das Journal in der Etage.",
+   "nach_textregeln": "Ich lese das Journal in der Etage.",
+   "segmente": [
+    {
+     "chunk": "Ich lese das Journal in der Etage",
+     "roh": "_ɪ_ç l_ˈeː_z_ə d_a_s j_uː_ɾ_n_ˈɑː_l_ _ɪ_n d_ɛ_ɾ _ˈeː_t_ɑː_ɡ_ə"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "phoneme_ohne_regeln": "ɪç lˈeːzə das juːɾnˈɑːl ɪn dɛɾ ˈeːtɑːɡə.",
+   "endfassung": "ɪç lˈeːzə das ʒʊɾnˈɑːl ɪn dɛɾ eːtˈɑːʒə.",
+   "verworfen": []
+  },
+  {
+   "text": "Die Orange und die Regie.",
+   "nach_textregeln": "Die Orange und die Regie.",
+   "segmente": [
+    {
+     "chunk": "Die Orange und die Regie",
+     "roh": "d_iː _ˈoː_r_a_ŋ_ə__ _ʊ_n_t d_iː r_eː_ɡ_ˈiː"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "phoneme_ohne_regeln": "diː ˈoːraŋə ʊnt diː reːɡˈiː.",
+   "endfassung": "diː orˈɑ̃ːʒə ʊnt diː reːʒˈiː.",
+   "verworfen": []
+  },
+  {
+   "text": "Die Regie der Regierung ist gut.",
+   "nach_textregeln": "Die Regie der Regierung ist gut.",
+   "segmente": [
+    {
+     "chunk": "Die Regie der Regierung ist gut",
+     "roh": "d_iː r_eː_ɡ_ˈiː d_ɛ_ɾ r_eː_ɡ_ˈiː_r_ʊ_ŋ _ɪ_s_t ɡ_ˈuː_t"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "phoneme_ohne_regeln": "diː reːɡˈiː dɛɾ reːɡˈiːrʊŋ ɪst ɡˈuːt.",
+   "endfassung": "diː reːɡˈiː dɛɾ reːɡˈiːrʊŋ ɪst ɡˈuːt.",
+   "verworfen": []
+  },
+  {
+   "text": "Das Frauchen ruft, wir rauchen nicht.",
+   "nach_textregeln": "Das Frauchen ruft, wir rauchen nicht.",
+   "segmente": [
+    {
+     "chunk": "Das Frauchen ruft",
+     "roh": "d_a_s f_r_ˈaʊ_x_ə_n r_ˈʊ_f_t"
+    },
+    {
+     "chunk": "wir rauchen nicht",
+     "roh": "v_iː_ɾ r_ˈaʊ_x_ə_n n_ˈɪ_ç_t"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ", ",
+     "position": "I"
+    },
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "phoneme_ohne_regeln": "das frˈaʊxən rˈʊft, viːɾ rˈaʊxən nˈɪçt.",
+   "endfassung": "das frˈaʊçən rˈʊft, viːɾ rˈaʊxən nˈɪçt.",
+   "verworfen": []
+  },
+  {
+   "text": "Gib mir das Handtuch und das Tischtuch.",
+   "nach_textregeln": "Gib mir das Handtuch und das Tischtuch.",
+   "segmente": [
+    {
+     "chunk": "Gib mir das Handtuch und das Tischtuch",
+     "roh": "ɡ_ˈiː_p m_iː_ɾ d_a_s h_ˈa_n_t_t_ˌʊ_x__ _ʊ_n_t d_a_s t_ˈɪ_ʃ_t_ʊ_x"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "phoneme_ohne_regeln": "ɡˈiːp miːɾ das hˈanttˌʊx ʊnt das tˈɪʃtʊx.",
+   "endfassung": "ɡˈiːp miːɾ das hˈanttˌuːx ʊnt das tˈɪʃtuːx.",
+   "verworfen": []
+  },
+  {
+   "text": "Die Sauce ist fertig.",
+   "nach_textregeln": "Die Sauce ist fertig.",
+   "segmente": [
+    {
+     "chunk": "Die Sauce ist fertig",
+     "roh": "d_iː z_ˈaʊ_k_ə _ɪ_s_t f_ˈɛ_ɾ_t_ɪ_ç"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "phoneme_ohne_regeln": "diː zˈaʊkə ɪst fˈɛɾtɪç.",
+   "endfassung": "diː zˈoːsə ɪst fˈɛɾtɪç.",
+   "verworfen": []
+  },
+  {
+   "text": "Guten Tag, hier spricht Martin.",
+   "nach_textregeln": "Guten Tag, hier spricht Martin.",
+   "segmente": [
+    {
+     "chunk": "Guten Tag",
+     "roh": "ɡ_ˈuː_t_ə_n t_ˈɑː_k"
+    },
+    {
+     "chunk": "hier spricht Martin",
+     "roh": "h_ˈiː_ɾ ʃ_p_ɾ_ˈɪ_ç_t m_ˈa_ɾ_t_ɪ_n"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ", ",
+     "position": "I"
+    },
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "phoneme_ohne_regeln": "ɡˈuːtən tˈɑːk, hˈiːɾ ʃpɾˈɪçt mˈaɾtɪn.",
+   "endfassung": "ɡˈuːtən tˈɑːk, hˈiːɾ ʃpɾˈɪçt mˈaɾtiːn.",
+   "verworfen": []
+  },
+  {
+   "text": "Martin und Martins Bruder.",
+   "nach_textregeln": "Martin und Martins Bruder.",
+   "segmente": [
+    {
+     "chunk": "Martin und Martins Bruder",
+     "roh": "m_ˈa_ɾ_t_ɪ_n _ʊ_n_t m_ˈa_ɾ_t_ɪ_n_s b_ɾ_ˈuː_d_ɜ"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "phoneme_ohne_regeln": "mˈaɾtɪn ʊnt mˈaɾtɪns bɾˈuːdɜ.",
+   "endfassung": "mˈaɾtiːn ʊnt mˈaɾtiːns bɾˈuːdɜ.",
+   "verworfen": []
+  },
+  {
+   "text": "Die Martina ruft den Martin.",
+   "nach_textregeln": "Die Martina ruft den Martin.",
+   "segmente": [
+    {
+     "chunk": "Die Martina ruft den Martin",
+     "roh": "d_iː m_ˈa_ɾ_t_iː_n_ˌɑː r_ˈʊ_f_t d_eː_n m_ˈa_ɾ_t_ɪ_n"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "phoneme_ohne_regeln": "diː mˈaɾtiːnˌɑː rˈʊft deːn mˈaɾtɪn.",
+   "endfassung": "diː mˈaɾtiːnˌɑː rˈʊft deːn mˈaɾtiːn.",
+   "verworfen": []
+  },
+  {
+   "text": "Sankt Martin ritt durch Schnee und Wind.",
+   "nach_textregeln": "Sankt Martin ritt durch Schnee und Wind.",
+   "segmente": [
+    {
+     "chunk": "Sankt Martin ritt durch Schnee und Wind",
+     "roh": "z_ˈa_ŋ_k_t m_ˈa_ɾ_t_ɪ_n r_ˈɪ_t__ d_ʊɐ_ç ʃ_n_ˈeː _ʊ_n_t v_ˈɪ_n_t"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "phoneme_ohne_regeln": "zˈaŋkt mˈaɾtɪn rˈɪt dʊɐç ʃnˈeː ʊnt vˈɪnt.",
+   "endfassung": "zˈaŋkt mˈaɾtiːn rˈɪt dʊɐç ʃnˈeː ʊnt vˈɪnt.",
+   "verworfen": []
+  },
+  {
+   "text": "Nach dem 3. August wird es kühler.",
+   "nach_textregeln": "Nach dem dritten August wird es kühler.",
+   "segmente": [
+    {
+     "chunk": "Nach dem dritten August wird es kühler",
+     "roh": "n_ɑː_x d_eː_m d_ɾ_ˈɪ_t_ə_n _ˈaʊ_ɡ_ʊ_s_t v_ˌɪ_ɾ_t _ɛ_s k_ˈyː_l_ɜ"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "phoneme_ohne_regeln": "nɑːx deːm dɾˈɪtən ˈaʊɡʊst vˌɪɾt ɛs kˈyːlɜ.",
+   "endfassung": "nɑːx deːm dɾˈɪtən aʊɡˈʊst vˌɪɾt ɛs kˈyːlɜ.",
+   "verworfen": []
+  }
+ ]
+}

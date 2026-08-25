@@ -49,7 +49,7 @@ sys.stdout.reconfigure(encoding="utf-8")
 HIER = Path(__file__).parent
 REPO = HIER.parent.parent
 sys.path.insert(0, str(HIER))
-from korpus import KORPUS  # noqa: E402
+from korpus import KORPUS, REGEL_KORPUS  # noqa: E402
 
 REFERENZ = REPO.parent / "TTS Test"
 sys.path.insert(0, str(REFERENZ))
@@ -63,7 +63,10 @@ from kokoro_onnx.tokenizer import Tokenizer  # noqa: E402
 from phonemizer.punctuation import Punctuation  # noqa: E402
 from phonemizer.separator import default_separator  # noqa: E402
 
+import betonung  # noqa: E402  (Windows-Referenz, Regelstufe)
 import phonemisierung  # noqa: E402  (die Windows-Referenz — Stufe-B-Wahrheit)
+import textregeln  # noqa: E402
+import wortlaute  # noqa: E402
 
 # ---------------------------------------------------------------- Referenz-DLL
 LIB = cdll.LoadLibrary(espeakng_loader.get_library_path())
@@ -191,6 +194,56 @@ def main() -> int:
         import shutil
         shutil.copyfile(datei, ziel2 / datei.name)
         print(f"{datei.name}: {len(eintraege)} Sätze")
+
+    # ---------------------------------------------------- Stufe C: Regelkette
+    # Die volle deutsche Kette der Referenz (kokoro_test._synthese):
+    # normalisieren → textregeln → phonemisieren → betonung → wortlaute.
+    # Das Fixture trägt zusätzlich die Rohsegmente NACH den Textregeln, damit
+    # der JVM-Test ohne espeak läuft (dasselbe Muster wie Stufe A/B).
+    punct2 = Punctuation()
+    regel_eintraege = []
+    regel_fehler = 0
+    for satz in REGEL_KORPUS:
+        norm = unicodedata.normalize("NFC", satz)
+        norm = " ".join(norm.split())
+        nach_text, _meld = textregeln.berichtige(norm)
+
+        chunks, marks = punct2.preserve(nach_text)
+        segmente = [roh_espeak(c, "de") for c in chunks]
+
+        phoneme, verworfen = phonemisierung.phonemisiere(nach_text, "de",
+                                                         normalisieren=False)
+        mit_betonung, _m1 = betonung.berichtige(nach_text, phoneme)
+        endfassung, _m2 = wortlaute.berichtige(nach_text, mit_betonung)
+
+        # Beweis der Spezifikation auch hier: Stufe B aus den Rohsegmenten.
+        nach = [nachverarbeitung_segment(x) for x in segmente]
+        gebaut, _ = baue_endfassung(list(nach), marks)
+        if gebaut != phoneme:
+            regel_fehler += 1
+            print(f"ABWEICHUNG [regeln/frontend] {satz}")
+            print(f"  gebaut  : {gebaut}")
+            print(f"  Referenz: {phoneme}")
+
+        regel_eintraege.append({
+            "text": norm,
+            "nach_textregeln": nach_text,
+            "segmente": [{"chunk": c, "roh": r} for c, r in zip(chunks, segmente)],
+            "marks": [{"mark": m.mark, "position": m.position} for m in marks],
+            "phoneme_ohne_regeln": phoneme,
+            "endfassung": endfassung,
+            "verworfen": verworfen,
+        })
+
+    for zielordner in (ziel, REPO / "app/src/androidTest/assets/golden"):
+        io.open(zielordner / "de-regeln.json", "w", encoding="utf-8", newline="\n").write(
+            json.dumps({
+                "sprache": "de", "stufe": "C (Textregeln + Betonung + Wortlaute)",
+                "espeak": "1.52.0 (Referenz-DLL)", "erzeugt": str(date.today()),
+                "saetze": regel_eintraege,
+            }, ensure_ascii=False, indent=1) + "\n")
+    print(f"de-regeln.json: {len(regel_eintraege)} Sätze")
+    fehler += regel_fehler
 
     # Vokabular-Export für Laufzeit UND Tests (char → Token-Id).
     vok = REPO / "app/src/main/assets/vokabular.json"

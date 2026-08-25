@@ -9,6 +9,58 @@ Sprachen bekommen je eine kleine, lautlich breite Auswahl samt ihrer
 Interpunktions-Eigenheiten (¿…?, Apostrophe, Devanagari-Danda).
 """
 
+#: Der Regel-Korpus (nur Deutsch): jeder Satz zielt auf eine Regelgruppe der
+#: Windows-Referenz oder auf eine ihrer GEGENPROBEN — die Sätze, bei denen die
+#: Regeln gerade NICHT greifen dürfen, sind genauso wichtig wie die Treffer.
+REGEL_KORPUS = [
+    # Textregeln: Datum mit Kasus, Uhrzeit, Abkürzungen, Einheiten
+    "Der Termin ist am 3. August um 8:09 Uhr.",
+    "Er kommt am Fr. den 3. Mai.",
+    "Ich meine den 1. Juli.",
+    "Wir schreiben den 24. Dezember.",
+    "Der 1. Mai ist frei.",
+    "Bis Ende Nov. gesperrt.",
+    "Das war im Dez.",
+    "Das ist z.B. gut, d.h. besser, bzw. am besten.",
+    "Dr. Meier wohnt in der Hauptstr. 5.",
+    "Prof. Schmidt hat am 3. August Geburtstag.",
+    "Es wiegt 1,5 kg und kostet zwanzig Euro.",
+    "Noch 2,5 km bis zum Ziel.",
+    "Er ist 1,85 m groß.",
+    "Es sind 5 kg Mehl und 1.000 Stück.",
+    "Um 17:45 Uhr geht es los.",
+    "Es ist 12:00 Uhr.",
+    # Gegenproben: hier darf KEINE Textregel greifen
+    "Das Ergebnis war 2:1.",
+    "Version 2.1.4 ist da.",
+    "Seit 1200 Jahren.",
+    "Zimmer 12 bitte.",
+    # Betonung: August-Kontextregel und die zehn festen Fehlbetonungen
+    "Wir fahren im August nach Rom.",
+    "August Meier kommt morgen.",
+    "Prinz August von Preußen.",
+    "Im August besuchte August Meier uns.",
+    "Die Lebensversicherung läuft im August aus.",
+    "Das Büro liegt im Hotel.",
+    "Ein Jahrzehnt mit neuen Motoren.",
+    "Die Kaffeemaschine im Studentenwohnheim.",
+    "Wir wollen nicht widersprechen oder missverstehen.",
+    "Das Büro in Osnabrück.",
+    # Wortlaute samt Zählproben-Fall (Regie in Regierung) und Reihenfolge-Falle
+    "Die Erbse ist grün und die Erbsen sind gekocht.",
+    "Ich lese das Journal in der Etage.",
+    "Die Orange und die Regie.",
+    "Die Regie der Regierung ist gut.",
+    "Das Frauchen ruft, wir rauchen nicht.",
+    "Gib mir das Handtuch und das Tischtuch.",
+    "Die Sauce ist fertig.",
+    "Guten Tag, hier spricht Martin.",
+    "Martin und Martins Bruder.",
+    "Die Martina ruft den Martin.",
+    "Sankt Martin ritt durch Schnee und Wind.",
+    "Nach dem 3. August wird es kühler.",
+]
+
 KORPUS = {
     "de": [
         # DER Gate-Satz: dichtester ich-Laut-Gehalt — der historische Fehlschlag.

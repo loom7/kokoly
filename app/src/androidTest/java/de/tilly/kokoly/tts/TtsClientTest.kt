@@ -62,8 +62,9 @@ class TtsClientTest {
             override fun onError(id: String?, code: Int) { fehler = "onError($code)"; fertig.countDown() }
         })
 
-        val satz = "Guten Tag. Kokoly spricht jetzt über die Android-Schnittstelle, " +
-            "wie jede andere Stimme des Systems."
+        // Regeldichter Satz: Martin (langes i), Datum mit Kasus, Uhrzeit,
+        // Abkürzung, Augúst — seit M3 hörbar richtig.
+        val satz = "Guten Tag, hier spricht Martin. Der Termin ist z.B. am 3. August um 8:09 Uhr."
         tts.synthesizeToFile(satz, null, ziel, "m1")
         assertTrue("Synthese nicht fertig geworden", fertig.await(120, TimeUnit.SECONDS))
         assertEquals(null, fehler)

@@ -2,7 +2,7 @@
  "sprache": "pt-br",
  "espeak": "1.52.0 (espeakng-loader 0.2.4, Referenz-DLL)",
  "aufruf": "espeak_TextToPhonemes, text_mode=1, phonemes_mode=ord('_')<<8|0x02",
- "erzeugt": "2026-08-24",
+ "erzeugt": "2026-08-25",
  "saetze": [
   {
    "text": "A reunião é no dia três de agosto às oito horas.",

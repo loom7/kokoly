@@ -47,3 +47,5 @@ der Synthese. Quelle: CodeTest/PROMPT-KOKORO20260803.md (03.08.2026).
 | 25.08.2026 | **M0-GATE BESTANDEN:** die drei A/B-Paare (ich-Laut-Satz, Frauchen/rauchen, Martin-Begrüßung) klingen für den Nutzer identisch zur Windows-Referenz | Hörprobe Nutzer |
 | 25.08.2026 | **M1: Framework-Klient spricht** — TextToSpeech-Bindung an die Engine, setLanguage(GERMANY)→LANG_COUNTRY_AVAILABLE, Voice de-DE-martin vergeben, synthesizeToFile über den Streaming-Callback in 3,0 s (2 Sätze) | TtsClientTest, SM-F971B |
 | 25.08.2026 | Engine erscheint in der System-Dienstauflösung (TTS_SERVICE-Intent) | cmd package query-services |
+| 25.08.2026 | **M3: Regelwerk-Port zeichengenau** — Textregeln (42 Muster), Betonung (11), Wortlaute (15) über 42 Regel-Golden-Sätze inkl. Gegenproben referenzgleich; Zählprobe und Kasusendung mitgeprüft | RegelnGoldenTest, JVM, erster Lauf grün |
+| 25.08.2026 | Regelstufe lebt hinter der System-Schnittstelle: „Martin 1× berichtigt", „Abkürzung → zum Beispiel", „Uhrzeit ausgeschrieben" im Dienstprozess-Log | TtsClientTest + logcat |
