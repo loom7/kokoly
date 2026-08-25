@@ -19,7 +19,13 @@ import java.nio.LongBuffer
  * (alles M1+, nach den Mustern der Windows-Referenz). Der Prüfstein spricht
  * Einzelsätze.
  */
-class KokoroSynthesizer(modellDatei: File, stimmDatei: File, threads: Int = 4) {
+class KokoroSynthesizer(
+    modellDatei: File,
+    stimmDatei: File,
+    threads: Int = 4,
+    /** XNNPACK-Execution-Provider statt CPU-EP — Messgröße der M2a-Matrix. */
+    xnnpack: Boolean = false,
+) {
 
     companion object {
         const val ABTASTRATE = 24000
@@ -34,7 +40,15 @@ class KokoroSynthesizer(modellDatei: File, stimmDatei: File, threads: Int = 4) {
 
     init {
         val optionen = OrtSession.SessionOptions().apply {
-            setIntraOpNumThreads(threads)
+            if (xnnpack) {
+                // XNNPACK hat seinen eigenen Threadpool; die ORT-Threads bleiben
+                // dann auf 1, sonst drehen zwei Pools gegeneinander (Messfalle
+                // aus der Recherche, Kontrollpunkt in 6.4 des Plans).
+                addXnnpack(mapOf("intra_op_num_threads" to threads.toString()))
+                setIntraOpNumThreads(1)
+            } else {
+                setIntraOpNumThreads(threads)
+            }
         }
         sitzung = umgebung.createSession(modellDatei.absolutePath, optionen)
         stimme = stimmDatei.readBytes().let { bytes ->

@@ -12,6 +12,8 @@ Stimmnamen, unterstützte Locales, Verhalten der TTS-Schnittstelle).
   Kotlin-Frontend (8 Sprachen golden-geprüft), nackte Kokoro-Inferenz über ORT,
   Gate-WAVs für die ich-Laut-Hörprobe.
 
+- M2a-Messmatrix (21 Konfigurationen am Gerät): fp16+CPU-EP als Standard
+  entschieden (ADR-0015); XNNPACK und int8 verworfen — beide gemessen schlechter.
 - M3 Regelwerk: deutsche Text-, Betonungs- und Wortlautregeln als Kotlin-Tabellen
   (Golden-Stufe C, 42 Sätze samt Gegenproben), in die Dienst-Pipeline verdrahtet;
   docs/regelwerk.md mit dem vollen Einpflege-Weg.

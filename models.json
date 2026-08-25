@@ -19,9 +19,23 @@
           "lizenz": "Apache-2.0"
         }
       ],
-      "varianten_zu_messen": [
-        "kokoro-v1.0.fp16.onnx",
-        "kokoro-v1.0.int8.onnx"
+      "varianten": [
+        {
+          "name": "kokoro-v1.0.fp16.onnx",
+          "sha256": "f3a290d384fbb27966d462905c71a46cef9e5fd00516b40df32a0b4afe77ac96",
+          "bytes": 163527961,
+          "url": "https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.1/kokoro-v1.0.fp16.onnx",
+          "lizenz": "Apache-2.0",
+          "befund": "M2a-Sieger: RTF wie fp32 bei halber Groesse und ~110 MB weniger PSS"
+        },
+        {
+          "name": "kokoro-v1.0.int8.onnx",
+          "sha256": "ae315a79b623f244700e4afb9246c46a26066782e049ba174bf3ba433970ee9c",
+          "bytes": 114119327,
+          "url": "https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.1/kokoro-v1.0.int8.onnx",
+          "lizenz": "Apache-2.0",
+          "befund": "M2a: RTF 1,9-7,1 am SM8850 — fuer Echtzeit unbrauchbar, nur als RAM-Notoption denkbar"
+        }
       ]
     },
     "kokoro-martin": {
