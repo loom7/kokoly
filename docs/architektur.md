@@ -85,9 +85,11 @@ Regelwerke als datennahe Kotlin-Tabellen (ADR-0006). Alle Entscheidungen:
 ## 5. Querschnittskonzepte
 
 Die neun Nicht-Verhandelbaren samt Messbelegen: [erkenntnisse.md](erkenntnisse.md).
-espeak-Lebenszyklus: einmal je Prozess, resident, terminate nur in onDestroy;
-der Leerlauf-Timer entlädt nur ORT-Sessions. Stop-Pfad: volatile-Flag +
-RunOptions.setTerminate().
+espeak-Lebenszyklus: einmal je Prozess, resident bis zum Prozessende, kein
+terminate im Dienstbetrieb (Festlegung oben, berichtigt 25.08.2026); der
+Leerlauf-Timer entlädt nur ORT-Sessions. Stop-Pfad: volatile-Flag je Block +
+RunOptions.setTerminate() im laufenden Run; Lauf/Schließen der ORT-Session
+über faires RW-Lock synchronisiert.
 
 ## 6. Risiken und technische Schulden
 
