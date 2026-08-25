@@ -45,3 +45,5 @@ der Synthese. Quelle: CodeTest/PROMPT-KOKORO20260803.md (03.08.2026).
 | 24.08.2026 | Kokoro-fp32 über ORT 1.28.0 direkt, 4 Threads, SM-F971B: **RTF 0,711 / 0,812 / 0,540** (drei Gate-Sätze, Erstlauf), **Session-Laden 0,80–1,04 s** (Pfad-Route, ohne .ort) | GateWavTest, System.nanoTime |
 | 24.08.2026 | Ganze Kette Text→WAV am Gerät hörbar; A/B-Paare gegen Windows unter pruefstein/ | GateWavTest + Referenzlauf |
 | 25.08.2026 | **M0-GATE BESTANDEN:** die drei A/B-Paare (ich-Laut-Satz, Frauchen/rauchen, Martin-Begrüßung) klingen für den Nutzer identisch zur Windows-Referenz | Hörprobe Nutzer |
+| 25.08.2026 | **M1: Framework-Klient spricht** — TextToSpeech-Bindung an die Engine, setLanguage(GERMANY)→LANG_COUNTRY_AVAILABLE, Voice de-DE-martin vergeben, synthesizeToFile über den Streaming-Callback in 3,0 s (2 Sätze) | TtsClientTest, SM-F971B |
+| 25.08.2026 | Engine erscheint in der System-Dienstauflösung (TTS_SERVICE-Intent) | cmd package query-services |

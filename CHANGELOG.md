@@ -12,5 +12,9 @@ Stimmnamen, unterstützte Locales, Verhalten der TTS-Schnittstelle).
   Kotlin-Frontend (8 Sprachen golden-geprüft), nackte Kokoro-Inferenz über ORT,
   Gate-WAVs für die ich-Laut-Hörprobe.
 
+- M1 Service-Skelett: KokolyTtsService echt (Streaming über SynthesisCallback,
+  ISO-3-Sprachaushandlung, Voice de-DE-martin, Stop-Flag je Block), CheckVoiceData,
+  satzweise Pipeline; Framework-Klient-Abnahmetest grün.
+
 ### Geändert
 - ONNX Runtime 1.23.2 → 1.28.0 (SIGILL am SM8850, ADR-0014).
