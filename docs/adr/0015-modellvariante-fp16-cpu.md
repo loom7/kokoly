@@ -25,10 +25,13 @@ Nova-Befund in verschärfter Form.
 
 ## Offen
 
-- **Hör-Gate fp16 für Deutsch:** die Wandlung ist erledigt (ORT-Rezept,
-  scripts/fp16-wandlung.py; onnxconverter-common scheitert an der Graphfamilie)
-  und gemessen: RTF 0,350, PSS 292 MB — schneller und kleiner als fp32. Es
-  fehlt nur noch die Hörprobe des Nutzers. Bis dahin läuft Deutsch als fp32.
+- **Hör-Gate fp16 für Deutsch: DURCHGEFALLEN (25.08.).** Die Vollwandlung
+  krächzt — die Aktivierungen des Fine-Tunes vertragen fp16 nicht (Graphen und
+  Gewichtsbereiche sind unauffällig; das Original v1.0 besteht dasselbe Gate).
+  Kandidat ist jetzt die Mischfassung **fp16dec** (Decoder fp32): RTF 0,356
+  stabil, 383 MB PSS, 258 MiB — Hörprobe beim Nutzer. Fällt auch sie durch,
+  bleibt Deutsch fp32 (311 MiB, RTF 0,401) und NUR die 8 v1.0-Sprachen laufen
+  fp16 — die Entscheidung gilt dann je Modell, nicht global.
 - Threads 2/4 per mAh je 1000 Zeichen (M5). 2T: RTF 0,58–0,60, tragfähig.
 
 ## Verworfene Alternativen
