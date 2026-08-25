@@ -11,7 +11,11 @@ Stimmnamen, unterstützte Locales, Verhalten der TTS-Schnittstelle).
   (F2 revidiert, Nutzer-Entscheid 25.08.2026); ±-Verstellung am Gerät per
   F0-Messung belegt. Formanterhaltendes TD-PSOLA bleibt Stufe-2-Verbesserung.
 - Hörproben-Werkzeug für neue Regeln (HoerprobeTest: Satz über den echten
-  Dienstweg in eine WAV, Text per Instrumentation-Argument).
+  Dienstweg in eine WAV, Text per Instrumentation-Argument; pinnt Tempo und
+  Tonhöhe auf 1,0, damit Systemregler das Urteil nicht verfälschen).
+- Segmentdauer-Prüfung für Wortlautregeln (scripts/messung/dauer_pruefung.py);
+  das Phonemfeld je Satz steht jetzt im Dienst-Log, und Vokabularverluste
+  NACH der Regelstufe werden gemeldet statt still verworfen.
 - Golden-Writer-Weg für Regeln nach dem Referenz-Einfrieren (ADR-0013):
   `NEUE_REGEL_ERWARTUNGEN` mit begründeter Herleitung, `endfassung_quelle`
   kennzeichnet jede Erwartung im Golden.

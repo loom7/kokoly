@@ -178,6 +178,10 @@ object EnginePipeline {
                     .also { r -> r.meldungen.forEach { Log.i(TAG, it) } }.phoneme
                 else ergebnis.phoneme
 
+            // Das Phonemfeld — regelwerk.md Schritt 1: sichtbar, was das
+            // Modell wirklich bekommt.
+            Log.i(TAG, "Phoneme »$phoneme«")
+
             // Ehrliche Grenze: ein EINZELsatz über dem Modellfenster wird hart
             // geteilt; die feine Stückelung (Pausen 0,22/0,35, continuous) ist
             // offener Pipeline-Punkt.

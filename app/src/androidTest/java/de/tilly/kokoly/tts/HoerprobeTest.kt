@@ -41,6 +41,12 @@ class HoerprobeTest {
         tts = TextToSpeech(kontext, { start.countDown() }, "de.tilly.kokoly.tts")
         assertTrue(start.await(30, TimeUnit.SECONDS))
         tts.setLanguage(Locale.GERMANY)
+        // Fest 1,0/1,0: ohne Pinnen sickern die Systemregler (Tempo/Tonhöhe
+        // der TTS-Einstellungen) in die Hörprobe — genau so entstand am
+        // 25.08.2026 eine gestauchte Regel-Hörprobe, die nach verschluckten
+        // Silben klang. Hörproben urteilen über REGELN, nie über Regler.
+        tts.setSpeechRate((argumente.getString("rate") ?: "1.0").toFloat())
+        tts.setPitch((argumente.getString("pitch") ?: "1.0").toFloat())
 
         val ziel = File(kontext.getExternalFilesDir(null), "$datei.wav")
         ziel.delete()

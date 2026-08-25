@@ -73,6 +73,16 @@ class KokoroSynthesizer(
         tempo: Float = 1.0f,
     ): FloatArray {
         val tokens = phoneme.mapNotNull { vokabular[it] }
+        // Regel 2 gilt auch hier: Phonemregeln laufen NACH dem Frontend-Filter,
+        // ihre Ersatzlaute erreichen den Synthesizer ungefiltert — ein Zeichen
+        // außerhalb des Vokabulars fiele sonst STILL unter den Tisch.
+        if (tokens.size < phoneme.length) {
+            val verloren = phoneme.filter { it !in vokabular }
+            if (verloren.isNotBlank()) {
+                android.util.Log.w("KokolySynth",
+                    "Nicht im Vokabular, verworfen: »$verloren« in »$phoneme«")
+            }
+        }
         require(tokens.isNotEmpty()) { "kein Phonem im Vokabular: $phoneme" }
         require(tokens.size <= FENSTER - 2) { "${tokens.size} Token > Modellfenster" }
         require(stimme.size == FENSTER * STILBREITE) {
