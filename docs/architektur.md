@@ -43,7 +43,7 @@ flowchart TB
         NORM["Normalisierung<br/>NFC + Leerraum-Zusammenfassung"]
         TXT["Textregeln (de)<br/>42 Muster: Abkürzungen, Datum m. Kasus,<br/>Uhrzeit, Einheiten, Tausenderpunkt"]
         PHON["Phonemisierer<br/>espeak-ng (NDK-Build, Referenz-Commit gepinnt,<br/>JNI, globaler Mutex, resident je Prozess)<br/>Kotlin-Frontend: Interpunktion abtrennen/wiedereinfügen,<br/>DANACH Sprachwechselmarken nach Sprachcode-Muster<br/>entfernen, ʏ→y, Stress behalten"]
-        PR["Phonemregeln (de)<br/>betonung: 11 Regeln + Zählprobe<br/>wortlaute: 17 Wortregeln<br/>neue Regeln: Golden-Writer-Weg (ADR-0013)"]
+        PR["Phonemregeln (de)<br/>betonung: 11 Regeln + Zählprobe<br/>wortlaute: 15 Wortregeln · Wortteilregeln<br/>für Komposita (Variantentafel je Betonungslage)<br/>neue Regeln: Golden-Writer-Weg (ADR-0013)"]
         VOC["Vokabular-Filter (114 Token)<br/>jeder Verlust wird GEMELDET, nie still"]
         KOK["KokoroSynthesizer<br/>ORT-Sessions (.ort, mmap, EP nach M2a)<br/>ZWEI Modelle: martin (de) · v1.0 (7 Sprachen)<br/>Session-Politik nach ADR-0012<br/>Stückelung: 510-Token-Fenster, Erstsegment kurz<br/>continuous ab 400 Phonemen (Stapelnaht!)<br/>Pausen 0,22 / 0,35 s"]
         PCM["Tonhöhe (getPitch): tempokompensiertes<br/>Umtasten · dann float32 → PCM16<br/>Chunks ≤ getMaxBufferSize()<br/>Stop-Flag-Prüfung je Stück"]

@@ -41,6 +41,14 @@ Ein Issue mit drei Angaben genügt:
      alles andere ist wirkungslos). Satzfinal wirkt es nicht.
    - Falsche Laute: **WORTLAUTE**. Achtung Reihenfolge: Flexionsformen vor der
      Grundform (siehe Martins/Martin — sonst steigt die Zählprobe aus).
+   - Fehler steckt auch in ZUSAMMENGESETZTEN Wörtern (Sprachsynthese!):
+     **WORTTEILE** — Textmuster ohne Wortgrenzen plus Variantentafel, denn
+     espeak realisiert den Teil je Betonungslage des Kompositums verschieden
+     (frei/Hauptton, Nebenton, unbetont, Flexionsformen). Alle belegten
+     Realisierungen gehören in die Tafel, auch schon richtige (die Zählprobe
+     läuft über die Variantensumme und steigt sonst aus). Realisierungen
+     ermittelt eine Wortbatterie gegen die Referenz-DLL, Dauerbeleg je
+     Zielfassung über dauer_pruefung.py.
 3. **Bei Betonungsregeln: messen, nicht raten.** Die K-Kennzahl-Skripte liegen
    unter `scripts/messung/` (Python, gegen die Windows-Referenzumgebung);
    Regeln ohne messbare Wirkung (ΔK ≤ 0,1) werden nicht aufgenommen — vier

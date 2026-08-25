@@ -44,6 +44,9 @@ Stimmnamen, unterstützte Locales, Verhalten der TTS-Schnittstelle).
 - ONNX Runtime 1.23.2 → 1.28.0 (SIGILL am SM8850, ADR-0014).
 
 ### Behoben
+- „-synthese" wird jetzt auch in zusammengesetzten Wörtern berichtigt
+  (Sprachsynthese, Biosynthese, Fotosynthese, Mehrzahlformen …): neue
+  Regelart Wortteile mit Variantentafel je Betonungslage.
 - Absturzfenster geschlossen: OrtSession.close() konnte in einen laufenden
   Modell-Run fallen (Engine-Wechsel oder künftiger Leerlauf-Timer während
   langer Synthese) — Lauf/Schließen jetzt über faires RW-Lock synchronisiert.

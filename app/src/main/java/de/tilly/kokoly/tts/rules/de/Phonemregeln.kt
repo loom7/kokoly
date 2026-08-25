@@ -81,14 +81,6 @@ object Phonemregeln {
      * Anfangsstück von `mˈaɾtɪns` ist und die Zählprobe sonst zu Recht aussteigt.
      */
     val WORTLAUTE: List<Regel> = listOf(
-        // Photosynthese VOR Synthese: das Synthese-Muster ist ein Teilstück
-        // des Photosynthese-Musters — in dieser Reihenfolge heilen beide auch
-        // im selben Satz (die Zählprobe sähe sonst zwei Phonemtreffer bei
-        // einem Worttreffer und stiege zu Recht aus).
-        wort("Photosynthese", "fˌoːtoːzˈyntəsə", "fˌoːtoːzyntˈeːzə",
-            "Schwa statt eː, Betonung auf der Vorsilbe; ΔK-Methode wie Synthese"),
-        wort("Synthese", "zˈyntəsə", "zyntˈeːzə",
-            "„ZÜN-te-se“: Schwa statt eː, s statt z, Betonung vorn — ΔK +0,20 (Nutzerfund 25.08.2026)"),
         wort("Erbse", "ɛɾbzˈeː", "ˈɛɾpsə", "espeak erfindet „erb-ZEH“"),
         wort("Erbsen", "ˈɛɾpzən", "ˈɛɾpsən", "stimmhaftes z nach p ist unmöglich"),
         wort("Sauce", "zˈaʊkə", "zˈoːsə", "espeak liest buchstabengetreu"),
@@ -105,6 +97,82 @@ object Phonemregeln {
         wort("Taschentuch", "tˈaʃəntˌʊx", "tˈaʃəntˌuːx", "kurzes statt langes u"),
         wort("Tischtuch", "tˈɪʃtʊx", "tˈɪʃtuːx", "kurzes statt langes u"),
     )
+
+    // ------------------------------------------------------------- Wortteile
+
+    /**
+     * Wortteilregeln — für Fehler, die auch in ZUSAMMENGESETZTEN Wörtern
+     * stecken (Nutzerfund „Sprachsynthese", 25.08.2026): das Textmuster
+     * matcht OHNE Wortgrenzen, und weil espeak den Teil je Betonungslage
+     * des Kompositums verschieden realisiert, trägt jede Regel eine
+     * VARIANTENTAFEL. Die Zählprobe läuft über die Summe aller Varianten:
+     * nur wenn sie die Texttreffer exakt deckt, wird ersetzt.
+     */
+    data class Wortteil(
+        val teil: String,
+        /** falsch → richtig je Betonungslage; falsch == richtig zählt nur mit. */
+        val varianten: List<Pair<String, String>>,
+        val erklaerung: String,
+    )
+
+    val WORTTEILE: List<Wortteil> = listOf(
+        // espeak spricht „-synthese" als „-ZÜN-te-se" (Schwa statt eː, s statt
+        // z, Betonung vorn) — in jeder Betonungslage, die das Kompositum ihm
+        // gibt. Belegte Realisierungen (Referenz-DLL 1.52.0, 25.08.2026):
+        // frei/Photo- → zˈyntəsə · Bio-/Foto- → zˌyntəsə · Sprach-/Klang-/
+        // Protein- → zyntəsə · Mehrzahl frei → zˈynteːzən (nur Betonung
+        // falsch) · Mehrzahl im Kompositum → zyntˌeːzən (schon richtig).
+        Wortteil("synthese", listOf(
+            "zˈyntəsə" to "zyntˈeːzə",
+            "zˌyntəsə" to "zyntˌeːzə",
+            "zyntəsə" to "zyntˌeːzə",
+            "zˈynteːzən" to "zyntˈeːzən",
+            "zˌynteːzən" to "zyntˌeːzən",
+            "zyntˌeːzən" to "zyntˌeːzən",
+        ), "„ZÜN-te-se“ auch im Kompositum — ΔK +0,20 der Synthese-Klasse, Dauern belegt"),
+    )
+
+    /** Wendet die Wortteilregeln an — Zählprobe über die Variantensumme. */
+    fun wendeTeile(text: String, phonemeEin: String, teile: List<Wortteil>): Ergebnis {
+        var phoneme = phonemeEin
+        val meldungen = mutableListOf<String>()
+
+        for (regel in teile) {
+            val textTreffer = Regex(Regex.escape(regel.teil), RegexOption.IGNORE_CASE)
+                .findAll(text).count()
+            if (textTreffer == 0) continue
+
+            val funde = regel.varianten.flatMap { (falsch, richtig) ->
+                Regex(Regex.escape(falsch)).findAll(phoneme)
+                    .map { Triple(it.range.first, falsch, richtig) }
+            }.sortedBy { it.first }
+
+            if (funde.size != textTreffer) {
+                meldungen.add(
+                    "${regel.teil}: $textTreffer× im Text, ${funde.size}× in den " +
+                        "Phonemen — nicht zuzuordnen, unverändert gelassen"
+                )
+                continue
+            }
+            // Defensiv: überlappende Varianten wären nicht zuzuordnen.
+            if (funde.zipWithNext().any { (a, b) -> b.first < a.first + a.second.length }) {
+                meldungen.add("${regel.teil}: überlappende Varianten — unverändert gelassen")
+                continue
+            }
+
+            var geaendert = 0
+            for ((stelle, falsch, richtig) in funde.reversed()) {
+                if (falsch == richtig) continue
+                phoneme = phoneme.substring(0, stelle) + richtig +
+                    phoneme.substring(stelle + falsch.length)
+                geaendert++
+            }
+            if (geaendert > 0) {
+                meldungen.add("${regel.teil} $geaendert× berichtigt (${regel.erklaerung})")
+            }
+        }
+        return Ergebnis(phoneme, meldungen)
+    }
 
     // ------------------------------------------------------------- Anwendung
 
@@ -150,10 +218,11 @@ object Phonemregeln {
         return Ergebnis(phoneme, meldungen)
     }
 
-    /** Die volle Regelstufe: Betonung, dann Wortlaute — Reihenfolge der Referenz. */
+    /** Die volle Regelstufe: Betonung, Wortlaute, Wortteile. */
     fun berichtige(text: String, phoneme: String): Ergebnis {
         val b = wende(text, phoneme, BETONUNG)
         val w = wende(text, b.phoneme, WORTLAUTE)
-        return Ergebnis(w.phoneme, b.meldungen + w.meldungen)
+        val t = wendeTeile(text, w.phoneme, WORTTEILE)
+        return Ergebnis(t.phoneme, b.meldungen + w.meldungen + t.meldungen)
     }
 }

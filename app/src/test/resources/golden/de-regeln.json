@@ -947,6 +947,126 @@
    "endfassung": "diː fˌoːtoːzyntˈeːzə ɪst ˌaʊx ˌaɪnə zyntˈeːzə.",
    "endfassung_quelle": "golden-writer (Herleitung im Korpus)",
    "verworfen": []
+  },
+  {
+   "text": "Die Sprachsynthese läuft auf diesem Gerät.",
+   "nach_textregeln": "Die Sprachsynthese läuft auf diesem Gerät.",
+   "segmente": [
+    {
+     "chunk": "Die Sprachsynthese läuft auf diesem Gerät",
+     "roh": "d_iː ʃ_p_ɾ_ˈɑː_x_z_ʏ_n_t_ə_s_ə l_ˈɔø_f_t_ _aʊ_f d_ˌiː_z_ə_m ɡ_ə_r_ˈɛː_t"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "phoneme_ohne_regeln": "diː ʃpɾˈɑːxzyntəsə lˈɔøft aʊf dˌiːzəm ɡərˈɛːt.",
+   "endfassung": "diː ʃpɾˈɑːxzyntˌeːzə lˈɔøft aʊf dˌiːzəm ɡərˈɛːt.",
+   "endfassung_quelle": "golden-writer (Herleitung im Korpus)",
+   "verworfen": []
+  },
+  {
+   "text": "Die Biosynthese braucht Energie.",
+   "nach_textregeln": "Die Biosynthese braucht Energie.",
+   "segmente": [
+    {
+     "chunk": "Die Biosynthese braucht Energie",
+     "roh": "d_iː b_ˈɪ__oː_z_ˌʏ_n_t_ə_s_ə b_ɾ_ˈaʊ_x_t _ˌeː_n_ɛ_ɾ_ɡ_ˈiː"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "phoneme_ohne_regeln": "diː bˈɪoːzˌyntəsə bɾˈaʊxt ˌeːnɛɾɡˈiː.",
+   "endfassung": "diː bˈɪoːzyntˌeːzə bɾˈaʊxt ˌeːnɛɾɡˈiː.",
+   "endfassung_quelle": "golden-writer (Herleitung im Korpus)",
+   "verworfen": []
+  },
+  {
+   "text": "Die Fotosynthese ist auch eine Synthese.",
+   "nach_textregeln": "Die Fotosynthese ist auch eine Synthese.",
+   "segmente": [
+    {
+     "chunk": "Die Fotosynthese ist auch eine Synthese",
+     "roh": "d_iː f_ˈoː_t_oː_z_ˌʏ_n_t_ə_s_ə _ɪ_s_t _ˌaʊ_x _ˌaɪ_n_ə z_ˈʏ_n_t_ə_s_ə"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "phoneme_ohne_regeln": "diː fˈoːtoːzˌyntəsə ɪst ˌaʊx ˌaɪnə zˈyntəsə.",
+   "endfassung": "diː fˈoːtoːzyntˌeːzə ɪst ˌaʊx ˌaɪnə zyntˈeːzə.",
+   "endfassung_quelle": "golden-writer (Herleitung im Korpus)",
+   "verworfen": []
+  },
+  {
+   "text": "Die Synthesen gelingen im Labor.",
+   "nach_textregeln": "Die Synthesen gelingen im Labor.",
+   "segmente": [
+    {
+     "chunk": "Die Synthesen gelingen im Labor",
+     "roh": "d_iː z_ˈʏ_n_t_eː_z_ə_n ɡ_ə_l_ˈɪ_ŋ_ə_n_ _ɪ_m l_ˈɑ_b_oː_ɾ"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "phoneme_ohne_regeln": "diː zˈynteːzən ɡəlˈɪŋən ɪm lˈɑboːɾ.",
+   "endfassung": "diː zyntˈeːzən ɡəlˈɪŋən ɪm lˈɑboːɾ.",
+   "endfassung_quelle": "golden-writer (Herleitung im Korpus)",
+   "verworfen": []
+  },
+  {
+   "text": "Die Sprachsynthesen klingen gut.",
+   "nach_textregeln": "Die Sprachsynthesen klingen gut.",
+   "segmente": [
+    {
+     "chunk": "Die Sprachsynthesen klingen gut",
+     "roh": "d_iː ʃ_p_ɾ_ˈɑː_x_z_ʏ_n_t_ˌeː_z_ə_n k_l_ˈɪ_ŋ_ə_n ɡ_ˈuː_t"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "phoneme_ohne_regeln": "diː ʃpɾˈɑːxzyntˌeːzən klˈɪŋən ɡˈuːt.",
+   "endfassung": "diː ʃpɾˈɑːxzyntˌeːzən klˈɪŋən ɡˈuːt.",
+   "endfassung_quelle": "golden-writer (Herleitung im Korpus)",
+   "verworfen": []
+  },
+  {
+   "text": "Die Klangsynthese der Proteinsynthese.",
+   "nach_textregeln": "Die Klangsynthese der Proteinsynthese.",
+   "segmente": [
+    {
+     "chunk": "Die Klangsynthese der Proteinsynthese",
+     "roh": "d_iː k_l_ˈa_ŋ_z_ʏ_n_t_ə_s_ə d_ɛ_ɾ p_ɾ_oː_t_eː_ˈiː_n_z_ʏ_n_t_ə_s_ə"
+    }
+   ],
+   "marks": [
+    {
+     "mark": ".",
+     "position": "E"
+    }
+   ],
+   "phoneme_ohne_regeln": "diː klˈaŋzyntəsə dɛɾ pɾoːteːˈiːnzyntəsə.",
+   "endfassung": "diː klˈaŋzyntˌeːzə dɛɾ pɾoːteːˈiːnzyntˌeːzə.",
+   "endfassung_quelle": "golden-writer (Herleitung im Korpus)",
+   "verworfen": []
   }
  ]
 }

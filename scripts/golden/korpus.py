@@ -63,6 +63,15 @@ REGEL_KORPUS = [
     "Die Synthese läuft auf diesem Gerät.",
     "Die Photosynthese braucht Licht.",
     "Die Photosynthese ist auch eine Synthese.",
+    # Nutzerfund 25.08.2026 (2. Runde): der Fehler steckt auch in KOMPOSITA —
+    # Wortteilregel mit Variantentafel je Betonungslage (espeak realisiert
+    # unbetont/Nebenton/Hauptton verschieden). Alle sechs Lagen im Korpus:
+    "Die Sprachsynthese läuft auf diesem Gerät.",
+    "Die Biosynthese braucht Energie.",
+    "Die Fotosynthese ist auch eine Synthese.",
+    "Die Synthesen gelingen im Labor.",
+    "Die Sprachsynthesen klingen gut.",
+    "Die Klangsynthese der Proteinsynthese.",
 ]
 
 #: Golden-Writer für Regeln NACH dem Einfrieren der Windows-Referenz
@@ -79,10 +88,28 @@ NEUE_REGEL_ERWARTUNGEN = {
         "diː zyntˈeːzə lˈɔøft aʊf dˌiːzəm ɡərˈɛːt.",
     "Die Photosynthese braucht Licht.":
         "diː fˌoːtoːzyntˈeːzə bɾˈaʊxt lˈɪçt.",
-    # Beide Wörter im selben Satz: Photosynthese-Regel zuerst (Teilstück-Falle),
-    # danach trifft die Synthese-Regel eindeutig das zweite Vorkommen.
+    # Beide Wörter im selben Satz — die Wortteil-Zählprobe deckt zwei
+    # Texttreffer mit zwei Variantenfunden (beide Hauptton-Lage).
     "Die Photosynthese ist auch eine Synthese.":
         "diː fˌoːtoːzyntˈeːzə ɪst ˌaʊx ˌaɪnə zyntˈeːzə.",
+    # Wortteilregel „synthese" (Nutzerfund Sprachsynthese, 25.08.2026):
+    # Variantentafel nach belegten espeak-Realisierungen (Referenz-DLL,
+    # docs/erkenntnisse.md) — unbetont zyntəsə→zyntˌeːzə (Sprach-/Klang-/
+    # Protein-), Nebenton zˌyntəsə→zyntˌeːzə (Bio-/Foto-), Hauptton wie die
+    # frei stehende Regel, Mehrzahl zˈynteːzən→zyntˈeːzən; die Kompositum-
+    # Mehrzahl zyntˌeːzən spricht espeak bereits richtig (Gegenprobe).
+    "Die Sprachsynthese läuft auf diesem Gerät.":
+        "diː ʃpɾˈɑːxzyntˌeːzə lˈɔøft aʊf dˌiːzəm ɡərˈɛːt.",
+    "Die Biosynthese braucht Energie.":
+        "diː bˈɪoːzyntˌeːzə bɾˈaʊxt ˌeːnɛɾɡˈiː.",
+    "Die Fotosynthese ist auch eine Synthese.":
+        "diː fˈoːtoːzyntˌeːzə ɪst ˌaʊx ˌaɪnə zyntˈeːzə.",
+    "Die Synthesen gelingen im Labor.":
+        "diː zyntˈeːzən ɡəlˈɪŋən ɪm lˈɑboːɾ.",
+    "Die Sprachsynthesen klingen gut.":
+        "diː ʃpɾˈɑːxzyntˌeːzən klˈɪŋən ɡˈuːt.",
+    "Die Klangsynthese der Proteinsynthese.":
+        "diː klˈaŋzyntˌeːzə dɛɾ pɾoːteːˈiːnzyntˌeːzə.",
 }
 
 KORPUS = {
