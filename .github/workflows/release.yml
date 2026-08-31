@@ -1,0 +1,51 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+#
+# Release-Workflow (M6, Aufgabe 6.3): baut bei einem v*-Tag das arm64-APK —
+# samt espeak-ng-Reprobuild aus dem gepinnten Tag 1.52.0 (FetchContent im
+# CMake-Build; genau das ist das GPL-Quellcodeangebot in Aktion) — und hängt
+# APK + models.json an das GitHub-Release.
+#
+# Signatur: NUR aus Repo-Secrets (KOKOLY_KEYSTORE_B64, KOKOLY_KEYSTORE_PASS,
+# KOKOLY_KEY_ALIAS, KOKOLY_KEY_PASS). Ohne Secrets entsteht ein unsigniertes
+# APK und der Upload wird übersprungen — niemals Schlüsselmaterial im Repo.
+# (Secrets sind in if-Bedingungen nicht direkt lesbar — deshalb der Umweg
+# über die Job-Umgebung.)
+name: Release
+on:
+  push:
+    tags: ["v*"]
+
+jobs:
+  release-apk:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      HAT_KEYSTORE: ${{ secrets.KOKOLY_KEYSTORE_B64 != '' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Keystore aus Secret entpacken
+        if: env.HAT_KEYSTORE == 'true'
+        run: |
+          echo "${{ secrets.KOKOLY_KEYSTORE_B64 }}" | base64 -d > "$RUNNER_TEMP/kokoly.keystore"
+          echo "KOKOLY_KEYSTORE=$RUNNER_TEMP/kokoly.keystore" >> "$GITHUB_ENV"
+      - name: Release-APK bauen (inkl. espeak-ng-Reprobuild)
+        env:
+          KOKOLY_KEYSTORE_PASS: ${{ secrets.KOKOLY_KEYSTORE_PASS }}
+          KOKOLY_KEY_ALIAS: ${{ secrets.KOKOLY_KEY_ALIAS }}
+          KOKOLY_KEY_PASS: ${{ secrets.KOKOLY_KEY_PASS }}
+        run: ./gradlew :app:assembleRelease
+      - name: JVM-Tests und Lint (Release-Gate)
+        run: ./gradlew :app:testDebugUnitTest :app:lintDebug
+      - name: Ans Release hängen
+        if: env.HAT_KEYSTORE == 'true'
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            app/build/outputs/apk/release/app-release.apk
+            models.json

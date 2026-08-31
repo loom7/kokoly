@@ -1,0 +1,32 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+name: Fehler melden / Report a bug
+description: Etwas funktioniert nicht. / Something does not work.
+title: "[Fehler] "
+labels: [fehler]
+body:
+  - type: textarea
+    id: was
+    attributes:
+      label: Was passiert, was sollte passieren? / What happens, what should happen?
+    validations:
+      required: true
+  - type: textarea
+    id: schritte
+    attributes:
+      label: Schritte zum Nachstellen / Steps to reproduce
+    validations:
+      required: true
+  - type: input
+    id: geraet
+    attributes:
+      label: Gerät und Android-Version / Device and Android version
+      placeholder: "Samsung SM-F971B, Android 17"
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Kokoly-Version
+      placeholder: "0.1.0"
+    validations:
+      required: true

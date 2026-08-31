@@ -15,7 +15,7 @@ android {
         minSdk = 26
         targetSdk = 37
         versionCode = 1
-        versionName = "0.1.0-m0"
+        versionName = "0.1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
         ndk {
@@ -45,9 +45,26 @@ android {
         noCompress += "bin"
     }
 
+    signingConfigs {
+        // Release-Signatur NUR aus der Umgebung (CI-Secrets bzw. lokale
+        // Shell) — Schlüsselmaterial liegt nie im Repo. Ohne die Variablen
+        // bleibt das Release unsigniert; der Release-Workflow lädt es dann
+        // nicht hoch.
+        create("release") {
+            System.getenv("KOKOLY_KEYSTORE")?.takeIf { it.isNotBlank() }?.let {
+                storeFile = file(it)
+                storePassword = System.getenv("KOKOLY_KEYSTORE_PASS")
+                keyAlias = System.getenv("KOKOLY_KEY_ALIAS")
+                keyPassword = System.getenv("KOKOLY_KEY_PASS")
+            }
+        }
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = false
+            signingConfig = signingConfigs.getByName("release")
+                .takeIf { it.storeFile != null }
         }
     }
 

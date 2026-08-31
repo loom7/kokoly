@@ -1,7 +1,5 @@
 # Contributing
 
-*(Skeleton — grows with M3 [pronunciation-rule workflow] and M6 [final].)*
-
 ## Language policy (ADR-0007)
 
 The README and this file are English; the in-depth documentation under `docs/`
@@ -19,13 +17,16 @@ project license. Every commit must carry a DCO sign-off
 - Conventional Commits.
 - No PR is merged without green CI (JVM tests + lint).
 - New pronunciation rule = one table entry + one golden test — never silent
-  logic changes. The full path (issue → reproduction → rule + golden → release)
-  is described in `docs/regelwerk.md` (from M3).
+  logic changes. The full path (issue → reproduction → measurement where
+  stress is involved → rule + golden → device listening check → release) is
+  described in [`docs/regelwerk.md`](docs/regelwerk.md). Rules newer than the
+  frozen Windows reference go through the golden-writer path documented there.
 - Definition of Done (every milestone): tests green · measured claims carry
   date/device/method · architecture diagrams updated in the same commit ·
   CHANGELOG entry.
 
 ## Reporting a pronunciation error
 
-Open an issue with: the word or sentence, what it sounds like now, what it
-should sound like (issue template from M3).
+Use the issue template "Ausspracheregel melden": the word, a full example
+sentence (pronunciation is judged in sentence context, never on the isolated
+word), what it sounds like now, and what it should sound like.

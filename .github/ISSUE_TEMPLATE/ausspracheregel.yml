@@ -1,0 +1,48 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+name: Ausspracheregel melden / Report a pronunciation error
+description: Ein Wort klingt falsch — sag uns wie. / A word sounds wrong — tell us how.
+title: "[Aussprache] "
+labels: [aussprache]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Danke! Der volle Weg von der Meldung zur Regel steht in
+        [docs/regelwerk.md](../blob/main/docs/regelwerk.md). / Thanks! The
+        full path from report to rule is documented there (German).
+  - type: input
+    id: wort
+    attributes:
+      label: Wort / Word
+      placeholder: "Synthese"
+    validations:
+      required: true
+  - type: input
+    id: satz
+    attributes:
+      label: Beispielsatz / Example sentence
+      description: Ein ganzer Satz — Aussprache wird im Satzrahmen beurteilt, nie am isolierten Wort. / A full sentence — pronunciation is judged in sentence context.
+      placeholder: "Die Sprachsynthese läuft auf diesem Gerät."
+    validations:
+      required: true
+  - type: input
+    id: ist
+    attributes:
+      label: So klingt es / How it sounds now
+      placeholder: "ZÜN-te-se"
+    validations:
+      required: true
+  - type: input
+    id: soll
+    attributes:
+      label: So sollte es klingen / How it should sound
+      placeholder: "Sün-TE-se"
+    validations:
+      required: true
+  - type: input
+    id: sprache
+    attributes:
+      label: Sprache und Stimme / Language and voice
+      placeholder: "Deutsch, de-DE-martin"
+    validations:
+      required: true

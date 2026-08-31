@@ -2,7 +2,7 @@
 
 > arc42-light. **Dies ist der einzige Ort der gepflegten Diagramme** — Nachzug bei
 > Architekturänderung im selben Commit (Definition of Done, Punkt 4).
-> Stand: 24.08.2026 (Planungsstand M0 — noch keine Zeile Produktivcode).
+> Stand: 31.08.2026 (M0–M5 umgesetzt und gerätegeprüft; M6 in Arbeit).
 
 ## 1. Ziele und Qualitätsziele
 
@@ -14,7 +14,7 @@ Golden-Test. Vollständige Ziele: PROJEKTPLAN §1.
 
 ## 2. Kontext und Bausteine
 
-### Kontext (C4-Ebene 1) (C4-Ebene 1)
+### Kontext (C4-Ebene 1)
 
 ```mermaid
 flowchart LR
