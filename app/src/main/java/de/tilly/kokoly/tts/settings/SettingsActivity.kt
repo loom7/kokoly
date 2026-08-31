@@ -130,8 +130,10 @@ class SettingsActivity : Activity() {
         }
 
         ueberschrift("Über")
+        // Das GPL-Quellcodeangebot: die App nennt ihre Quelle selbst
+        // (feld4-Lizenzcheckliste; Repo öffentlich seit F8).
         zeile("Kokoly — Kokoro-TTS für Android. GPL-3.0-or-later; Quelltext und " +
-            "Lizenzhinweise: siehe Projektseite. Modelle: Kokoro-82M (Apache-2.0).")
+            "Lizenzhinweise: github.com/loom7/kokoly. Modelle: Kokoro-82M (Apache-2.0).")
     }
 
     /** Löst ein Farbattribut des aktiven Themas auf (Selector → Vorgabefarbe). */
