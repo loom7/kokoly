@@ -7,6 +7,8 @@ Stimmnamen, unterstützte Locales, Verhalten der TTS-Schnittstelle).
 ## [Unreleased]
 
 ### Hinzugefügt
+- Leerlauf-Timer: 5 Minuten nach der letzten Synthese wird die ORT-Session
+  entladen (espeak bleibt resident); der nächste Auftrag lädt in ~1 s neu.
 - M5-Energiemessung: mAh je 1000 Zeichen für fp32/fp16dec × 2/4 Threads,
   Leerlauf-Basislinie und 30-Minuten-Vorlese-Dauerlauf (EnergieMessTest,
   Echtzeit-Taktung; Auswertung scripts/messung/energie_auswertung.py).

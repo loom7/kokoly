@@ -2,6 +2,7 @@
 package de.tilly.kokoly.tts.pipeline
 
 import android.content.Context
+import android.os.SystemClock
 import android.util.Log
 import de.tilly.kokoly.tts.model.ModellLager
 import de.tilly.kokoly.tts.model.NpzStimmen
@@ -9,6 +10,9 @@ import de.tilly.kokoly.tts.model.OrtWandlung
 import de.tilly.kokoly.tts.rules.de.Phonemregeln
 import de.tilly.kokoly.tts.rules.de.Textregeln
 import de.tilly.kokoly.tts.service.Sprachen
+import java.util.concurrent.Executors
+import java.util.concurrent.ScheduledFuture
+import java.util.concurrent.TimeUnit
 
 /**
  * Die eine Pipeline des Prozesses: espeak (resident) + Frontend + Kokoro.
@@ -41,6 +45,38 @@ object EnginePipeline {
     private val stimmCache = object : LinkedHashMap<String, FloatArray>(4, 0.75f, true) {
         override fun removeEldestEntry(eldest: MutableMap.MutableEntry<String, FloatArray>?) =
             size > STIMM_LRU
+    }
+
+    // ------------------------------------------------------- Leerlauf-Timer
+    //
+    // M5-Festlegung: entlädt NUR die ORT-Session (~300–400 MB PSS), nie
+    // espeak. Kein Wakelock und kein Alarm — eine Daemon-Uhr, die je
+    // Sprechauftrag neu gestellt wird; schläft das Gerät, feuert die Prüfung
+    // eben später (der Speicher ist dann ohnehin niemandem im Weg).
+    // Wiederaufbau kostet gemessene 0,8–1,0 s (ADR-0012).
+
+    /** Leerlauf bis zum Entladen; intern veränderbar für den Gerätetest. */
+    internal var leerlaufMs = 5 * 60 * 1000L
+    @Volatile private var letzteNutzung = 0L
+    private val leerlaufUhr = Executors.newSingleThreadScheduledExecutor { r ->
+        Thread(r, "kokoly-leerlauf").apply { isDaemon = true }
+    }
+    private var leerlaufPruefung: ScheduledFuture<*>? = null
+
+    internal fun sessionGeladen(): Boolean = synchronized(sperre) { session != null }
+
+    private fun stelleLeerlaufUhr() {
+        letzteNutzung = SystemClock.elapsedRealtime()
+        synchronized(sperre) {
+            leerlaufPruefung?.cancel(false)
+            leerlaufPruefung = leerlaufUhr.schedule({
+                val still = SystemClock.elapsedRealtime() - letzteNutzung
+                if (still >= leerlaufMs && sessionGeladen()) {
+                    Log.i(TAG, "Leerlauf ${still / 1000} s — Session entladen (espeak bleibt)")
+                    entladeModell()
+                }
+            }, leerlaufMs + 250, TimeUnit.MILLISECONDS)
+        }
     }
 
     /** Trennt Sätze fürs Streaming: erst fertige Satzeinheit, dann Synthese. */
@@ -187,9 +223,16 @@ object EnginePipeline {
             // offener Pipeline-Punkt.
             for (fenster in phoneme.chunked(KokoroSynthesizer.FENSTER - 2)) {
                 val audio = k.synthetisiere(fenster, vokab, vektor, tempo)
-                if (!liefere(audio)) return false
+                // Je Fenster, nicht je Auftrag: die Uhr darf während eines
+                // langen Textes nie ablaufen.
+                stelleLeerlaufUhr()
+                if (!liefere(audio)) {
+                    stelleLeerlaufUhr()
+                    return false
+                }
             }
         }
+        stelleLeerlaufUhr()
         return true
     }
 }
