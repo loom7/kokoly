@@ -57,16 +57,8 @@
           "lizenz": "Apache-2.0 (Kette laut Dossier, in Pruefung)"
         }
       ],
-      "varianten": [
-        {
-          "name": "kokoro-martin.fp16.onnx",
-          "sha256": "8dcc140477b52546fdf063ff680dce7050193cd9a8729d359f0e76b94d33ad6b",
-          "bytes": 163536769,
-          "url": "EIGENES-RELEASE (Draft bis Martin-Dossier, F1) — Rezept: scripts/fp16-wandlung.py",
-          "lizenz": "Apache-2.0 (Kette laut Dossier, in Pruefung)",
-          "befund": "RTF 0,350 / PSS 292 MB am SM-F971B — schneller UND kleiner als fp32; Hoer-Gate beim Nutzer"
-        }
-      ]
+      "varianten": [],
+      "variantenBefund": "Entschieden (ADR-0017, M5): Deutsch laeuft fp32 — die fp16-Vollwandlung riss das Hoer-Gate (Aktivierungen des Fine-Tunes), die Mischfassung fp16dec war am Zielprofil langsamer UND ~30 % energiehungriger als fp32."
     }
   }
 }

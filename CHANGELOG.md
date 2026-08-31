@@ -46,6 +46,9 @@ Stimmnamen, unterstützte Locales, Verhalten der TTS-Schnittstelle).
   satzweise Pipeline; Framework-Klient-Abnahmetest grün.
 
 ### Geändert
+- Deutsche Modellvariante endgültig **fp32 mit 4 Threads** (ADR-0017, nach
+  M5-Energiedaten); die Martin-Wandlungsvarianten sind aus dem Manifest
+  entfernt. Die 8 v1.0-Sprachen bleiben fp16 (ADR-0015).
 - ONNX Runtime 1.23.2 → 1.28.0 (SIGILL am SM8850, ADR-0014).
 
 ### Behoben

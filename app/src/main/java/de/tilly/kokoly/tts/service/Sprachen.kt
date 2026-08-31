@@ -22,8 +22,8 @@ object Sprachen {
         val stimmbank: String,
     )
 
-    // Deutsch: fp32 gesetzt, die Mischfassung fp16dec ist Kandidat — der
-    // Entscheid fällt mit der M5-Energiemessung (Nutzerwunsch, 25.08.2026).
+    // Deutsch: fp32, endgültig (ADR-0017) — die M5-Messung zeigte fp32
+    // schneller UND ~30 % sparsamer als die Mischfassung fp16dec.
     val MARTIN = Modellgruppe(
         "martin",
         listOf("kokoro-martin.onnx"),

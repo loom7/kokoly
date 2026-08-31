@@ -491,6 +491,7 @@ models/                # Dev-Ablage der heruntergeladenen Modelle
 | **F6** Vertriebskanäle | **Alle drei einplanen** | GitHub ab M6; F-Droid-Recherche wird eigene M6-Aufgabe (docs/recherche/f-droid.md); Play-Vorbereitung als Stufe-2-Punkt aufgenommen |
 | **F7** int8 messen? | **Ja, mitmessen** | Volle Matrix in 2a.3. Vormessung aus Nova-Archiv (SM8650, sherpa 1.13.4, XNNPACK 4T): fp32 RTF 0,70–0,74, int8 0,84–0,93 — int8 dort LANGSAMER; Übertragungsvorbehalt: andere Laufzeit (ORT direkt), stärkerer SoC (SM8850) |
 | **F8** Repo öffentlich? | **Öffentlich ab Commit 1** | Compliance-Artefakte im ersten Commit (stand ohnehin im Plan) |
+| **F9** Deutsche Modellvariante (offen gehalten bis M5) | **fp32, 4 Threads** (25.08.2026, nach M5-Energiedaten) | ADR-0017; fp16dec verworfen (langsamer und ~30 % energiehungriger am Vorlese-Profil); Manifest ohne Martin-Wandlungsvarianten |
 
 ### Ursprüngliche Fragestellungen (Archiv)
 
