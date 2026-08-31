@@ -40,21 +40,21 @@
     },
     "kokoro-martin": {
       "rolle": "Deutsch (eigener Fine-Tune, eine Stimme)",
-      "vertrieb": "Selbst verteilen NACH Abschluss des Dossiers docs/lizenz/martin-kette.md (Nutzer-Entscheid F1); bis dahin Quelle Hugging Face",
+      "vertrieb": "Dossier belegt (31.08.2026, Restunschaerfen dokumentiert); Quelle bleibt die revisionsgepinnte HF-URL, bis der Rechteverantwortliche die Selbstverteilung freigibt (F1)",
       "dateien": [
         {
           "name": "kokoro-martin.onnx",
           "sha256": "c302f1d8bc7adf40a842cb550e18c39a5026bdb1afdd29dbb700b501cb49276b",
           "bytes": 325512630,
-          "url": "https://huggingface.co/Godelaune/Kokoro-82M-ONNX-German-Martin/resolve/main/kokoro-martin.onnx",
-          "lizenz": "Apache-2.0 (Kette laut Dossier, in Pruefung)"
+          "url": "https://huggingface.co/Godelaune/Kokoro-82M-ONNX-German-Martin/resolve/a1cba7fbf0e72fbae38f0a3a48ce0dc8e6077804/kokoro-martin.onnx",
+          "lizenz": "Apache-2.0 (Kette belegt, Restunschaerfen: docs/lizenz/martin-kette.md)"
         },
         {
           "name": "voices-martin.npz",
           "sha256": "5b9c8553398d7abf67498ce500c186cefaa7b68fed3e3d415da5380670105acd",
           "bytes": 522506,
-          "url": "https://huggingface.co/Godelaune/Kokoro-82M-ONNX-German-Martin/resolve/main/voices-martin.npz",
-          "lizenz": "Apache-2.0 (Kette laut Dossier, in Pruefung)"
+          "url": "https://huggingface.co/Godelaune/Kokoro-82M-ONNX-German-Martin/resolve/a1cba7fbf0e72fbae38f0a3a48ce0dc8e6077804/voices-martin.npz",
+          "lizenz": "Apache-2.0 (Kette belegt, Restunschaerfen: docs/lizenz/martin-kette.md)"
         }
       ],
       "varianten": [],

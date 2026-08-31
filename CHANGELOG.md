@@ -7,6 +7,11 @@ Stimmnamen, unterstützte Locales, Verhalten der TTS-Schnittstelle).
 ## [Unreleased]
 
 ### Hinzugefügt
+- M6-Veröffentlichungsreife: Martin-Lizenzdossier mit revisionsgepinnten
+  Belegen (docs/lizenz/martin-kette.md + belege/), THIRD_PARTY_NOTICES mit
+  wörtlichen Lizenztexten der gebündelten Stände, F-Droid-Recherche
+  (docs/recherche/f-droid.md: aufnahmefähig, NonFreeNet-Etikett),
+  models.json auf die belegte HF-Revision gepinnt.
 - Leerlauf-Timer: 5 Minuten nach der letzten Synthese wird die ORT-Session
   entladen (espeak bleibt resident); der nächste Auftrag lädt in ~1 s neu.
 - M5-Energiemessung: mAh je 1000 Zeichen für fp32/fp16dec × 2/4 Threads,
