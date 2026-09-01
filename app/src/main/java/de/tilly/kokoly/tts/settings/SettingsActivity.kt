@@ -2,9 +2,12 @@
 package de.tilly.kokoly.tts.settings
 
 import android.app.Activity
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.os.Build
 import android.os.Bundle
+import android.provider.Settings
+import android.widget.Toast
 import android.util.TypedValue
 import android.view.View
 import android.view.WindowInsets
@@ -29,6 +32,17 @@ import kotlin.concurrent.thread
 class SettingsActivity : Activity() {
 
     private lateinit var wurzel: LinearLayout
+
+    /** Während eines Downloads nicht neu bauen — sonst verliert der
+     *  Fortschrittsbalken seine Ansicht. */
+    private var laedt = false
+
+    override fun onResume() {
+        super.onResume()
+        // Neu aufbauen bei jeder Rückkehr: wer aus den System-TTS-Einstellungen
+        // zurückkommt, sieht den Bevorzugt-Status sofort aktuell.
+        if (!laedt) baue()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -77,6 +91,31 @@ class SettingsActivity : Activity() {
                 "ungetaktetes Netz (WLAN).")
             downloadKnopf("Alle herunterladen", fehlend)
         }
+
+        ueberschrift("Sprachausgabe des Systems")
+        // Der eine Schritt, den Android niemandem abnimmt: die bevorzugte
+        // Engine wählt der Nutzer selbst in den System-TTS-Einstellungen.
+        val bevorzugt = Settings.Secure.getString(contentResolver, "tts_default_synth")
+        if (bevorzugt == packageName) {
+            zeile("Kokoly ist als bevorzugte Sprachausgabe gewählt. ✓")
+        } else {
+            zeile("Kokoly ist noch NICHT die bevorzugte Sprachausgabe — erst " +
+                "nach dieser Wahl sprechen Vorlese-Apps und TalkBack mit Kokoly. " +
+                "Der Knopf führt zu „Text-zu-Sprache“ in den Systemeinstellungen.")
+        }
+        wurzel.addView(Button(this).apply {
+            text = "Text-zu-Sprache-Einstellungen öffnen"
+            setOnClickListener {
+                runCatching {
+                    startActivity(Intent("com.android.settings.TTS_SETTINGS"))
+                }.onFailure {
+                    Toast.makeText(this@SettingsActivity,
+                        "Systemeinstellungen nicht erreichbar — bitte manuell " +
+                            "unter Einstellungen → Text-zu-Sprache wählen.",
+                        Toast.LENGTH_LONG).show()
+                }
+            }
+        })
 
         ueberschrift("Sprachen")
         zeile("Abgewählte Sprachen verschwinden für alle Apps aus der Stimmliste.")
@@ -168,6 +207,7 @@ class SettingsActivity : Activity() {
             text = beschriftung
             setOnClickListener {
                 isEnabled = false
+                laedt = true
                 balken.visibility = View.VISIBLE
                 thread {
                     for (eintrag in eintraege) {
@@ -180,13 +220,14 @@ class SettingsActivity : Activity() {
                             }
                         }.onFailure { f ->
                             runOnUiThread {
+                                laedt = false
                                 stand.text = "Fehler: ${f.message}"
                                 isEnabled = true
                             }
                             return@thread
                         }
                     }
-                    runOnUiThread { beiErfolg(); baue() }
+                    runOnUiThread { laedt = false; beiErfolg(); baue() }
                 }
             }
         })

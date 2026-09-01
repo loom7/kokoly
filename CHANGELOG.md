@@ -7,6 +7,10 @@ Stimmnamen, unterstützte Locales, Verhalten der TTS-Schnittstelle).
 ## [Unreleased]
 
 ### Hinzugefügt
+- Abschnitt „Sprachausgabe des Systems" in den Einstellungen: zeigt, ob
+  Kokoly die bevorzugte Engine ist, und springt per Knopf direkt in die
+  Text-zu-Sprache-Systemeinstellungen; der Status aktualisiert sich bei
+  der Rückkehr.
 - Erstlauf-Willkommen: Beim ersten Öffnen zeigt die App die unterstützten
   Sprachen und fragt auf demselben Bild, ob Deutsch (~311 MiB, nur WLAN)
   geladen werden soll; „Später" führt zu denselben Knöpfen in den
