@@ -1,3 +1,5 @@
+<img src="art/kokoly-symbol.svg" alt="Kokoly icon: a stylized hummingbird with sound arcs" width="96" align="right"/>
+
 # Kokoly
 
 **Kokoly** is an offline text-to-speech engine for Android, built on

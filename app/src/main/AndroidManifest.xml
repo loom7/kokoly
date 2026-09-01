@@ -8,6 +8,8 @@
 
     <application
         android:label="Kokoly"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher"
         android:allowBackup="false">
 
         <!-- Der TTS-Dienst: macht die App in den Systemeinstellungen unter

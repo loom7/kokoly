@@ -7,6 +7,9 @@ Stimmnamen, unterstützte Locales, Verhalten der TTS-Schnittstelle).
 ## [Unreleased]
 
 ### Hinzugefügt
+- App-Symbol: stilisierter Kolibri mit Schallbögen (art/kokoly-symbol.svg)
+  als adaptives Symbol samt einfarbiger Ebene für Themensymbole ab
+  Android 13 — ersetzt überall das Standardsymbol.
 - Abschnitt „Sprachausgabe des Systems" in den Einstellungen: zeigt, ob
   Kokoly die bevorzugte Engine ist, und springt per Knopf direkt in die
   Text-zu-Sprache-Systemeinstellungen; der Status aktualisiert sich bei

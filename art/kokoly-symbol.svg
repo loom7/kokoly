@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SPDX-License-Identifier: GPL-3.0-or-later -->
+<!-- Kokoly-Symbol: stilisierter Kolibri mit Schallbögen (die sprechende App).
+     Gestaltet für das adaptive Android-Symbol: Kernmotiv in der sicheren
+     Zone (Kreis d=66 um 54,54 im 108er-Raster). -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 108 108" width="432" height="432">
+  <rect width="108" height="108" fill="#F5EFE3"/>
+  <g>
+    <!-- Schwanzfedern -->
+    <path d="M42,62 C34,70 26,80 22,89 C31,83 39,75 46,67 Z" fill="#0E5A66"/>
+    <path d="M46,66 C42,74 38,82 36,89 C43,82 48,74 52,68 Z" fill="#147D8C"/>
+    <!-- Flügel (erhoben, zwei Schwingen) -->
+    <path d="M54,52 C49,36 40,25 28,21 C35,29 39,36 41,43 C35,40 28,41 23,45 C32,48 40,52 47,57 Z" fill="#2BA5B4"/>
+    <!-- Körper -->
+    <path d="M43,63 C47,72 59,75 66,67 C72,60 70,49 63,45 C54,40 44,49 43,58 Z" fill="#147D8C"/>
+    <!-- Kopf -->
+    <circle cx="66" cy="42" r="10" fill="#147D8C"/>
+    <!-- Kehlfleck: an der Kehle unter dem Schnabel, nicht als Halsring -->
+    <path d="M66,50 C69,52 73,50 75,45 C77,51 73,57 67,56 C64,55 64,52 66,50 Z" fill="#F26B4E"/>
+    <!-- Schnabel -->
+    <path d="M74,38 C81,34 87,31 92,28 C87,34 80,39 75,44 Z" fill="#29323C"/>
+    <!-- Auge -->
+    <circle cx="68" cy="40" r="2" fill="#29323C"/>
+    <circle cx="68.7" cy="39.3" r="0.6" fill="#F5EFE3"/>
+    <!-- Schallbögen: die App spricht -->
+    <path d="M93,22 A10,10 0 0 1 96,35" fill="none" stroke="#F26B4E" stroke-width="2.6" stroke-linecap="round"/>
+    <path d="M90,26 A5.5,5.5 0 0 1 91.6,33" fill="none" stroke="#F26B4E" stroke-width="2.6" stroke-linecap="round"/>
+  </g>
+</svg>
