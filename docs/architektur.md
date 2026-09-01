@@ -93,10 +93,13 @@ RunOptions.setTerminate() im laufenden Run; Lauf/Schließen der ORT-Session
 
 ## 6. Risiken und technische Schulden
 
-- Martin-Lizenzkette: Dossier [lizenz/martin-kette.md](lizenz/martin-kette.md) offen.
+- Martin-Lizenzkette: belegt mit benannten Restunschärfen
+  ([lizenz/martin-kette.md](lizenz/martin-kette.md), F1: Mittelweg —
+  HF-Quelle gepinnt, Sicherungen + Umschwenkplan beim Betreiber).
 - ja/zh fehlen in Stufe 1 (ADR-0003).
 - Vokoder nicht bitstabil (seedlose Zufallsknoten) — Golden-Tests prüfen Phoneme.
-- RAM-Korridor bis M2a/M5 nur Arbeitshypothese.
+- Energie/RAM seit M2a/M5 gemessen (erkenntnisse.md); offen bleibt nur die
+  Energie der v1.0-fp16-Gruppe (Wiedervorlage in ADR-0017).
 
 ## Begriffstafel
 
