@@ -483,7 +483,7 @@ models/                # Dev-Ablage der heruntergeladenen Modelle
 
 | Frage | Entscheidung des Nutzers | Folge |
 |---|---|---|
-| **F1** Martin verteilen? | **Selbst verteilen** | Beleg-Dossier `docs/lizenz/martin-kette.md` ist Pflicht vor M2b; bis dahin Release-Draft |
+| **F1** Martin verteilen? | **Selbst verteilen** → revidiert 31.08.2026: **Mittelweg** — revisionsgepinnte HF-Quelle + zwei verifizierte Eigen-Sicherungen, Umschwenkplan im Dossier | Dossier belegt (Restunschärfen dokumentiert); Selbstverteilung erst bei Quellenausfall |
 | **F2** Tonhöhe Stufe 1? | **Plan folgen** → Stufe 2; **revidiert 25.08.2026**: Nutzer meldet toten Systemregler → Stufe 1 | `getPitch()` wirkt über tempokompensiertes Umtasten (Tonhoehe.kt); TD-PSOLA bleibt Stufe 2 |
 | **F3** Paketname | **`de.tilly.kokoly.tts`** | App-Name „Kokoly"; applicationId ab 0.1 fest |
 | **F4** zh in Stufe 1? | **Plan folgen** → Stufe 2 | voices-Zuschnitt ohne ja/zh-Stimmen |

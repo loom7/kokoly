@@ -70,5 +70,22 @@ und Punkt 3 wird in den Release-Notes nicht verschwiegen.
 - [x] models.json auf Revision gepinnt (URL + SHA-256)
 - [x] THIRD_PARTY_NOTICES.md-Zeile von „in Prüfung" auf „belegt
       (Restunschärfen im Dossier)" gehoben
-- [ ] Freigabe Selbstverteilung durch den Rechteverantwortlichen
-      (Nutzer-Entscheid F1 — steht aus)
+- [x] F1 ENTSCHIEDEN (31.08.2026): **Mittelweg.** Verteilung bleibt bei der
+      revisionsgepinnten HF-Quelle (nur Verlinken — konservativste
+      Rechtsposition); der Betreiber hält zwei prüfsummenverifizierte
+      Sicherungskopien beider Dateien außerhalb dieses Repos. Fällt die
+      Quelle aus, greift der Umschwenkplan unten.
+
+## Umschwenkplan (Quelle fällt aus → Selbstverteilung binnen eines Tages)
+
+1. Sicherungskopien gegen die SHA-256 aus models.json prüfen (beide Werte
+   stehen dort und in diesem Dossier unveränderlich im Git-Verlauf).
+2. GitHub-Release `modelle-martin` im Projekt-Repo anlegen, beide Dateien
+   anhängen (die Kette dieses Dossiers deckt die Weiterverbreitung als
+   Apache-2.0; Restunschärfen oben gelten unverändert und gehören in die
+   Release-Notes).
+3. In models.json die beiden URLs auf das eigene Release umstellen —
+   Prüfsummen bleiben identisch, Bestandsnutzer sind nicht betroffen
+   (Modelle liegen lokal).
+4. App-Release mit dem neuen Manifest veröffentlichen (models.json ist ins
+   APK gebündelt).
