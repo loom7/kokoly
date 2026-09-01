@@ -45,10 +45,18 @@
             </intent-filter>
         </activity>
 
+        <!-- Auch Starter-Eintrag: die „erste Ausführung" öffnet die
+             Einstellungen mit dem Willkommensblock (Sprachüberblick +
+             Deutsch-Download-Frage). -->
         <activity
             android:name=".settings.SettingsActivity"
             android:exported="true"
             android:theme="@style/Theme.Kokoly"
-            android:label="Kokoly-Einstellungen" />
+            android:label="Kokoly">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 </manifest>

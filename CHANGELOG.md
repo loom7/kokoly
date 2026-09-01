@@ -7,6 +7,10 @@ Stimmnamen, unterstützte Locales, Verhalten der TTS-Schnittstelle).
 ## [Unreleased]
 
 ### Hinzugefügt
+- Erstlauf-Willkommen: Beim ersten Öffnen zeigt die App die unterstützten
+  Sprachen und fragt auf demselben Bild, ob Deutsch (~311 MiB, nur WLAN)
+  geladen werden soll; „Später" führt zu denselben Knöpfen in den
+  Einstellungen. Die App hat dafür jetzt einen Starter-Eintrag.
 - M6-Veröffentlichungsreife: Martin-Lizenzdossier mit revisionsgepinnten
   Belegen (docs/lizenz/martin-kette.md + belege/), THIRD_PARTY_NOTICES mit
   wörtlichen Lizenztexten der gebündelten Stände, F-Droid-Recherche

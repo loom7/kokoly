@@ -36,7 +36,7 @@ flowchart TB
     subgraph SVC["Dienst-Schicht (Kotlin)"]
         TTS["KokoroTtsService<br/>onSynthesizeText (blockierend, 1 Thread)<br/>onStop → volatile-Flag + RunOptions.setTerminate<br/>onIsLanguageAvailable (ISO-3 + BCP-47 defensiv)"]
         REG["VoiceRegistry<br/>stabile Namen: de-DE-martin, en-US-af_heart …<br/>onGetVoices / onLoadVoice /<br/>onGetDefaultVoiceNameFor / onIsValidVoiceName<br/>Filter: nur aktivierte Sprachen"]
-        SET["Einstellungen (settingsActivity)<br/>Sprachen an/ab · Modell-Download/Einrichtung · Über/Lizenz<br/>Theme.Kokoly folgt System-Tag/Nacht"]
+        SET["Einstellungen (settingsActivity, auch Starter-Eintrag)<br/>Erstlauf: Sprachüberblick + Deutsch-Download-Frage<br/>Sprachen an/ab · Modell-Download · Über/Lizenz<br/>Theme.Kokoly folgt System-Tag/Nacht"]
         CVD["CheckVoiceData · GetSampleText<br/>(Stubs ab M1, voll ab M4)"]
     end
     subgraph PIPE["Pipeline — 1:1-Port der Windows-Referenz"]

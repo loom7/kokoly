@@ -14,6 +14,7 @@ object Einstellungen {
 
     private const val NAME = "kokoly"
     private const val SCHLUESSEL_ABGEWAEHLT = "abgewaehlte_sprachen"
+    private const val SCHLUESSEL_WILLKOMMEN = "willkommen_erledigt"
 
     private fun prefs(context: Context) =
         context.getSharedPreferences(NAME, Context.MODE_PRIVATE)
@@ -26,5 +27,13 @@ object Einstellungen {
         val alt = prefs(context).getStringSet(SCHLUESSEL_ABGEWAEHLT, emptySet())!!
         val neu = if (aktiv) alt - espeakCode else alt + espeakCode
         prefs(context).edit().putStringSet(SCHLUESSEL_ABGEWAEHLT, neu).apply()
+    }
+
+    /** Erstlauf: Willkommensblock (Sprachüberblick + Deutsch-Download-Frage). */
+    fun istWillkommenErledigt(context: Context): Boolean =
+        prefs(context).getBoolean(SCHLUESSEL_WILLKOMMEN, false)
+
+    fun setzeWillkommenErledigt(context: Context) {
+        prefs(context).edit().putBoolean(SCHLUESSEL_WILLKOMMEN, true).apply()
     }
 }

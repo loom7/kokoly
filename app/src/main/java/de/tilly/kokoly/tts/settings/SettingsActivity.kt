@@ -58,6 +58,13 @@ class SettingsActivity : Activity() {
         wurzel.removeAllViews()
         ueberschrift("Kokoly")
 
+        // Erstlauf (Nutzerwunsch 31.08.2026): Sprachüberblick + die Frage nach
+        // dem Deutsch-Download auf demselben Bild; alles Weitere geht ohnehin
+        // hier in den Einstellungen.
+        if (!Einstellungen.istWillkommenErledigt(this)) {
+            willkommen()
+        }
+
         ueberschrift("Modelle")
         val fehlend = ModellLager.manifest(this).filter {
             ModellLager.datei(this, it.name) == null
@@ -68,34 +75,7 @@ class SettingsActivity : Activity() {
             zeile("${fehlend.size} Datei(en) fehlen (" +
                 "${fehlend.sumOf { it.bytes } / 1_048_576} MiB). Download nur über " +
                 "ungetaktetes Netz (WLAN).")
-            val balken = ProgressBar(this, null, android.R.attr.progressBarStyleHorizontal)
-                .apply { max = 1000; visibility = View.GONE }
-            val stand = TextView(this)
-            wurzel.addView(Button(this).apply {
-                text = "Herunterladen"
-                setOnClickListener {
-                    isEnabled = false
-                    balken.visibility = View.VISIBLE
-                    thread {
-                        for (eintrag in fehlend) {
-                            runCatching {
-                                ModellLager.lade(this@SettingsActivity, eintrag) { ist, soll ->
-                                    runOnUiThread {
-                                        stand.text = "${eintrag.name}: ${ist / 1_048_576} MiB"
-                                        balken.progress = (ist * 1000 / soll).toInt()
-                                    }
-                                }
-                            }.onFailure { f ->
-                                runOnUiThread { stand.text = "Fehler: ${f.message}" }
-                                return@thread
-                            }
-                        }
-                        runOnUiThread { baue() }
-                    }
-                }
-            })
-            wurzel.addView(balken)
-            wurzel.addView(stand)
+            downloadKnopf("Alle herunterladen", fehlend)
         }
 
         ueberschrift("Sprachen")
@@ -134,6 +114,84 @@ class SettingsActivity : Activity() {
         // (feld4-Lizenzcheckliste; Repo öffentlich seit F8).
         zeile("Kokoly — Kokoro-TTS für Android. GPL-3.0-or-later; Quelltext und " +
             "Lizenzhinweise: github.com/loom7/kokoly. Modelle: Kokoro-82M (Apache-2.0).")
+    }
+
+    /** Der Erstlauf-Block: unterstützte Sprachen + Deutsch-Download-Frage. */
+    private fun willkommen() {
+        ueberschrift("Willkommen")
+        zeile("Kokoly spricht ${Sprachen.ALLE.size} Sprachen — vollständig " +
+            "offline, als Sprachausgabe fürs ganze System:")
+        for (sprache in Sprachen.ALLE) {
+            val zusatz = if (sprache.gruppe == Sprachen.MARTIN) "Stimme „Martin“"
+                else "${sprache.stimmen.size} Stimmen"
+            zeile("•  ${sprache.locale.displayName} ($zusatz)")
+        }
+
+        val deutschDateien = Sprachen.MARTIN.modelle + Sprachen.MARTIN.stimmbank
+        val deutschFehlt = ModellLager.manifest(this).filter {
+            it.name in deutschDateien && ModellLager.datei(this, it.name) == null
+        }
+        if (deutschFehlt.isEmpty()) {
+            zeile("Die deutsche Sprache ist bereits vorhanden.")
+        } else {
+            zeile("Die Sprachdaten sind nicht in der App enthalten. Soll die " +
+                "deutsche Sprache jetzt geladen werden (" +
+                "${deutschFehlt.sumOf { it.bytes } / 1_048_576} MiB, nur über " +
+                "WLAN)? Alle anderen Sprachen lassen sich jederzeit unter " +
+                "„Modelle“ nachladen.")
+            downloadKnopf("Deutsch herunterladen", deutschFehlt) {
+                Einstellungen.setzeWillkommenErledigt(this)
+            }
+        }
+        wurzel.addView(Button(this).apply {
+            text = if (deutschFehlt.isEmpty()) "Los geht’s" else "Später"
+            setOnClickListener {
+                Einstellungen.setzeWillkommenErledigt(this@SettingsActivity)
+                baue()
+            }
+        })
+    }
+
+    /**
+     * Download-Baustein: Knopf + Fortschrittsbalken + Statuszeile für eine
+     * Dateiliste; nach Erfolg [beiErfolg], dann Neuaufbau der Seite.
+     */
+    private fun downloadKnopf(
+        beschriftung: String,
+        eintraege: List<ModellLager.Eintrag>,
+        beiErfolg: () -> Unit = {},
+    ) {
+        val balken = ProgressBar(this, null, android.R.attr.progressBarStyleHorizontal)
+            .apply { max = 1000; visibility = View.GONE }
+        val stand = TextView(this)
+        wurzel.addView(Button(this).apply {
+            text = beschriftung
+            setOnClickListener {
+                isEnabled = false
+                balken.visibility = View.VISIBLE
+                thread {
+                    for (eintrag in eintraege) {
+                        runCatching {
+                            ModellLager.lade(this@SettingsActivity, eintrag) { ist, soll ->
+                                runOnUiThread {
+                                    stand.text = "${eintrag.name}: ${ist / 1_048_576} MiB"
+                                    balken.progress = (ist * 1000 / soll).toInt()
+                                }
+                            }
+                        }.onFailure { f ->
+                            runOnUiThread {
+                                stand.text = "Fehler: ${f.message}"
+                                isEnabled = true
+                            }
+                            return@thread
+                        }
+                    }
+                    runOnUiThread { beiErfolg(); baue() }
+                }
+            }
+        })
+        wurzel.addView(balken)
+        wurzel.addView(stand)
     }
 
     /** Löst ein Farbattribut des aktiven Themas auf (Selector → Vorgabefarbe). */
